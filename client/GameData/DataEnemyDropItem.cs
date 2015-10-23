@@ -13,11 +13,13 @@ namespace FFRKInspector.GameData
         public enum DropItemType
         {
             Gold = 11,
+            Potion = 21,
+            HiPotion = 22,
+            AbPotion = 31,
             Equipment = 41,
             Orb = 51,
             Magicite = 61,
             Materia = 99,
-            Potion = 98
         };
 
         [JsonProperty("rarity")]
