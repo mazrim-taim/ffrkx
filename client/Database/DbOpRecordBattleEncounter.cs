@@ -29,7 +29,7 @@ namespace FFRKInspector.Database
             foreach (BasicEnemyInfo enemy in mEncounter.Battle.Enemies)
                 CallProcInsertEnemyEntry(connection, transaction, enemy.EnemyId, enemy.EnemyName);
 
-            var non_gold_drop_events = drops.Where(x => x.ItemType <= DataEnemyDropItem.DropItemType.AbPotion);
+            var non_gold_drop_events = drops.Where(x => x.ItemType < DataEnemyDropItem.DropItemType.Equipment);
             // Record per-enemy drops
             foreach (DropEvent drop in non_gold_drop_events)
                 CallProcRecordDropsForBattleAndEnemy(connection, transaction, mEncounter.Battle.BattleId, drop);
