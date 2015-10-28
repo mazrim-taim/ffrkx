@@ -63,6 +63,7 @@ namespace FFRKInspector.GameData
             Robe = 55,
             Bracer = 56,
             Accessory = 80,
+            AugmentItem = 97,
             WeaponUpgrade = 98,
             ArmorUpgrade = 99
         }
