@@ -118,7 +118,11 @@
             this.linkLabel1.Size = new System.Drawing.Size(110, 13);
             this.linkLabel1.TabIndex = 5;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "cppisking@gmail.com";
+            //
+            // should no longer contact cpp - depreciating his email from the about page.
+            //
+            // this.linkLabel1.Text = "cppisking@gmail.com";
+            this.linkLabel1.Text = "At this time, ask for help or provide comments on the /r/FFRecordKeeper page.";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label5
