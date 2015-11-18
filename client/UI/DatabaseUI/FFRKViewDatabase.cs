@@ -112,13 +112,6 @@ namespace FFRKInspector.UI.DatabaseUI
             {
                 panel.Visible = (panel == mSelectedPanel);
             }
-            if (comboBox1.SelectedIndex == 1) {
-                buttonCommit.Visible = true;
-            }
-            else
-            {
-                buttonCommit.Visible = false;
-            }
         }
 
         public DatabaseModeEnum DatabaseMode
