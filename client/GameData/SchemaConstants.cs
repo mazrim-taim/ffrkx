@@ -164,7 +164,9 @@ namespace FFRKInspector.GameData
             Toad = 222,
             Curse = 223,
             Slownumb = 224,
-            Blink = 225
+            Blink = 225,
+            Sap = 229,
+            Stun = 242
         }
 
         public enum StatusVulnerability : ushort
