@@ -41,6 +41,15 @@ namespace FFRKInspector.GameData.Party
         [JsonProperty("equipment_type")]
         public SchemaConstants.ItemType Type;
 
+        [JsonProperty("hammering_num")]
+        public byte Augment;
+
+        [JsonProperty("max_hammering_num")]
+        public byte AugmentMax;
+
+        [JsonProperty("hammering_affect_param_key")]
+        private string HammeringStat;
+
         [JsonProperty("atk")]
         public short Atk;
         [JsonProperty("matk")]
@@ -73,5 +82,31 @@ namespace FFRKInspector.GameData.Party
 
         [JsonProperty("category_id")]
         public SchemaConstants.EquipmentCategory Category;
+
+        public string AugmentStat
+        {
+            get
+            {
+                switch (HammeringStat)
+                {
+                    case "atk":
+                    case "acc":
+                    case "def":
+                    case "eva":
+                    case "mnd":
+                        return HammeringStat.First().ToString().ToUpper() + HammeringStat.Substring(1);
+                    case "matk":
+                        return "Mag";
+                    case "mdef":
+                        return "Res";
+                }
+                return null;
+            }
+
+            set
+            {
+                HammeringStat = value;
+            }
+        }
     }
 }
