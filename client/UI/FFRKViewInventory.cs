@@ -499,13 +499,13 @@ namespace FFRKInspector.UI
                     // rounding error due to the fact that the values for Atk and SeriesAtk etc are all rounded, so the division will be less precise
                     // than doing it over the entire range of Max stats and base stats, but it's the best we can do in this case.
                     byte series_effective_level = StatCalculator.EffectiveLevelWithSynergy(equip.Level);
-                    result.Stats.Atk = StatCalculator.ComputeStatForLevel2(equip.Atk, equip.Level, equip.SeriesAtk, series_effective_level, result.Level);
-                    result.Stats.Mag = StatCalculator.ComputeStatForLevel2(equip.Mag, equip.Level, equip.SeriesMag, series_effective_level, result.Level);
-                    result.Stats.Acc = StatCalculator.ComputeStatForLevel2(equip.Acc, equip.Level, equip.SeriesAcc, series_effective_level, result.Level);
-                    result.Stats.Def = StatCalculator.ComputeStatForLevel2(equip.Def, equip.Level, equip.SeriesDef, series_effective_level, result.Level);
-                    result.Stats.Res = StatCalculator.ComputeStatForLevel2(equip.Res, equip.Level, equip.SeriesRes, series_effective_level, result.Level);
-                    result.Stats.Eva = StatCalculator.ComputeStatForLevel2(equip.Eva, equip.Level, equip.SeriesEva, series_effective_level, result.Level);
-                    result.Stats.Mnd = StatCalculator.ComputeStatForLevel2(equip.Mnd, equip.Level, equip.SeriesMnd, series_effective_level, result.Level);
+                    result.Stats.Atk = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesAtk : equip.Atk) : StatCalculator.ComputeStatForLevel2(equip.Atk, equip.Level, equip.SeriesAtk, series_effective_level, result.Level);
+                    result.Stats.Mag = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesMag : equip.Mag) : StatCalculator.ComputeStatForLevel2(equip.Mag, equip.Level, equip.SeriesMag, series_effective_level, result.Level);
+                    result.Stats.Acc = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesAcc : equip.Acc) : StatCalculator.ComputeStatForLevel2(equip.Acc, equip.Level, equip.SeriesAcc, series_effective_level, result.Level);
+                    result.Stats.Def = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesDef : equip.Def) : StatCalculator.ComputeStatForLevel2(equip.Def, equip.Level, equip.SeriesDef, series_effective_level, result.Level);
+                    result.Stats.Res = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesRes : equip.Res) : StatCalculator.ComputeStatForLevel2(equip.Res, equip.Level, equip.SeriesRes, series_effective_level, result.Level);
+                    result.Stats.Eva = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesEva : equip.Eva) : StatCalculator.ComputeStatForLevel2(equip.Eva, equip.Level, equip.SeriesEva, series_effective_level, result.Level);
+                    result.Stats.Mnd = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesMnd : equip.Mnd) : StatCalculator.ComputeStatForLevel2(equip.Mnd, equip.Level, equip.SeriesMnd, series_effective_level, result.Level);
                 }
             }
 
