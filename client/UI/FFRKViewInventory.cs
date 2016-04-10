@@ -482,7 +482,7 @@ namespace FFRKInspector.UI
                 if (has_synergy)
                     result.Level = StatCalculator.EffectiveLevelWithSynergy(result.Level);
 
-                if (in_cache && cache_value.MaxStats != null && cache_value.BaseStats != null)
+                if (in_cache && cache_value.AreStatsValid)
                 {
                     // Try to get the equipment stats from the database
                     result.Stats.Atk = StatCalculator.ComputeStatForLevel(equip.BaseRarity, cache_value.BaseStats.Atk, cache_value.MaxStats.Atk, result.Level);
