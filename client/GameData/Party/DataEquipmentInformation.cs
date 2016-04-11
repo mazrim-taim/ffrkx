@@ -56,19 +56,19 @@ namespace FFRKInspector.GameData.Party
         [JsonProperty("mnd")]
         public short Mnd;
 
-        [JsonProperty("series_atk")]
+        [JsonProperty("sp_atk")]
         public short SeriesAtk;
-        [JsonProperty("series_matk")]
+        [JsonProperty("sp_matk")]
         public short SeriesMag;
-        [JsonProperty("series_acc")]
+        [JsonProperty("sp_acc")]
         public short SeriesAcc;
-        [JsonProperty("series_def")]
+        [JsonProperty("sp_def")]
         public short SeriesDef;
-        [JsonProperty("series_mdef")]
+        [JsonProperty("sp_mdef")]
         public short SeriesRes;
-        [JsonProperty("series_eva")]
+        [JsonProperty("sp_eva")]
         public short SeriesEva;
-        [JsonProperty("series_mnd")]
+        [JsonProperty("sp_mnd")]
         public short SeriesMnd;
 
         [JsonProperty("category_id")]
