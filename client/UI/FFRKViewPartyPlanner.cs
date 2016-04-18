@@ -174,92 +174,40 @@ namespace FFRKInspector.UI
         private void UpdateDropdowns()
         {
             DataPartyDetails party = FFRKProxy.Instance.GameState.PartyDetails;
+            
+            GameData.DataBuddyInformation[] selectedCharacters = new GameData.DataBuddyInformation[5];
+            int[] selectedCharacterIndices = new int[5];
             for (int i = 0; i < 5; i++)
             {
+                selectedCharacters[i] = (GameData.DataBuddyInformation)characterBoxes[i].SelectedItem;
+                selectedCharacterIndices[i] = -1;
                 characterBoxes[i].Items.Clear();
-                weaponBoxes[i].Items.Clear();
-                armorBoxes[i].Items.Clear();
-                accessoryBoxes[i].Items.Clear();
-                recordMateriaBoxes[i].Items.Clear();
-                abilityBoxes[i * 2].Items.Clear();
-                abilityBoxes[i * 2 + 1].Items.Clear();
-                soulBreakBoxes[i].Items.Clear();
-                
             }
+
+            int tempIndex;
             foreach (GameData.DataBuddyInformation buddy in party.Buddies.OrderBy(buddy => buddy.Name))
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    characterBoxes[i].Items.Add(buddy);
-                }
-            }
-
-            foreach (DataEquipmentInformation weapon in party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Weapon).OrderBy(equip => equip.Name))
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    if (characters[i] != null && characters[i].UsableEquipCategories.Contains(weapon.Category))
+                    tempIndex = characterBoxes[i].Items.Add(buddy);
+                    if (selectedCharacters[i] != null && selectedCharacters[i].BuddyId == buddy.BuddyId)
                     {
-                        weaponBoxes[i].Items.Add(weapon);
+                        selectedCharacterIndices[i] = tempIndex;
                     }
                 }
             }
 
-            foreach (DataEquipmentInformation armor in party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Armor).OrderBy(equip => equip.Name))
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    if (characters[i] != null && characters[i].UsableEquipCategories.Contains(armor.Category))
-                    {
-                        armorBoxes[i].Items.Add(armor);
-                    }
-                }
-            }
-
-            foreach (DataEquipmentInformation accessory in party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Accessory).OrderBy(equip => equip.Name))
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    if (characters[i] != null)
-                    {
-                        accessoryBoxes[i].Items.Add(accessory);
-                    }
-                }
-            }
-
-            foreach (DataRecordMateriaInformation recordMateria in party.RecordMaterias.OrderBy(rm => rm.Name))
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    if (characters[i] != null)
-                    {
-                        recordMateriaBoxes[i].Items.Add(recordMateria);
-                    }
-                }
-            }
-
-            foreach (var ability in FFRKInspector.GameData.Ability.AllAbilities())
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    if (characters[i] != null && characters[i].CanUseAbility(ability))
-                    {
-                        abilityBoxes[i * 2].Items.Add(ability);
-                        abilityBoxes[i * 2 + 1].Items.Add(ability);
-                    }
-                }
-            }
-
-            
             for (int i = 0; i < 5; i++)
             {
-                if(characters[i] != null)
+                if (selectedCharacterIndices[i] > -1)
                 {
-                    foreach(GameData.SoulBreak soulBreak in characters[i].UsableSoulBreaks)
-                    {
-                        soulBreakBoxes[i].Items.Add(soulBreak);
-                    }
+                    characterBoxes[i].SelectedIndex = selectedCharacterIndices[i];
                 }
+                else
+                {
+                    characterBoxes[i].Text = "";
+                }
+                UpdateDropdownsForCharacter(i);
             }
         }
               
@@ -628,21 +576,24 @@ namespace FFRKInspector.UI
             return damageString;
         }
 
-        private void comboBoxPartyMember_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateDropdownsForCharacter(int index)
         {
-            int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
             DataPartyDetails party = FFRKProxy.Instance.GameState.PartyDetails;
             DataEquipmentInformation selectedWeapon = (DataEquipmentInformation)weaponBoxes[index].SelectedItem;
             int weaponIndex = -1;
             int tempIndex;
             weaponBoxes[index].Items.Clear();
-            foreach (DataEquipmentInformation weapon in party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Weapon).OrderBy(equip => equip.Name))
+            if (characterBoxes[index].SelectedItem != null)
             {
-                if (characters[index].UsableEquipCategories.Contains(weapon.Category))
+                foreach (DataEquipmentInformation weapon in party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Weapon).OrderBy(equip => equip.Name))
                 {
-                    tempIndex = weaponBoxes[index].Items.Add(weapon);
-                    if(selectedWeapon != null && weapon.InstanceId == selectedWeapon.InstanceId) {
-                        weaponIndex = tempIndex;
+                    if (characters[index].UsableEquipCategories.Contains(weapon.Category))
+                    {
+                        tempIndex = weaponBoxes[index].Items.Add(weapon);
+                        if (selectedWeapon != null && weapon.InstanceId == selectedWeapon.InstanceId)
+                        {
+                            weaponIndex = tempIndex;
+                        }
                     }
                 }
             }
@@ -659,14 +610,17 @@ namespace FFRKInspector.UI
             DataEquipmentInformation selectedArmor = (DataEquipmentInformation)armorBoxes[index].SelectedItem;
             int armorIndex = -1;
             armorBoxes[index].Items.Clear();
-            foreach (DataEquipmentInformation armor in party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Armor).OrderBy(equip => equip.Name))
+            if (characterBoxes[index].SelectedItem != null)
             {
-                if (characters[index].UsableEquipCategories.Contains(armor.Category))
+                foreach (DataEquipmentInformation armor in party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Armor).OrderBy(equip => equip.Name))
                 {
-                    tempIndex = armorBoxes[index].Items.Add(armor);
-                    if (selectedArmor != null && armor.InstanceId == selectedArmor.InstanceId)
+                    if (characters[index].UsableEquipCategories.Contains(armor.Category))
                     {
-                        armorIndex = tempIndex;
+                        tempIndex = armorBoxes[index].Items.Add(armor);
+                        if (selectedArmor != null && armor.InstanceId == selectedArmor.InstanceId)
+                        {
+                            armorIndex = tempIndex;
+                        }
                     }
                 }
             }
@@ -683,12 +637,15 @@ namespace FFRKInspector.UI
             DataEquipmentInformation selectedAccessory = (DataEquipmentInformation)accessoryBoxes[index].SelectedItem;
             int accessoryIndex = -1;
             accessoryBoxes[index].Items.Clear();
-            foreach (DataEquipmentInformation accessory in party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Accessory).OrderBy(equip => equip.Name))
+            if (characterBoxes[index].SelectedItem != null)
             {
-                tempIndex = accessoryBoxes[index].Items.Add(accessory);
-                if (selectedAccessory != null && accessory.InstanceId == selectedAccessory.InstanceId)
+                foreach (DataEquipmentInformation accessory in party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Accessory).OrderBy(equip => equip.Name))
                 {
-                    accessoryIndex = tempIndex;
+                    tempIndex = accessoryBoxes[index].Items.Add(accessory);
+                    if (selectedAccessory != null && accessory.InstanceId == selectedAccessory.InstanceId)
+                    {
+                        accessoryIndex = tempIndex;
+                    }
                 }
             }
 
@@ -704,12 +661,15 @@ namespace FFRKInspector.UI
             DataRecordMateriaInformation selectedRecordMateria = (DataRecordMateriaInformation)recordMateriaBoxes[index].SelectedItem;
             int recordMateriaIndex = -1;
             recordMateriaBoxes[index].Items.Clear();
-            foreach (DataRecordMateriaInformation recordMateria in party.RecordMaterias.OrderBy(rm => rm.Name))
+            if (characterBoxes[index].SelectedItem != null)
             {
-                tempIndex = recordMateriaBoxes[index].Items.Add(recordMateria);
-                if (selectedRecordMateria != null && recordMateria.RecordMateriaId == selectedRecordMateria.RecordMateriaId)
+                foreach (DataRecordMateriaInformation recordMateria in party.RecordMaterias.OrderBy(rm => rm.Name))
                 {
-                    recordMateriaIndex = tempIndex;
+                    tempIndex = recordMateriaBoxes[index].Items.Add(recordMateria);
+                    if (selectedRecordMateria != null && recordMateria.RecordMateriaId == selectedRecordMateria.RecordMateriaId)
+                    {
+                        recordMateriaIndex = tempIndex;
+                    }
                 }
             }
 
@@ -728,20 +688,23 @@ namespace FFRKInspector.UI
             int ability2Index = -1;
             abilityBoxes[index * 2].Items.Clear();
             abilityBoxes[index * 2 + 1].Items.Clear();
-            foreach (var ability in FFRKInspector.GameData.Ability.AllAbilities())
+            if (characterBoxes[index].SelectedItem != null)
             {
-                if (characters[index].CanUseAbility(ability))
+                foreach (var ability in FFRKInspector.GameData.Ability.AllAbilities())
                 {
-                    tempIndex = abilityBoxes[index * 2].Items.Add(ability);
-                    if (selectedAbility1 != null && ability.Name == selectedAbility1.Name)
+                    if (characters[index].CanUseAbility(ability))
                     {
-                        ability1Index = tempIndex;
-                    }
+                        tempIndex = abilityBoxes[index * 2].Items.Add(ability);
+                        if (selectedAbility1 != null && ability.Name == selectedAbility1.Name)
+                        {
+                            ability1Index = tempIndex;
+                        }
 
-                    tempIndex = abilityBoxes[index * 2 + 1].Items.Add(ability);
-                    if (selectedAbility2 != null && ability.Name == selectedAbility2.Name)
-                    {
-                        ability2Index = tempIndex;
+                        tempIndex = abilityBoxes[index * 2 + 1].Items.Add(ability);
+                        if (selectedAbility2 != null && ability.Name == selectedAbility2.Name)
+                        {
+                            ability2Index = tempIndex;
+                        }
                     }
                 }
             }
@@ -767,12 +730,15 @@ namespace FFRKInspector.UI
             GameData.SoulBreak selectedSoulBreak = (GameData.SoulBreak)soulBreakBoxes[index].SelectedItem;
             int soulBreakIndex = -1;
             soulBreakBoxes[index].Items.Clear();
-            foreach (GameData.SoulBreak soulBreak in characters[index].UsableSoulBreaks)
+            if (characterBoxes[index].SelectedItem != null)
             {
-                tempIndex = soulBreakBoxes[index].Items.Add(soulBreak);
-                if (selectedSoulBreak != null && soulBreak.SoulBreakId == selectedSoulBreak.SoulBreakId)
+                foreach (GameData.SoulBreak soulBreak in characters[index].UsableSoulBreaks)
                 {
-                    soulBreakIndex = tempIndex;
+                    tempIndex = soulBreakBoxes[index].Items.Add(soulBreak);
+                    if (selectedSoulBreak != null && soulBreak.SoulBreakId == selectedSoulBreak.SoulBreakId)
+                    {
+                        soulBreakIndex = tempIndex;
+                    }
                 }
             }
 
@@ -786,6 +752,11 @@ namespace FFRKInspector.UI
             }
 
             RecalculateStats(index);
+        }
+        private void comboBoxPartyMember_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
+            UpdateDropdownsForCharacter(index);
         }
 
         private void comboBoxWeapon_SelectedIndexChanged(object sender, EventArgs e)
