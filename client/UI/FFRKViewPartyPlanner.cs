@@ -540,7 +540,7 @@ namespace FFRKInspector.UI
             if (abilities[characterIndex * 2] != null)
             {
                 GameData.Ability ability = abilities[characterIndex * 2];
-                abilityDamageFields[characterIndex * 2].Text = ability.Name == "Cactuar" ? "1000 * 3" : damageStringForCharacter(characterIndex, ability);
+                abilityDamageFields[characterIndex * 2].Text = damageStringForCharacter(characterIndex, ability);
                 if (ability.Formula == GameData.SchemaConstants.Formulas.Healing)
                 {
                     abilityDamageFields[characterIndex * 2].BackColor = System.Drawing.Color.Lime;
@@ -559,7 +559,7 @@ namespace FFRKInspector.UI
             if (abilities[characterIndex * 2 + 1] != null)
             {
                 GameData.Ability ability = abilities[characterIndex * 2 + 1];
-                abilityDamageFields[characterIndex * 2 + 1].Text = ability.Name == "Cactuar" ? "1000 * 3" : damageStringForCharacter(characterIndex, ability);
+                abilityDamageFields[characterIndex * 2 + 1].Text = damageStringForCharacter(characterIndex, ability);
                 if (ability.Formula == GameData.SchemaConstants.Formulas.Healing)
                 {
                     abilityDamageFields[characterIndex * 2 + 1].BackColor = System.Drawing.Color.Lime;
@@ -597,6 +597,10 @@ namespace FFRKInspector.UI
 
         private string damageStringForCharacter(int characterIndex, GameData.Ability ability)
         {
+            if (ability.Name == "Cactuar")
+            {
+                return "1000 * 3";
+            }
             GameData.DataBuddyInformation character = characters[characterIndex];
             DataEquipmentInformation weapon = weapons[characterIndex];
             DataEquipmentInformation armor = armors[characterIndex];
