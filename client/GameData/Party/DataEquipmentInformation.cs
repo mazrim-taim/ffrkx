@@ -64,6 +64,10 @@ namespace FFRKInspector.GameData.Party
         public short Eva;
         [JsonProperty("mnd")]
         public short Mnd;
+        [JsonProperty("hp")]
+        public short HP;
+        [JsonProperty("spd")]
+        public short Spd;
 
         [JsonProperty("sp_atk")]
         public short SeriesAtk;
@@ -79,6 +83,10 @@ namespace FFRKInspector.GameData.Party
         public short SeriesEva;
         [JsonProperty("sp_mnd")]
         public short SeriesMnd;
+        [JsonProperty("sp_hp")]
+        public short SeriesHP;
+        [JsonProperty("sp_spd")]
+        public short SeriesSpd;
 
         [JsonProperty("category_id")]
         public SchemaConstants.EquipmentCategory Category;
@@ -107,6 +115,37 @@ namespace FFRKInspector.GameData.Party
             {
                 HammeringStat = value;
             }
+        }
+
+        public short StatInRealm(string stat, uint gameSeries)
+        {
+            bool hasSynergy = gameSeries == SeriesId;
+            string statToUse = hasSynergy ? "Series" + stat : stat;
+
+            System.Reflection.FieldInfo statField = typeof(DataEquipmentInformation).GetField(statToUse);
+            short statValue = (short)statField.GetValue(this);
+
+            if (AugmentStat != null && AugmentStat == stat)
+            {
+                statValue = (short)Math.Ceiling((hasSynergy ? Augment * 1.5 : (double)Augment) + statValue);
+            }
+            return statValue;
+        }
+
+        public double ElementalMultiplier(SchemaConstants.ElementID element)
+        {
+            SchemaConstants.ElementID storedElement;
+
+            if (EquipmentElementalInformation.ElementalEquipment.TryGetValue(EquipmentId, out storedElement) && storedElement == element)
+            {
+                return 1.2;
+            }
+            return 1.0;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }
