@@ -85,6 +85,8 @@
             this.checkBoxShout = new System.Windows.Forms.CheckBox();
             this.checkBoxHotE = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBoxFaith = new System.Windows.Forms.CheckBox();
+            this.checkBoxFocus = new System.Windows.Forms.CheckBox();
             this.textBoxDef4 = new System.Windows.Forms.TextBox();
             this.textBoxDef3 = new System.Windows.Forms.TextBox();
             this.textBoxDef2 = new System.Windows.Forms.TextBox();
@@ -149,8 +151,6 @@
             this.checkBoxArmorBreakdown = new System.Windows.Forms.CheckBox();
             this.textBoxEnemyEffectiveDef = new System.Windows.Forms.TextBox();
             this.textBoxEnemyEffectiveRes = new System.Windows.Forms.TextBox();
-            this.checkBoxFocus = new System.Windows.Forms.CheckBox();
-            this.checkBoxFaith = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -180,7 +180,7 @@
             this.comboBoxPartyMember2.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxPartyMember2.Name = "comboBoxPartyMember2";
             this.comboBoxPartyMember2.Size = new System.Drawing.Size(75, 21);
-            this.comboBoxPartyMember2.TabIndex = 1;
+            this.comboBoxPartyMember2.TabIndex = 8;
             this.comboBoxPartyMember2.SelectedIndexChanged += new System.EventHandler(this.comboBoxPartyMember_SelectedIndexChanged);
             // 
             // comboBoxPartyMember3
@@ -190,7 +190,7 @@
             this.comboBoxPartyMember3.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxPartyMember3.Name = "comboBoxPartyMember3";
             this.comboBoxPartyMember3.Size = new System.Drawing.Size(75, 21);
-            this.comboBoxPartyMember3.TabIndex = 2;
+            this.comboBoxPartyMember3.TabIndex = 16;
             this.comboBoxPartyMember3.SelectedIndexChanged += new System.EventHandler(this.comboBoxPartyMember_SelectedIndexChanged);
             // 
             // comboBoxPartyMember4
@@ -200,7 +200,7 @@
             this.comboBoxPartyMember4.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxPartyMember4.Name = "comboBoxPartyMember4";
             this.comboBoxPartyMember4.Size = new System.Drawing.Size(75, 21);
-            this.comboBoxPartyMember4.TabIndex = 3;
+            this.comboBoxPartyMember4.TabIndex = 24;
             this.comboBoxPartyMember4.SelectedIndexChanged += new System.EventHandler(this.comboBoxPartyMember_SelectedIndexChanged);
             // 
             // comboBoxPartyMember5
@@ -210,7 +210,7 @@
             this.comboBoxPartyMember5.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxPartyMember5.Name = "comboBoxPartyMember5";
             this.comboBoxPartyMember5.Size = new System.Drawing.Size(75, 21);
-            this.comboBoxPartyMember5.TabIndex = 4;
+            this.comboBoxPartyMember5.TabIndex = 32;
             this.comboBoxPartyMember5.SelectedIndexChanged += new System.EventHandler(this.comboBoxPartyMember_SelectedIndexChanged);
             // 
             // comboBoxAbility1
@@ -220,7 +220,7 @@
             this.comboBoxAbility1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility1.Name = "comboBoxAbility1";
             this.comboBoxAbility1.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility1.TabIndex = 5;
+            this.comboBoxAbility1.TabIndex = 1;
             this.comboBoxAbility1.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility2
@@ -230,7 +230,7 @@
             this.comboBoxAbility2.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility2.Name = "comboBoxAbility2";
             this.comboBoxAbility2.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility2.TabIndex = 6;
+            this.comboBoxAbility2.TabIndex = 2;
             this.comboBoxAbility2.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility3
@@ -240,7 +240,7 @@
             this.comboBoxAbility3.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility3.Name = "comboBoxAbility3";
             this.comboBoxAbility3.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility3.TabIndex = 7;
+            this.comboBoxAbility3.TabIndex = 9;
             this.comboBoxAbility3.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility4
@@ -250,7 +250,7 @@
             this.comboBoxAbility4.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility4.Name = "comboBoxAbility4";
             this.comboBoxAbility4.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility4.TabIndex = 8;
+            this.comboBoxAbility4.TabIndex = 10;
             this.comboBoxAbility4.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility5
@@ -260,7 +260,7 @@
             this.comboBoxAbility5.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility5.Name = "comboBoxAbility5";
             this.comboBoxAbility5.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility5.TabIndex = 9;
+            this.comboBoxAbility5.TabIndex = 17;
             this.comboBoxAbility5.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility6
@@ -270,7 +270,7 @@
             this.comboBoxAbility6.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility6.Name = "comboBoxAbility6";
             this.comboBoxAbility6.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility6.TabIndex = 10;
+            this.comboBoxAbility6.TabIndex = 18;
             this.comboBoxAbility6.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility7
@@ -280,7 +280,7 @@
             this.comboBoxAbility7.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility7.Name = "comboBoxAbility7";
             this.comboBoxAbility7.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility7.TabIndex = 11;
+            this.comboBoxAbility7.TabIndex = 25;
             this.comboBoxAbility7.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility8
@@ -290,7 +290,7 @@
             this.comboBoxAbility8.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility8.Name = "comboBoxAbility8";
             this.comboBoxAbility8.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility8.TabIndex = 12;
+            this.comboBoxAbility8.TabIndex = 26;
             this.comboBoxAbility8.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility9
@@ -300,7 +300,7 @@
             this.comboBoxAbility9.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility9.Name = "comboBoxAbility9";
             this.comboBoxAbility9.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility9.TabIndex = 13;
+            this.comboBoxAbility9.TabIndex = 33;
             this.comboBoxAbility9.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility10
@@ -310,7 +310,7 @@
             this.comboBoxAbility10.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAbility10.Name = "comboBoxAbility10";
             this.comboBoxAbility10.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxAbility10.TabIndex = 14;
+            this.comboBoxAbility10.TabIndex = 34;
             this.comboBoxAbility10.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxSoulBreak1
@@ -320,7 +320,7 @@
             this.comboBoxSoulBreak1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxSoulBreak1.Name = "comboBoxSoulBreak1";
             this.comboBoxSoulBreak1.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxSoulBreak1.TabIndex = 15;
+            this.comboBoxSoulBreak1.TabIndex = 3;
             this.comboBoxSoulBreak1.SelectedIndexChanged += new System.EventHandler(this.comboBoxSoulBreak_SelectedIndexChanged);
             // 
             // comboBoxSoulBreak2
@@ -330,7 +330,7 @@
             this.comboBoxSoulBreak2.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxSoulBreak2.Name = "comboBoxSoulBreak2";
             this.comboBoxSoulBreak2.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxSoulBreak2.TabIndex = 16;
+            this.comboBoxSoulBreak2.TabIndex = 11;
             this.comboBoxSoulBreak2.SelectedIndexChanged += new System.EventHandler(this.comboBoxSoulBreak_SelectedIndexChanged);
             // 
             // comboBoxSoulBreak3
@@ -340,7 +340,7 @@
             this.comboBoxSoulBreak3.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxSoulBreak3.Name = "comboBoxSoulBreak3";
             this.comboBoxSoulBreak3.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxSoulBreak3.TabIndex = 17;
+            this.comboBoxSoulBreak3.TabIndex = 19;
             this.comboBoxSoulBreak3.SelectedIndexChanged += new System.EventHandler(this.comboBoxSoulBreak_SelectedIndexChanged);
             // 
             // comboBoxSoulBreak4
@@ -350,7 +350,7 @@
             this.comboBoxSoulBreak4.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxSoulBreak4.Name = "comboBoxSoulBreak4";
             this.comboBoxSoulBreak4.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxSoulBreak4.TabIndex = 18;
+            this.comboBoxSoulBreak4.TabIndex = 27;
             this.comboBoxSoulBreak4.SelectedIndexChanged += new System.EventHandler(this.comboBoxSoulBreak_SelectedIndexChanged);
             // 
             // comboBoxSoulBreak5
@@ -360,7 +360,7 @@
             this.comboBoxSoulBreak5.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxSoulBreak5.Name = "comboBoxSoulBreak5";
             this.comboBoxSoulBreak5.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxSoulBreak5.TabIndex = 19;
+            this.comboBoxSoulBreak5.TabIndex = 35;
             this.comboBoxSoulBreak5.SelectedIndexChanged += new System.EventHandler(this.comboBoxSoulBreak_SelectedIndexChanged);
             // 
             // comboBoxWeapon5
@@ -370,7 +370,7 @@
             this.comboBoxWeapon5.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxWeapon5.Name = "comboBoxWeapon5";
             this.comboBoxWeapon5.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxWeapon5.TabIndex = 24;
+            this.comboBoxWeapon5.TabIndex = 36;
             this.comboBoxWeapon5.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             // 
             // comboBoxWeapon4
@@ -380,7 +380,7 @@
             this.comboBoxWeapon4.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxWeapon4.Name = "comboBoxWeapon4";
             this.comboBoxWeapon4.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxWeapon4.TabIndex = 23;
+            this.comboBoxWeapon4.TabIndex = 28;
             this.comboBoxWeapon4.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             // 
             // comboBoxWeapon3
@@ -390,7 +390,7 @@
             this.comboBoxWeapon3.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxWeapon3.Name = "comboBoxWeapon3";
             this.comboBoxWeapon3.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxWeapon3.TabIndex = 22;
+            this.comboBoxWeapon3.TabIndex = 20;
             this.comboBoxWeapon3.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             // 
             // comboBoxWeapon2
@@ -400,7 +400,7 @@
             this.comboBoxWeapon2.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxWeapon2.Name = "comboBoxWeapon2";
             this.comboBoxWeapon2.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxWeapon2.TabIndex = 21;
+            this.comboBoxWeapon2.TabIndex = 12;
             this.comboBoxWeapon2.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             // 
             // comboBoxWeapon1
@@ -410,7 +410,7 @@
             this.comboBoxWeapon1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxWeapon1.Name = "comboBoxWeapon1";
             this.comboBoxWeapon1.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxWeapon1.TabIndex = 20;
+            this.comboBoxWeapon1.TabIndex = 4;
             this.comboBoxWeapon1.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             // 
             // comboBoxArmor5
@@ -420,7 +420,7 @@
             this.comboBoxArmor5.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxArmor5.Name = "comboBoxArmor5";
             this.comboBoxArmor5.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxArmor5.TabIndex = 29;
+            this.comboBoxArmor5.TabIndex = 37;
             this.comboBoxArmor5.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             // 
             // comboBoxArmor4
@@ -430,7 +430,7 @@
             this.comboBoxArmor4.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxArmor4.Name = "comboBoxArmor4";
             this.comboBoxArmor4.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxArmor4.TabIndex = 28;
+            this.comboBoxArmor4.TabIndex = 29;
             this.comboBoxArmor4.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             // 
             // comboBoxArmor3
@@ -440,7 +440,7 @@
             this.comboBoxArmor3.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxArmor3.Name = "comboBoxArmor3";
             this.comboBoxArmor3.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxArmor3.TabIndex = 27;
+            this.comboBoxArmor3.TabIndex = 21;
             this.comboBoxArmor3.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             // 
             // comboBoxArmor2
@@ -450,7 +450,7 @@
             this.comboBoxArmor2.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxArmor2.Name = "comboBoxArmor2";
             this.comboBoxArmor2.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxArmor2.TabIndex = 26;
+            this.comboBoxArmor2.TabIndex = 13;
             this.comboBoxArmor2.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             // 
             // comboBoxArmor1
@@ -460,7 +460,7 @@
             this.comboBoxArmor1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxArmor1.Name = "comboBoxArmor1";
             this.comboBoxArmor1.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxArmor1.TabIndex = 25;
+            this.comboBoxArmor1.TabIndex = 5;
             this.comboBoxArmor1.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             // 
             // comboBoxAccessory5
@@ -470,7 +470,7 @@
             this.comboBoxAccessory5.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxAccessory5.Name = "comboBoxAccessory5";
             this.comboBoxAccessory5.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxAccessory5.TabIndex = 34;
+            this.comboBoxAccessory5.TabIndex = 38;
             this.comboBoxAccessory5.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             // 
             // comboBoxAccessory4
@@ -480,17 +480,17 @@
             this.comboBoxAccessory4.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxAccessory4.Name = "comboBoxAccessory4";
             this.comboBoxAccessory4.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxAccessory4.TabIndex = 33;
+            this.comboBoxAccessory4.TabIndex = 30;
             this.comboBoxAccessory4.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             // 
             // comboBoxAccessory3
             // 
             this.comboBoxAccessory3.FormattingEnabled = true;
-            this.comboBoxAccessory3.Location = new System.Drawing.Point(372, 303);
+            this.comboBoxAccessory3.Location = new System.Drawing.Point(372, 295);
             this.comboBoxAccessory3.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxAccessory3.Name = "comboBoxAccessory3";
             this.comboBoxAccessory3.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxAccessory3.TabIndex = 32;
+            this.comboBoxAccessory3.TabIndex = 22;
             this.comboBoxAccessory3.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             // 
             // comboBoxAccessory2
@@ -500,7 +500,7 @@
             this.comboBoxAccessory2.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxAccessory2.Name = "comboBoxAccessory2";
             this.comboBoxAccessory2.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxAccessory2.TabIndex = 31;
+            this.comboBoxAccessory2.TabIndex = 14;
             this.comboBoxAccessory2.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             // 
             // comboBoxAccessory1
@@ -510,7 +510,7 @@
             this.comboBoxAccessory1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxAccessory1.Name = "comboBoxAccessory1";
             this.comboBoxAccessory1.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxAccessory1.TabIndex = 30;
+            this.comboBoxAccessory1.TabIndex = 6;
             this.comboBoxAccessory1.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             // 
             // groupBox1
@@ -523,7 +523,7 @@
             this.groupBox1.Location = new System.Drawing.Point(687, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(52, 209);
-            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Atk";
             // 
@@ -569,7 +569,7 @@
             this.comboBoxRecordMateria5.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxRecordMateria5.Name = "comboBoxRecordMateria5";
             this.comboBoxRecordMateria5.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxRecordMateria5.TabIndex = 40;
+            this.comboBoxRecordMateria5.TabIndex = 39;
             this.comboBoxRecordMateria5.SelectedIndexChanged += new System.EventHandler(this.comboBoxRecordMateria_SelectedIndexChanged);
             // 
             // comboBoxRecordMateria4
@@ -579,7 +579,7 @@
             this.comboBoxRecordMateria4.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxRecordMateria4.Name = "comboBoxRecordMateria4";
             this.comboBoxRecordMateria4.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxRecordMateria4.TabIndex = 39;
+            this.comboBoxRecordMateria4.TabIndex = 31;
             this.comboBoxRecordMateria4.SelectedIndexChanged += new System.EventHandler(this.comboBoxRecordMateria_SelectedIndexChanged);
             // 
             // comboBoxRecordMateria3
@@ -589,7 +589,7 @@
             this.comboBoxRecordMateria3.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxRecordMateria3.Name = "comboBoxRecordMateria3";
             this.comboBoxRecordMateria3.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxRecordMateria3.TabIndex = 38;
+            this.comboBoxRecordMateria3.TabIndex = 23;
             this.comboBoxRecordMateria3.SelectedIndexChanged += new System.EventHandler(this.comboBoxRecordMateria_SelectedIndexChanged);
             // 
             // comboBoxRecordMateria2
@@ -599,7 +599,7 @@
             this.comboBoxRecordMateria2.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxRecordMateria2.Name = "comboBoxRecordMateria2";
             this.comboBoxRecordMateria2.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxRecordMateria2.TabIndex = 37;
+            this.comboBoxRecordMateria2.TabIndex = 15;
             this.comboBoxRecordMateria2.SelectedIndexChanged += new System.EventHandler(this.comboBoxRecordMateria_SelectedIndexChanged);
             // 
             // comboBoxRecordMateria1
@@ -609,7 +609,7 @@
             this.comboBoxRecordMateria1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxRecordMateria1.Name = "comboBoxRecordMateria1";
             this.comboBoxRecordMateria1.Size = new System.Drawing.Size(115, 21);
-            this.comboBoxRecordMateria1.TabIndex = 36;
+            this.comboBoxRecordMateria1.TabIndex = 7;
             this.comboBoxRecordMateria1.SelectedIndexChanged += new System.EventHandler(this.comboBoxRecordMateria_SelectedIndexChanged);
             // 
             // label1
@@ -618,7 +618,7 @@
             this.label1.Location = new System.Drawing.Point(626, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 41;
+            this.label1.TabIndex = 61;
             this.label1.Text = "Realm Synergy";
             // 
             // comboBoxRealmSynergy
@@ -627,7 +627,7 @@
             this.comboBoxRealmSynergy.Location = new System.Drawing.Point(710, 229);
             this.comboBoxRealmSynergy.Name = "comboBoxRealmSynergy";
             this.comboBoxRealmSynergy.Size = new System.Drawing.Size(59, 21);
-            this.comboBoxRealmSynergy.TabIndex = 42;
+            this.comboBoxRealmSynergy.TabIndex = 40;
             this.comboBoxRealmSynergy.SelectedIndexChanged += new System.EventHandler(this.comboBoxRealmSynergy_SelectedIndexChanged);
             // 
             // groupBox2
@@ -640,7 +640,7 @@
             this.groupBox2.Location = new System.Drawing.Point(745, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(52, 209);
-            this.groupBox2.TabIndex = 43;
+            this.groupBox2.TabIndex = 55;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Mag";
             // 
@@ -685,7 +685,7 @@
             this.checkBoxShout.Location = new System.Drawing.Point(6, 19);
             this.checkBoxShout.Name = "checkBoxShout";
             this.checkBoxShout.Size = new System.Drawing.Size(54, 17);
-            this.checkBoxShout.TabIndex = 44;
+            this.checkBoxShout.TabIndex = 0;
             this.checkBoxShout.Tag = "603";
             this.checkBoxShout.Text = "Shout";
             this.checkBoxShout.UseVisualStyleBackColor = true;
@@ -697,7 +697,7 @@
             this.checkBoxHotE.Location = new System.Drawing.Point(6, 42);
             this.checkBoxHotE.Name = "checkBoxHotE";
             this.checkBoxHotE.Size = new System.Drawing.Size(124, 17);
-            this.checkBoxHotE.TabIndex = 45;
+            this.checkBoxHotE.TabIndex = 1;
             this.checkBoxHotE.Tag = "611";
             this.checkBoxHotE.Text = "Hand of the Emperor";
             this.checkBoxHotE.UseVisualStyleBackColor = true;
@@ -712,9 +712,33 @@
             this.groupBox3.Location = new System.Drawing.Point(629, 282);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(147, 119);
-            this.groupBox3.TabIndex = 46;
+            this.groupBox3.TabIndex = 51;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Buffs";
+            // 
+            // checkBoxFaith
+            // 
+            this.checkBoxFaith.AutoSize = true;
+            this.checkBoxFaith.Location = new System.Drawing.Point(6, 88);
+            this.checkBoxFaith.Name = "checkBoxFaith";
+            this.checkBoxFaith.Size = new System.Drawing.Size(49, 17);
+            this.checkBoxFaith.TabIndex = 3;
+            this.checkBoxFaith.Tag = "601";
+            this.checkBoxFaith.Text = "Faith";
+            this.checkBoxFaith.UseVisualStyleBackColor = true;
+            this.checkBoxFaith.CheckedChanged += new System.EventHandler(this.checkBoxBuff_CheckedChanged);
+            // 
+            // checkBoxFocus
+            // 
+            this.checkBoxFocus.AutoSize = true;
+            this.checkBoxFocus.Location = new System.Drawing.Point(6, 65);
+            this.checkBoxFocus.Name = "checkBoxFocus";
+            this.checkBoxFocus.Size = new System.Drawing.Size(55, 17);
+            this.checkBoxFocus.TabIndex = 2;
+            this.checkBoxFocus.Tag = "528";
+            this.checkBoxFocus.Text = "Focus";
+            this.checkBoxFocus.UseVisualStyleBackColor = true;
+            this.checkBoxFocus.CheckedChanged += new System.EventHandler(this.checkBoxBuff_CheckedChanged);
             // 
             // textBoxDef4
             // 
@@ -754,7 +778,7 @@
             this.groupBox4.Location = new System.Drawing.Point(861, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(52, 209);
-            this.groupBox4.TabIndex = 36;
+            this.groupBox4.TabIndex = 57;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Def";
             // 
@@ -775,7 +799,7 @@
             this.groupBox5.Location = new System.Drawing.Point(977, 3);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(52, 209);
-            this.groupBox5.TabIndex = 45;
+            this.groupBox5.TabIndex = 59;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Eva";
             // 
@@ -824,7 +848,7 @@
             this.groupBox6.Location = new System.Drawing.Point(803, 3);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(52, 209);
-            this.groupBox6.TabIndex = 46;
+            this.groupBox6.TabIndex = 56;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Mnd";
             // 
@@ -873,7 +897,7 @@
             this.groupBox7.Location = new System.Drawing.Point(919, 3);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(52, 209);
-            this.groupBox7.TabIndex = 44;
+            this.groupBox7.TabIndex = 58;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Res";
             // 
@@ -922,7 +946,7 @@
             this.groupBox8.Location = new System.Drawing.Point(1035, 3);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(52, 209);
-            this.groupBox8.TabIndex = 46;
+            this.groupBox8.TabIndex = 60;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Spd";
             // 
@@ -971,7 +995,7 @@
             this.groupBox9.Location = new System.Drawing.Point(629, 3);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(52, 209);
-            this.groupBox9.TabIndex = 46;
+            this.groupBox9.TabIndex = 53;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "HP";
             // 
@@ -1015,7 +1039,7 @@
             this.textBoxEnemyDef.Location = new System.Drawing.Point(880, 229);
             this.textBoxEnemyDef.Name = "textBoxEnemyDef";
             this.textBoxEnemyDef.Size = new System.Drawing.Size(59, 20);
-            this.textBoxEnemyDef.TabIndex = 47;
+            this.textBoxEnemyDef.TabIndex = 41;
             this.textBoxEnemyDef.Text = "1000";
             this.textBoxEnemyDef.TextChanged += new System.EventHandler(this.textBoxEnemyStats_TextChanged);
             // 
@@ -1024,7 +1048,7 @@
             this.textBoxEnemyRes.Location = new System.Drawing.Point(880, 256);
             this.textBoxEnemyRes.Name = "textBoxEnemyRes";
             this.textBoxEnemyRes.Size = new System.Drawing.Size(59, 20);
-            this.textBoxEnemyRes.TabIndex = 48;
+            this.textBoxEnemyRes.TabIndex = 42;
             this.textBoxEnemyRes.Text = "1000";
             this.textBoxEnemyRes.TextChanged += new System.EventHandler(this.textBoxEnemyStats_TextChanged);
             // 
@@ -1034,7 +1058,7 @@
             this.label2.Location = new System.Drawing.Point(815, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);
-            this.label2.TabIndex = 49;
+            this.label2.TabIndex = 62;
             this.label2.Text = "Enemy Def";
             // 
             // label3
@@ -1043,7 +1067,7 @@
             this.label3.Location = new System.Drawing.Point(813, 259);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
-            this.label3.TabIndex = 50;
+            this.label3.TabIndex = 64;
             this.label3.Text = "Enemy Res";
             // 
             // textBoxAbilityDamage1
@@ -1192,7 +1216,7 @@
             this.groupBox10.Location = new System.Drawing.Point(803, 282);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(278, 119);
-            this.groupBox10.TabIndex = 47;
+            this.groupBox10.TabIndex = 52;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Debuffs";
             // 
@@ -1204,7 +1228,7 @@
             this.checkBoxMentalBreakResistant.Location = new System.Drawing.Point(122, 65);
             this.checkBoxMentalBreakResistant.Name = "checkBoxMentalBreakResistant";
             this.checkBoxMentalBreakResistant.Size = new System.Drawing.Size(142, 17);
-            this.checkBoxMentalBreakResistant.TabIndex = 49;
+            this.checkBoxMentalBreakResistant.TabIndex = 5;
             this.checkBoxMentalBreakResistant.Text = "Mental Break Resistant?";
             this.checkBoxMentalBreakResistant.UseVisualStyleBackColor = true;
             this.checkBoxMentalBreakResistant.CheckedChanged += new System.EventHandler(this.checkBoxDebuff_CheckedChanged);
@@ -1217,7 +1241,7 @@
             this.checkBoxArmorBreakResistant.Location = new System.Drawing.Point(122, 42);
             this.checkBoxArmorBreakResistant.Name = "checkBoxArmorBreakResistant";
             this.checkBoxArmorBreakResistant.Size = new System.Drawing.Size(137, 17);
-            this.checkBoxArmorBreakResistant.TabIndex = 48;
+            this.checkBoxArmorBreakResistant.TabIndex = 4;
             this.checkBoxArmorBreakResistant.Text = "Armor Break Resistant?";
             this.checkBoxArmorBreakResistant.UseVisualStyleBackColor = true;
             this.checkBoxArmorBreakResistant.CheckedChanged += new System.EventHandler(this.checkBoxDebuff_CheckedChanged);
@@ -1228,7 +1252,7 @@
             this.checkBoxBanishingBlade.Location = new System.Drawing.Point(6, 88);
             this.checkBoxBanishingBlade.Name = "checkBoxBanishingBlade";
             this.checkBoxBanishingBlade.Size = new System.Drawing.Size(102, 17);
-            this.checkBoxBanishingBlade.TabIndex = 47;
+            this.checkBoxBanishingBlade.TabIndex = 3;
             this.checkBoxBanishingBlade.Tag = "611";
             this.checkBoxBanishingBlade.Text = "Banishing Blade";
             this.checkBoxBanishingBlade.UseVisualStyleBackColor = true;
@@ -1240,7 +1264,7 @@
             this.checkBoxMentalBreakdown.Location = new System.Drawing.Point(6, 65);
             this.checkBoxMentalBreakdown.Name = "checkBoxMentalBreakdown";
             this.checkBoxMentalBreakdown.Size = new System.Drawing.Size(115, 17);
-            this.checkBoxMentalBreakdown.TabIndex = 46;
+            this.checkBoxMentalBreakdown.TabIndex = 2;
             this.checkBoxMentalBreakdown.Tag = "607";
             this.checkBoxMentalBreakdown.Text = "Mental Breakdown";
             this.checkBoxMentalBreakdown.UseVisualStyleBackColor = true;
@@ -1252,7 +1276,7 @@
             this.checkBoxFullBreak.Location = new System.Drawing.Point(6, 19);
             this.checkBoxFullBreak.Name = "checkBoxFullBreak";
             this.checkBoxFullBreak.Size = new System.Drawing.Size(73, 17);
-            this.checkBoxFullBreak.TabIndex = 44;
+            this.checkBoxFullBreak.TabIndex = 0;
             this.checkBoxFullBreak.Tag = "609";
             this.checkBoxFullBreak.Text = "Full Break";
             this.checkBoxFullBreak.UseVisualStyleBackColor = true;
@@ -1264,7 +1288,7 @@
             this.checkBoxArmorBreakdown.Location = new System.Drawing.Point(6, 42);
             this.checkBoxArmorBreakdown.Name = "checkBoxArmorBreakdown";
             this.checkBoxArmorBreakdown.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxArmorBreakdown.TabIndex = 45;
+            this.checkBoxArmorBreakdown.TabIndex = 1;
             this.checkBoxArmorBreakdown.Tag = "604";
             this.checkBoxArmorBreakdown.Text = "Armor Breakdown";
             this.checkBoxArmorBreakdown.UseVisualStyleBackColor = true;
@@ -1276,7 +1300,7 @@
             this.textBoxEnemyEffectiveDef.Name = "textBoxEnemyEffectiveDef";
             this.textBoxEnemyEffectiveDef.ReadOnly = true;
             this.textBoxEnemyEffectiveDef.Size = new System.Drawing.Size(59, 20);
-            this.textBoxEnemyEffectiveDef.TabIndex = 66;
+            this.textBoxEnemyEffectiveDef.TabIndex = 63;
             this.textBoxEnemyEffectiveDef.Text = "1000";
             // 
             // textBoxEnemyEffectiveRes
@@ -1285,32 +1309,8 @@
             this.textBoxEnemyEffectiveRes.Name = "textBoxEnemyEffectiveRes";
             this.textBoxEnemyEffectiveRes.ReadOnly = true;
             this.textBoxEnemyEffectiveRes.Size = new System.Drawing.Size(59, 20);
-            this.textBoxEnemyEffectiveRes.TabIndex = 67;
+            this.textBoxEnemyEffectiveRes.TabIndex = 65;
             this.textBoxEnemyEffectiveRes.Text = "1000";
-            // 
-            // checkBoxFocus
-            // 
-            this.checkBoxFocus.AutoSize = true;
-            this.checkBoxFocus.Location = new System.Drawing.Point(6, 65);
-            this.checkBoxFocus.Name = "checkBoxFocus";
-            this.checkBoxFocus.Size = new System.Drawing.Size(55, 17);
-            this.checkBoxFocus.TabIndex = 46;
-            this.checkBoxFocus.Tag = "528";
-            this.checkBoxFocus.Text = "Focus";
-            this.checkBoxFocus.UseVisualStyleBackColor = true;
-            this.checkBoxFocus.CheckedChanged += new System.EventHandler(this.checkBoxBuff_CheckedChanged);
-            // 
-            // checkBoxFaith
-            // 
-            this.checkBoxFaith.AutoSize = true;
-            this.checkBoxFaith.Location = new System.Drawing.Point(6, 88);
-            this.checkBoxFaith.Name = "checkBoxFaith";
-            this.checkBoxFaith.Size = new System.Drawing.Size(49, 17);
-            this.checkBoxFaith.TabIndex = 47;
-            this.checkBoxFaith.Tag = "601";
-            this.checkBoxFaith.Text = "Faith";
-            this.checkBoxFaith.UseVisualStyleBackColor = true;
-            this.checkBoxFaith.CheckedChanged += new System.EventHandler(this.checkBoxBuff_CheckedChanged);
             // 
             // FFRKViewPartyPlanner
             // 
