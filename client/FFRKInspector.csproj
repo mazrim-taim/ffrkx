@@ -108,6 +108,7 @@
     <Compile Include="GameData\Abilities\Bomb.cs" />
     <Compile Include="GameData\Abilities\Boost.cs" />
     <Compile Include="GameData\Abilities\BoxStep.cs" />
+    <Compile Include="GameData\Abilities\BoxStepSarabande.cs" />
     <Compile Include="GameData\Abilities\BracingBash.cs" />
     <Compile Include="GameData\Abilities\BreakStrike.cs" />
     <Compile Include="GameData\Abilities\Cactuar.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="GameData\Abilities\Guard.cs" />
     <Compile Include="GameData\Abilities\HaltingRumba.cs" />
     <Compile Include="GameData\Abilities\HeathenFrolic.cs" />
+    <Compile Include="GameData\Abilities\HeathenFrolicSarabande.cs" />
     <Compile Include="GameData\Abilities\IaiStrike.cs" />
     <Compile Include="GameData\Abilities\IceJump.cs" />
     <Compile Include="GameData\Abilities\Ifrit.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="GameData\Abilities\MinusStrike.cs" />
     <Compile Include="GameData\Abilities\MirrorOfEquity.cs" />
     <Compile Include="GameData\Abilities\MugTime.cs" />
+    <Compile Include="GameData\Abilities\MultiBreak.cs" />
     <Compile Include="GameData\Abilities\Odin.cs" />
     <Compile Include="GameData\Abilities\Orthos.cs" />
     <Compile Include="GameData\Abilities\ParalyzingShot.cs" />
@@ -331,6 +334,7 @@
     <Compile Include="GameData\Abilities\FlareStrike.cs" />
     <Compile Include="GameData\Party\DataRecordMateriaInformation.cs" />
     <Compile Include="GameData\RecordMateria.cs" />
+    <Compile Include="GameData\RecordMaterias\AceTurk.cs" />
     <Compile Include="GameData\RecordMaterias\AdventurersDagger.cs" />
     <Compile Include="GameData\RecordMaterias\ArcherInWhite.cs" />
     <Compile Include="GameData\RecordMaterias\ArcherMage.cs" />
@@ -350,6 +354,7 @@
     <Compile Include="GameData\RecordMaterias\ElderSage.cs" />
     <Compile Include="GameData\RecordMaterias\FairiesBoon.cs" />
     <Compile Include="GameData\RecordMaterias\FistOfDawn.cs" />
+    <Compile Include="GameData\RecordMaterias\FleshUndying.cs" />
     <Compile Include="GameData\RecordMaterias\FraternalKnowledge.cs" />
     <Compile Include="GameData\RecordMaterias\FreedomsWish.cs" />
     <Compile Include="GameData\RecordMaterias\GiftOfTheShinobi.cs" />
@@ -394,6 +399,7 @@
     <Compile Include="GameData\RecordMaterias\SoldierStrike.cs" />
     <Compile Include="GameData\RecordMaterias\SummonersPrayer.cs" />
     <Compile Include="GameData\RecordMaterias\UnbreakableSpellblade.cs" />
+    <Compile Include="GameData\RecordMaterias\UnerringShot.cs" />
     <Compile Include="GameData\RecordMaterias\VieraVirtuoso.cs" />
     <Compile Include="GameData\RecordMaterias\VowOfVengeance.cs" />
     <Compile Include="GameData\RecordMaterias\WarriorsBurden.cs" />
@@ -403,12 +409,14 @@
     <Compile Include="GameData\RecordMaterias\WitchOfSuccession.cs" />
     <Compile Include="GameData\RecordMaterias\ZanganWay.cs" />
     <Compile Include="GameData\SoulBreak.cs" />
+    <Compile Include="GameData\SoulBreaks\Apocalypse.cs" />
     <Compile Include="GameData\SoulBreaks\AurochsReels.cs" />
     <Compile Include="GameData\SoulBreaks\BanishingBlade.cs" />
     <Compile Include="GameData\SoulBreaks\BlackMateria.cs" />
     <Compile Include="GameData\SoulBreaks\BladeBeam.cs" />
     <Compile Include="GameData\SoulBreaks\BlastingZone.cs" />
     <Compile Include="GameData\SoulBreaks\BlazeRush.cs" />
+    <Compile Include="GameData\SoulBreaks\CerberusShell.cs" />
     <Compile Include="GameData\SoulBreaks\CleansingStrike.cs" />
     <Compile Include="GameData\SoulBreaks\CrushingBlow.cs" />
     <Compile Include="GameData\SoulBreaks\DarkbornBlade.cs" />
@@ -438,6 +446,7 @@
     <Compile Include="GameData\SoulBreaks\StormlanceGrimoire.cs" />
     <Compile Include="GameData\SoulBreaks\TriggerHappy.cs" />
     <Compile Include="GameData\SoulBreaks\TruebladeOfLegend.cs" />
+    <Compile Include="GameData\SoulBreaks\TurkBombshell.cs" />
     <Compile Include="GameData\SoulBreaks\ValiantStrike.cs" />
     <Compile Include="GameData\SoulBreaks\WillOfTheWhiteMage.cs" />
     <Compile Include="GameData\SoulBreaks\WishingStar.cs" />
