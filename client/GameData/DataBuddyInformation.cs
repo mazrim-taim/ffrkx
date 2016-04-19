@@ -111,6 +111,11 @@ namespace FFRKInspector.GameData
             return AbilityUsage.Count(ab => ab.Category == ability.Category && ab.Rarity >= ability.Rarity) > 0;
         }
 
+        public bool EligibleForNightmareShift(FFRKInspector.GameData.SchemaConstants.AbilityCategory nightmareCategory)
+        {
+            return AbilityUsage.Count(ability => ability.Category == nightmareCategory && ability.Rarity >= 5) > 0;
+        }
+
         public IEnumerable<SoulBreak> UsableSoulBreaks
         {
             get { return SoulBreak.AllSoulBreaks().Where(soulBreak => SoulBreakExpMap.Keys.Any(sb => sb == soulBreak.SoulBreakId)); }

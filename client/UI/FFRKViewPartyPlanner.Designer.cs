@@ -626,7 +626,7 @@
             this.comboBoxRealmSynergy.FormattingEnabled = true;
             this.comboBoxRealmSynergy.Location = new System.Drawing.Point(710, 229);
             this.comboBoxRealmSynergy.Name = "comboBoxRealmSynergy";
-            this.comboBoxRealmSynergy.Size = new System.Drawing.Size(59, 21);
+            this.comboBoxRealmSynergy.Size = new System.Drawing.Size(87, 21);
             this.comboBoxRealmSynergy.TabIndex = 40;
             this.comboBoxRealmSynergy.SelectedIndexChanged += new System.EventHandler(this.comboBoxRealmSynergy_SelectedIndexChanged);
             // 

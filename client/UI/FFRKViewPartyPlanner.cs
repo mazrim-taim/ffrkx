@@ -33,6 +33,23 @@ namespace FFRKInspector.UI
         private TextBox[] abilityDamageFields = new TextBox[10];
         private TextBox[] soulBreakDamageFields = new TextBox[5];
 
+        private class Synergy
+        {
+            public Synergy(string name, uint seriesId, GameData.SchemaConstants.AbilityCategory nightmareCategory)
+            {
+                Name = name;
+                SeriesId = seriesId;
+                NightmareCategory = nightmareCategory;
+            }
+            public string Name { get; set; }
+            public uint SeriesId { get; set; }
+            public GameData.SchemaConstants.AbilityCategory NightmareCategory { get; set; }
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
+
         public FFRKViewPartyPlanner()
         {
             InitializeComponent();
@@ -150,8 +167,15 @@ namespace FFRKInspector.UI
 
             foreach (GameData.RealmSynergy.SynergyValue synergy in GameData.RealmSynergy.Values)
             {
-                comboBoxRealmSynergy.Items.Add(synergy);
+                comboBoxRealmSynergy.Items.Add(new Synergy(synergy.Text, synergy.GameSeries, GameData.SchemaConstants.AbilityCategory.None));
             }
+            comboBoxRealmSynergy.Items.Add(new Synergy("Ultima Nightmare", 401001, GameData.SchemaConstants.AbilityCategory.BlackMagic));
+            comboBoxRealmSynergy.Items.Add(new Synergy("Crushdown Nightmare", 402001, GameData.SchemaConstants.AbilityCategory.Combat));
+            comboBoxRealmSynergy.Items.Add(new Synergy("Reraise Nightmare", 403001, GameData.SchemaConstants.AbilityCategory.WhiteMagic));
+            comboBoxRealmSynergy.Items.Add(new Synergy("Neo Bahamut Nightmare", 404001, GameData.SchemaConstants.AbilityCategory.Summoning));
+            comboBoxRealmSynergy.Items.Add(new Synergy("Tetra Foul Nightmare", 405001, GameData.SchemaConstants.AbilityCategory.Support));
+            comboBoxRealmSynergy.Items.Add(new Synergy("Northern Cross Nightmare", 406001, GameData.SchemaConstants.AbilityCategory.Celerity));
+            comboBoxRealmSynergy.Items.Add(new Synergy("Meltdown Nightmare", 407001, GameData.SchemaConstants.AbilityCategory.BlackMagic));
         }
 
         private void FFRKViewPartyPlanner_Load(object sender, EventArgs e)
@@ -313,15 +337,15 @@ namespace FFRKInspector.UI
             }
         }
 
-        private GameData.RealmSynergy.SynergyValue RealmSynergy
+        private Synergy RealmSynergy
         {
             get
             {
                 if (comboBoxRealmSynergy.SelectedItem != null)
                 {
-                    return (GameData.RealmSynergy.SynergyValue)comboBoxRealmSynergy.SelectedItem;
+                    return (Synergy)comboBoxRealmSynergy.SelectedItem;
                 }
-                return (GameData.RealmSynergy.SynergyValue)comboBoxRealmSynergy.Items[0];
+                return (Synergy)comboBoxRealmSynergy.Items[0];
             }
         }
 
@@ -373,10 +397,19 @@ namespace FFRKInspector.UI
             DataRecordMateriaInformation recordMateria = recordMaterias[characterIndex];
             Color synergyColor = System.Drawing.Color.Aqua;
             Color nonSynergyColor = System.Drawing.SystemColors.Window;
+            bool characterHasSynergy = character != null && (character.SeriesId == RealmSynergy.SeriesId ||
+                character.EligibleForNightmareShift(RealmSynergy.NightmareCategory));
+            bool weaponHasSynergy = weapon != null && (weapon.SeriesId == RealmSynergy.SeriesId ||
+                character.EligibleForNightmareShift(RealmSynergy.NightmareCategory));
+            bool armorHasSynergy = armor != null && (armor.SeriesId == RealmSynergy.SeriesId ||
+                 character.EligibleForNightmareShift(RealmSynergy.NightmareCategory));
+            bool accessoryHasSynergy = accessory != null && (accessory.SeriesId == RealmSynergy.SeriesId ||
+                 character.EligibleForNightmareShift(RealmSynergy.NightmareCategory));
+
 
             if (character != null)
             {
-                characterBoxes[characterIndex].BackColor = character.SeriesId == RealmSynergy.GameSeries ? synergyColor : nonSynergyColor;
+                characterBoxes[characterIndex].BackColor = characterHasSynergy ? synergyColor : nonSynergyColor;
             }
             else
             {
@@ -385,7 +418,7 @@ namespace FFRKInspector.UI
 
             if (weapon != null)
             {
-                weaponBoxes[characterIndex].BackColor = weapon.SeriesId == RealmSynergy.GameSeries ? synergyColor : nonSynergyColor;
+                weaponBoxes[characterIndex].BackColor = weaponHasSynergy ? synergyColor : nonSynergyColor;
             }
             else
             {
@@ -394,7 +427,7 @@ namespace FFRKInspector.UI
 
             if (armor != null)
             {
-                armorBoxes[characterIndex].BackColor = armor.SeriesId == RealmSynergy.GameSeries ? synergyColor : nonSynergyColor;
+                armorBoxes[characterIndex].BackColor = armorHasSynergy ? synergyColor : nonSynergyColor;
             }
             else
             {
@@ -403,7 +436,7 @@ namespace FFRKInspector.UI
 
             if (accessory != null)
             {
-                accessoryBoxes[characterIndex].BackColor = accessory.SeriesId == RealmSynergy.GameSeries ? synergyColor : nonSynergyColor;
+                accessoryBoxes[characterIndex].BackColor = accessoryHasSynergy ? synergyColor : nonSynergyColor;
             }
             else
             {
@@ -411,57 +444,57 @@ namespace FFRKInspector.UI
             }
 
             hpFields[characterIndex].Text = (
-                (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesHP : character.HP) : 0) +
-                (weapon != null ? weapon.StatInRealm("HP", RealmSynergy.GameSeries) : 0) +
-                (armor != null ? armor.StatInRealm("HP", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("HP", RealmSynergy.GameSeries) : 0)).ToString("#,##0.##");
+                (character != null ? (characterHasSynergy ? character.SeriesHP : character.HP) : 0) +
+                (weapon != null ? weapon.StatWithSynergy("HP", weaponHasSynergy) : 0) +
+                (armor != null ? armor.StatWithSynergy("HP", armorHasSynergy) : 0) +
+                (accessory != null ? accessory.StatWithSynergy("HP", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             atkFields[characterIndex].Text = (
-                ((character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesAtk : character.Atk) : 0) +
-                (weapon != null ? weapon.StatInRealm("Atk", RealmSynergy.GameSeries) : 0) +
-                (armor != null ? armor.StatInRealm("Atk", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("Atk", RealmSynergy.GameSeries) : 0))
+                ((character != null ? (characterHasSynergy ? character.SeriesAtk : character.Atk) : 0) +
+                (weapon != null ? weapon.StatWithSynergy("Atk", weaponHasSynergy) : 0) +
+                (armor != null ? armor.StatWithSynergy("Atk", armorHasSynergy) : 0) +
+                (accessory != null ? accessory.StatWithSynergy("Atk", accessoryHasSynergy) : 0))
                 * (recordMateria != null ? recordMateria.AtkModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             magFields[characterIndex].Text = (
-                (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesMag : character.Mag) : 0) +
-                (weapon != null ? weapon.StatInRealm("Mag", RealmSynergy.GameSeries) : 0) +
-                (armor != null ? armor.StatInRealm("Mag", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("Mag", RealmSynergy.GameSeries) : 0)
+                (character != null ? (characterHasSynergy ? character.SeriesMag : character.Mag) : 0) +
+                (weapon != null ? weapon.StatWithSynergy("Mag", weaponHasSynergy) : 0) +
+                (armor != null ? armor.StatWithSynergy("Mag", armorHasSynergy) : 0) +
+                (accessory != null ? accessory.StatWithSynergy("Mag", accessoryHasSynergy) : 0)
                 * (recordMateria != null ? recordMateria.MagModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             mndFields[characterIndex].Text = (
-                (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesMag : character.Mag) : 0) +
-                (weapon != null ? weapon.StatInRealm("Mnd", RealmSynergy.GameSeries) : 0) +
-                (armor != null ? armor.StatInRealm("Mnd", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("Mnd", RealmSynergy.GameSeries) : 0)
+                (character != null ? (characterHasSynergy ? character.SeriesMag : character.Mag) : 0) +
+                (weapon != null ? weapon.StatWithSynergy("Mnd", weaponHasSynergy) : 0) +
+                (armor != null ? armor.StatWithSynergy("Mnd", armorHasSynergy) : 0) +
+                (accessory != null ? accessory.StatWithSynergy("Mnd", accessoryHasSynergy) : 0)
                 * (recordMateria != null ? recordMateria.MndModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             defFields[characterIndex].Text = (
-                (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesDef : character.Def) : 0) +
-                (weapon != null ? weapon.StatInRealm("Def", RealmSynergy.GameSeries) : 0) +
-                (armor != null ? armor.StatInRealm("Def", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("Def", RealmSynergy.GameSeries) : 0)
+                (character != null ? (characterHasSynergy ? character.SeriesDef : character.Def) : 0) +
+                (weapon != null ? weapon.StatWithSynergy("Def", weaponHasSynergy) : 0) +
+                (armor != null ? armor.StatWithSynergy("Def", armorHasSynergy) : 0) +
+                (accessory != null ? accessory.StatWithSynergy("Def", accessoryHasSynergy) : 0)
                 * (recordMateria != null ? recordMateria.DefModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             resFields[characterIndex].Text = (
-                (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesRes : character.Res) : 0) +
-                (weapon != null ? weapon.StatInRealm("Res", RealmSynergy.GameSeries) : 0) +
-                (armor != null ? armor.StatInRealm("Res", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("Res", RealmSynergy.GameSeries) : 0)
+                (character != null ? (characterHasSynergy ? character.SeriesRes : character.Res) : 0) +
+                (weapon != null ? weapon.StatWithSynergy("Res", weaponHasSynergy) : 0) +
+                (armor != null ? armor.StatWithSynergy("Res", armorHasSynergy) : 0) +
+                (accessory != null ? accessory.StatWithSynergy("Res", accessoryHasSynergy) : 0)
                 * (recordMateria != null ? recordMateria.ResModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             evaFields[characterIndex].Text = (
-                (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesEva : character.Eva) : 0) +
-                (weapon != null ? weapon.StatInRealm("Eva", RealmSynergy.GameSeries) : 0) +
-                (armor != null ? armor.StatInRealm("Eva", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("Eva", RealmSynergy.GameSeries) : 0)).ToString("#,##0.##");
+                (character != null ? (characterHasSynergy ? character.SeriesEva : character.Eva) : 0) +
+                (weapon != null ? weapon.StatWithSynergy("Eva", weaponHasSynergy) : 0) +
+                (armor != null ? armor.StatWithSynergy("Eva", armorHasSynergy) : 0) +
+                (accessory != null ? accessory.StatWithSynergy("Eva", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             spdFields[characterIndex].Text = (
-                (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesSpd : character.Spd) : 0) +
-                (weapon != null ? weapon.StatInRealm("Spd", RealmSynergy.GameSeries) : 0) +
-                (armor != null ? armor.StatInRealm("Spd", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("Spd", RealmSynergy.GameSeries) : 0)).ToString("#,##0.##");
+                (character != null ? (characterHasSynergy ? character.SeriesSpd : character.Spd) : 0) +
+                (weapon != null ? weapon.StatWithSynergy("Spd", weaponHasSynergy) : 0) +
+                (armor != null ? armor.StatWithSynergy("Spd", armorHasSynergy) : 0) +
+                (accessory != null ? accessory.StatWithSynergy("Spd", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             if (checkBoxShout.Checked)
             {

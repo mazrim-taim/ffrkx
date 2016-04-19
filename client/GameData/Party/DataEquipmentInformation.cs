@@ -119,7 +119,11 @@ namespace FFRKInspector.GameData.Party
 
         public short StatInRealm(string stat, uint gameSeries)
         {
-            bool hasSynergy = gameSeries == SeriesId;
+            return StatWithSynergy(stat, gameSeries == SeriesId);
+        }
+
+        public short StatWithSynergy(string stat, bool hasSynergy)
+        {
             string statToUse = hasSynergy ? "Series" + stat : stat;
 
             System.Reflection.FieldInfo statField = typeof(DataEquipmentInformation).GetField(statToUse);
