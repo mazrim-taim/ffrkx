@@ -414,75 +414,75 @@ namespace FFRKInspector.UI
                 (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesHP : character.HP) : 0) +
                 (weapon != null ? weapon.StatInRealm("HP", RealmSynergy.GameSeries) : 0) +
                 (armor != null ? armor.StatInRealm("HP", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("HP", RealmSynergy.GameSeries) : 0)).ToString();
+                (accessory != null ? accessory.StatInRealm("HP", RealmSynergy.GameSeries) : 0)).ToString("#,##0.##");
 
             atkFields[characterIndex].Text = (
                 ((character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesAtk : character.Atk) : 0) +
                 (weapon != null ? weapon.StatInRealm("Atk", RealmSynergy.GameSeries) : 0) +
                 (armor != null ? armor.StatInRealm("Atk", RealmSynergy.GameSeries) : 0) +
                 (accessory != null ? accessory.StatInRealm("Atk", RealmSynergy.GameSeries) : 0))
-                * (recordMateria != null ? recordMateria.AtkModifier(weapon, armor, accessory) : 1)).ToString();
+                * (recordMateria != null ? recordMateria.AtkModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             magFields[characterIndex].Text = (
                 (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesMag : character.Mag) : 0) +
                 (weapon != null ? weapon.StatInRealm("Mag", RealmSynergy.GameSeries) : 0) +
                 (armor != null ? armor.StatInRealm("Mag", RealmSynergy.GameSeries) : 0) +
                 (accessory != null ? accessory.StatInRealm("Mag", RealmSynergy.GameSeries) : 0)
-                * (recordMateria != null ? recordMateria.MagModifier(weapon, armor, accessory) : 1)).ToString();
+                * (recordMateria != null ? recordMateria.MagModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             mndFields[characterIndex].Text = (
                 (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesMag : character.Mag) : 0) +
                 (weapon != null ? weapon.StatInRealm("Mnd", RealmSynergy.GameSeries) : 0) +
                 (armor != null ? armor.StatInRealm("Mnd", RealmSynergy.GameSeries) : 0) +
                 (accessory != null ? accessory.StatInRealm("Mnd", RealmSynergy.GameSeries) : 0)
-                * (recordMateria != null ? recordMateria.MndModifier(weapon, armor, accessory) : 1)).ToString();
+                * (recordMateria != null ? recordMateria.MndModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             defFields[characterIndex].Text = (
                 (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesDef : character.Def) : 0) +
                 (weapon != null ? weapon.StatInRealm("Def", RealmSynergy.GameSeries) : 0) +
                 (armor != null ? armor.StatInRealm("Def", RealmSynergy.GameSeries) : 0) +
                 (accessory != null ? accessory.StatInRealm("Def", RealmSynergy.GameSeries) : 0)
-                * (recordMateria != null ? recordMateria.DefModifier(weapon, armor, accessory) : 1)).ToString();
+                * (recordMateria != null ? recordMateria.DefModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             resFields[characterIndex].Text = (
                 (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesRes : character.Res) : 0) +
                 (weapon != null ? weapon.StatInRealm("Res", RealmSynergy.GameSeries) : 0) +
                 (armor != null ? armor.StatInRealm("Res", RealmSynergy.GameSeries) : 0) +
                 (accessory != null ? accessory.StatInRealm("Res", RealmSynergy.GameSeries) : 0)
-                * (recordMateria != null ? recordMateria.ResModifier(weapon, armor, accessory) : 1)).ToString();
+                * (recordMateria != null ? recordMateria.ResModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
 
             evaFields[characterIndex].Text = (
                 (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesEva : character.Eva) : 0) +
                 (weapon != null ? weapon.StatInRealm("Eva", RealmSynergy.GameSeries) : 0) +
                 (armor != null ? armor.StatInRealm("Eva", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("Eva", RealmSynergy.GameSeries) : 0)).ToString();
+                (accessory != null ? accessory.StatInRealm("Eva", RealmSynergy.GameSeries) : 0)).ToString("#,##0.##");
 
             spdFields[characterIndex].Text = (
                 (character != null ? (character.SeriesId == RealmSynergy.GameSeries ? character.SeriesSpd : character.Spd) : 0) +
                 (weapon != null ? weapon.StatInRealm("Spd", RealmSynergy.GameSeries) : 0) +
                 (armor != null ? armor.StatInRealm("Spd", RealmSynergy.GameSeries) : 0) +
-                (accessory != null ? accessory.StatInRealm("Spd", RealmSynergy.GameSeries) : 0)).ToString();
+                (accessory != null ? accessory.StatInRealm("Spd", RealmSynergy.GameSeries) : 0)).ToString("#,##0.##");
 
             if (checkBoxShout.Checked)
             {
-                atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * 1.5).ToString();
+                atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * 1.5).ToString("#,##0.##");
             }
 
             if (checkBoxHotE.Checked)
             {
-                atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * 1.3).ToString();
-                defFields[characterIndex].Text = (Double.Parse(defFields[characterIndex].Text) * 1.3).ToString();
+                atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * 1.3).ToString("#,##0.##");
+                defFields[characterIndex].Text = (Double.Parse(defFields[characterIndex].Text) * 1.3).ToString("#,##0.##");
             }
 
             if (checkBoxFocus.Checked)
             {
-                magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * 1.2).ToString();
-                resFields[characterIndex].Text = (Double.Parse(resFields[characterIndex].Text) * 1.5).ToString();
+                magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * 1.2).ToString("#,##0.##");
+                resFields[characterIndex].Text = (Double.Parse(resFields[characterIndex].Text) * 1.5).ToString("#,##0.##");
             }
 
             if (checkBoxFaith.Checked)
             {
-                magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * 1.2).ToString();
+                magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * 1.2).ToString("#,##0.##");
             }
 
             if (abilities[characterIndex * 2] != null)
@@ -547,7 +547,7 @@ namespace FFRKInspector.UI
         {
             if (ability.Name == "Cactuar")
             {
-                return "1000 * 3";
+                return 1000.ToString("#,##0.##") + " * 3";
             }
             GameData.DataBuddyInformation character = characters[characterIndex];
             DataEquipmentInformation weapon = weapons[characterIndex];
@@ -563,7 +563,7 @@ namespace FFRKInspector.UI
                     * (accessory != null ? accessory.ElementalMultiplier(ability.Element) : 1)
                     * (recordMateria != null ? recordMateria.AbilityModifier(weapon, armor, accessory, ability) : 1)
                     );
-            string damageString = damage.ToString();
+            string damageString = damage.ToString("#,##0.##");
             if (ability.NumberOfHits > 1 || ability.GetType() == typeof(GameData.Abilities.ThiefsRevenge))
             {
                 int hits = ability.NumberOfHits;
