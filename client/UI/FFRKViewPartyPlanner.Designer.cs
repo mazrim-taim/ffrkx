@@ -173,8 +173,7 @@
             // comboBoxPartyMember1
             // 
             this.comboBoxPartyMember1.FormattingEnabled = true;
-            this.comboBoxPartyMember1.Location = new System.Drawing.Point(2, 29);
-            this.comboBoxPartyMember1.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxPartyMember1.Location = new System.Drawing.Point(6, 29);
             this.comboBoxPartyMember1.Name = "comboBoxPartyMember1";
             this.comboBoxPartyMember1.Size = new System.Drawing.Size(75, 21);
             this.comboBoxPartyMember1.TabIndex = 0;
@@ -184,8 +183,7 @@
             // comboBoxPartyMember2
             // 
             this.comboBoxPartyMember2.FormattingEnabled = true;
-            this.comboBoxPartyMember2.Location = new System.Drawing.Point(2, 139);
-            this.comboBoxPartyMember2.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxPartyMember2.Location = new System.Drawing.Point(6, 139);
             this.comboBoxPartyMember2.Name = "comboBoxPartyMember2";
             this.comboBoxPartyMember2.Size = new System.Drawing.Size(75, 21);
             this.comboBoxPartyMember2.TabIndex = 8;
@@ -195,8 +193,7 @@
             // comboBoxPartyMember3
             // 
             this.comboBoxPartyMember3.FormattingEnabled = true;
-            this.comboBoxPartyMember3.Location = new System.Drawing.Point(2, 238);
-            this.comboBoxPartyMember3.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxPartyMember3.Location = new System.Drawing.Point(6, 238);
             this.comboBoxPartyMember3.Name = "comboBoxPartyMember3";
             this.comboBoxPartyMember3.Size = new System.Drawing.Size(75, 21);
             this.comboBoxPartyMember3.TabIndex = 16;
@@ -206,8 +203,7 @@
             // comboBoxPartyMember4
             // 
             this.comboBoxPartyMember4.FormattingEnabled = true;
-            this.comboBoxPartyMember4.Location = new System.Drawing.Point(2, 338);
-            this.comboBoxPartyMember4.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxPartyMember4.Location = new System.Drawing.Point(6, 338);
             this.comboBoxPartyMember4.Name = "comboBoxPartyMember4";
             this.comboBoxPartyMember4.Size = new System.Drawing.Size(75, 21);
             this.comboBoxPartyMember4.TabIndex = 24;
@@ -217,8 +213,7 @@
             // comboBoxPartyMember5
             // 
             this.comboBoxPartyMember5.FormattingEnabled = true;
-            this.comboBoxPartyMember5.Location = new System.Drawing.Point(2, 436);
-            this.comboBoxPartyMember5.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxPartyMember5.Location = new System.Drawing.Point(6, 436);
             this.comboBoxPartyMember5.Name = "comboBoxPartyMember5";
             this.comboBoxPartyMember5.Size = new System.Drawing.Size(75, 21);
             this.comboBoxPartyMember5.TabIndex = 32;
@@ -393,8 +388,8 @@
             // comboBoxWeapon5
             // 
             this.comboBoxWeapon5.FormattingEnabled = true;
-            this.comboBoxWeapon5.Location = new System.Drawing.Point(10, 436);
-            this.comboBoxWeapon5.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxWeapon5.Location = new System.Drawing.Point(6, 436);
+            this.comboBoxWeapon5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon5.Name = "comboBoxWeapon5";
             this.comboBoxWeapon5.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon5.TabIndex = 36;
@@ -404,8 +399,8 @@
             // comboBoxWeapon4
             // 
             this.comboBoxWeapon4.FormattingEnabled = true;
-            this.comboBoxWeapon4.Location = new System.Drawing.Point(10, 338);
-            this.comboBoxWeapon4.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxWeapon4.Location = new System.Drawing.Point(6, 338);
+            this.comboBoxWeapon4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon4.Name = "comboBoxWeapon4";
             this.comboBoxWeapon4.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon4.TabIndex = 28;
@@ -415,8 +410,8 @@
             // comboBoxWeapon3
             // 
             this.comboBoxWeapon3.FormattingEnabled = true;
-            this.comboBoxWeapon3.Location = new System.Drawing.Point(10, 238);
-            this.comboBoxWeapon3.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxWeapon3.Location = new System.Drawing.Point(6, 238);
+            this.comboBoxWeapon3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon3.Name = "comboBoxWeapon3";
             this.comboBoxWeapon3.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon3.TabIndex = 20;
@@ -426,8 +421,8 @@
             // comboBoxWeapon2
             // 
             this.comboBoxWeapon2.FormattingEnabled = true;
-            this.comboBoxWeapon2.Location = new System.Drawing.Point(10, 139);
-            this.comboBoxWeapon2.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxWeapon2.Location = new System.Drawing.Point(6, 139);
+            this.comboBoxWeapon2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon2.Name = "comboBoxWeapon2";
             this.comboBoxWeapon2.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon2.TabIndex = 12;
@@ -437,8 +432,8 @@
             // comboBoxWeapon1
             // 
             this.comboBoxWeapon1.FormattingEnabled = true;
-            this.comboBoxWeapon1.Location = new System.Drawing.Point(10, 29);
-            this.comboBoxWeapon1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
+            this.comboBoxWeapon1.Location = new System.Drawing.Point(6, 29);
+            this.comboBoxWeapon1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon1.Name = "comboBoxWeapon1";
             this.comboBoxWeapon1.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon1.TabIndex = 4;
@@ -448,8 +443,8 @@
             // comboBoxArmor5
             // 
             this.comboBoxArmor5.FormattingEnabled = true;
-            this.comboBoxArmor5.Location = new System.Drawing.Point(10, 465);
-            this.comboBoxArmor5.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxArmor5.Location = new System.Drawing.Point(6, 465);
+            this.comboBoxArmor5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor5.Name = "comboBoxArmor5";
             this.comboBoxArmor5.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor5.TabIndex = 37;
@@ -459,8 +454,8 @@
             // comboBoxArmor4
             // 
             this.comboBoxArmor4.FormattingEnabled = true;
-            this.comboBoxArmor4.Location = new System.Drawing.Point(10, 367);
-            this.comboBoxArmor4.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxArmor4.Location = new System.Drawing.Point(6, 367);
+            this.comboBoxArmor4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor4.Name = "comboBoxArmor4";
             this.comboBoxArmor4.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor4.TabIndex = 29;
@@ -470,8 +465,8 @@
             // comboBoxArmor3
             // 
             this.comboBoxArmor3.FormattingEnabled = true;
-            this.comboBoxArmor3.Location = new System.Drawing.Point(10, 267);
-            this.comboBoxArmor3.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxArmor3.Location = new System.Drawing.Point(6, 267);
+            this.comboBoxArmor3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor3.Name = "comboBoxArmor3";
             this.comboBoxArmor3.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor3.TabIndex = 21;
@@ -481,8 +476,8 @@
             // comboBoxArmor2
             // 
             this.comboBoxArmor2.FormattingEnabled = true;
-            this.comboBoxArmor2.Location = new System.Drawing.Point(10, 168);
-            this.comboBoxArmor2.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxArmor2.Location = new System.Drawing.Point(6, 168);
+            this.comboBoxArmor2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor2.Name = "comboBoxArmor2";
             this.comboBoxArmor2.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor2.TabIndex = 13;
@@ -492,8 +487,8 @@
             // comboBoxArmor1
             // 
             this.comboBoxArmor1.FormattingEnabled = true;
-            this.comboBoxArmor1.Location = new System.Drawing.Point(10, 58);
-            this.comboBoxArmor1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
+            this.comboBoxArmor1.Location = new System.Drawing.Point(6, 58);
+            this.comboBoxArmor1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor1.Name = "comboBoxArmor1";
             this.comboBoxArmor1.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor1.TabIndex = 5;
@@ -503,8 +498,8 @@
             // comboBoxAccessory5
             // 
             this.comboBoxAccessory5.FormattingEnabled = true;
-            this.comboBoxAccessory5.Location = new System.Drawing.Point(10, 494);
-            this.comboBoxAccessory5.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxAccessory5.Location = new System.Drawing.Point(6, 494);
+            this.comboBoxAccessory5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory5.Name = "comboBoxAccessory5";
             this.comboBoxAccessory5.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory5.TabIndex = 38;
@@ -514,8 +509,8 @@
             // comboBoxAccessory4
             // 
             this.comboBoxAccessory4.FormattingEnabled = true;
-            this.comboBoxAccessory4.Location = new System.Drawing.Point(10, 396);
-            this.comboBoxAccessory4.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxAccessory4.Location = new System.Drawing.Point(6, 396);
+            this.comboBoxAccessory4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory4.Name = "comboBoxAccessory4";
             this.comboBoxAccessory4.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory4.TabIndex = 30;
@@ -525,8 +520,8 @@
             // comboBoxAccessory3
             // 
             this.comboBoxAccessory3.FormattingEnabled = true;
-            this.comboBoxAccessory3.Location = new System.Drawing.Point(10, 296);
-            this.comboBoxAccessory3.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxAccessory3.Location = new System.Drawing.Point(6, 296);
+            this.comboBoxAccessory3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory3.Name = "comboBoxAccessory3";
             this.comboBoxAccessory3.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory3.TabIndex = 22;
@@ -536,8 +531,8 @@
             // comboBoxAccessory2
             // 
             this.comboBoxAccessory2.FormattingEnabled = true;
-            this.comboBoxAccessory2.Location = new System.Drawing.Point(10, 197);
-            this.comboBoxAccessory2.Margin = new System.Windows.Forms.Padding(8);
+            this.comboBoxAccessory2.Location = new System.Drawing.Point(6, 197);
+            this.comboBoxAccessory2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory2.Name = "comboBoxAccessory2";
             this.comboBoxAccessory2.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory2.TabIndex = 14;
@@ -547,8 +542,8 @@
             // comboBoxAccessory1
             // 
             this.comboBoxAccessory1.FormattingEnabled = true;
-            this.comboBoxAccessory1.Location = new System.Drawing.Point(10, 87);
-            this.comboBoxAccessory1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
+            this.comboBoxAccessory1.Location = new System.Drawing.Point(6, 87);
+            this.comboBoxAccessory1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory1.Name = "comboBoxAccessory1";
             this.comboBoxAccessory1.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory1.TabIndex = 6;
@@ -562,7 +557,7 @@
             this.groupBox1.Controls.Add(this.textBoxAtk3);
             this.groupBox1.Controls.Add(this.textBoxAtk2);
             this.groupBox1.Controls.Add(this.textBoxAtk1);
-            this.groupBox1.Location = new System.Drawing.Point(667, 24);
+            this.groupBox1.Location = new System.Drawing.Point(633, 24);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(52, 209);
             this.groupBox1.TabIndex = 54;
@@ -607,7 +602,7 @@
             // comboBoxRecordMateria5
             // 
             this.comboBoxRecordMateria5.FormattingEnabled = true;
-            this.comboBoxRecordMateria5.Location = new System.Drawing.Point(141, 436);
+            this.comboBoxRecordMateria5.Location = new System.Drawing.Point(132, 436);
             this.comboBoxRecordMateria5.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxRecordMateria5.Name = "comboBoxRecordMateria5";
             this.comboBoxRecordMateria5.Size = new System.Drawing.Size(115, 21);
@@ -618,7 +613,7 @@
             // comboBoxRecordMateria4
             // 
             this.comboBoxRecordMateria4.FormattingEnabled = true;
-            this.comboBoxRecordMateria4.Location = new System.Drawing.Point(141, 338);
+            this.comboBoxRecordMateria4.Location = new System.Drawing.Point(132, 338);
             this.comboBoxRecordMateria4.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxRecordMateria4.Name = "comboBoxRecordMateria4";
             this.comboBoxRecordMateria4.Size = new System.Drawing.Size(115, 21);
@@ -629,7 +624,7 @@
             // comboBoxRecordMateria3
             // 
             this.comboBoxRecordMateria3.FormattingEnabled = true;
-            this.comboBoxRecordMateria3.Location = new System.Drawing.Point(141, 238);
+            this.comboBoxRecordMateria3.Location = new System.Drawing.Point(132, 238);
             this.comboBoxRecordMateria3.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxRecordMateria3.Name = "comboBoxRecordMateria3";
             this.comboBoxRecordMateria3.Size = new System.Drawing.Size(115, 21);
@@ -640,7 +635,7 @@
             // comboBoxRecordMateria2
             // 
             this.comboBoxRecordMateria2.FormattingEnabled = true;
-            this.comboBoxRecordMateria2.Location = new System.Drawing.Point(141, 139);
+            this.comboBoxRecordMateria2.Location = new System.Drawing.Point(132, 139);
             this.comboBoxRecordMateria2.Margin = new System.Windows.Forms.Padding(8);
             this.comboBoxRecordMateria2.Name = "comboBoxRecordMateria2";
             this.comboBoxRecordMateria2.Size = new System.Drawing.Size(115, 21);
@@ -651,7 +646,7 @@
             // comboBoxRecordMateria1
             // 
             this.comboBoxRecordMateria1.FormattingEnabled = true;
-            this.comboBoxRecordMateria1.Location = new System.Drawing.Point(141, 29);
+            this.comboBoxRecordMateria1.Location = new System.Drawing.Point(132, 29);
             this.comboBoxRecordMateria1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.comboBoxRecordMateria1.Name = "comboBoxRecordMateria1";
             this.comboBoxRecordMateria1.Size = new System.Drawing.Size(115, 21);
@@ -662,7 +657,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(606, 253);
+            this.label1.Location = new System.Drawing.Point(572, 253);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 61;
@@ -671,7 +666,7 @@
             // comboBoxRealmSynergy
             // 
             this.comboBoxRealmSynergy.FormattingEnabled = true;
-            this.comboBoxRealmSynergy.Location = new System.Drawing.Point(690, 250);
+            this.comboBoxRealmSynergy.Location = new System.Drawing.Point(656, 250);
             this.comboBoxRealmSynergy.Name = "comboBoxRealmSynergy";
             this.comboBoxRealmSynergy.Size = new System.Drawing.Size(87, 21);
             this.comboBoxRealmSynergy.TabIndex = 40;
@@ -684,7 +679,7 @@
             this.groupBox2.Controls.Add(this.textBoxMag4);
             this.groupBox2.Controls.Add(this.textBoxMag2);
             this.groupBox2.Controls.Add(this.textBoxMag3);
-            this.groupBox2.Location = new System.Drawing.Point(725, 24);
+            this.groupBox2.Location = new System.Drawing.Point(691, 24);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(52, 209);
             this.groupBox2.TabIndex = 55;
@@ -756,7 +751,7 @@
             this.groupBox3.Controls.Add(this.checkBoxFocus);
             this.groupBox3.Controls.Add(this.checkBoxShout);
             this.groupBox3.Controls.Add(this.checkBoxHotE);
-            this.groupBox3.Location = new System.Drawing.Point(609, 303);
+            this.groupBox3.Location = new System.Drawing.Point(575, 303);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(147, 119);
             this.groupBox3.TabIndex = 51;
@@ -822,7 +817,7 @@
             this.groupBox4.Controls.Add(this.textBoxDef3);
             this.groupBox4.Controls.Add(this.textBoxDef2);
             this.groupBox4.Controls.Add(this.textBoxDef1);
-            this.groupBox4.Location = new System.Drawing.Point(841, 24);
+            this.groupBox4.Location = new System.Drawing.Point(807, 24);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(52, 209);
             this.groupBox4.TabIndex = 57;
@@ -843,7 +838,7 @@
             this.groupBox5.Controls.Add(this.textBoxEva3);
             this.groupBox5.Controls.Add(this.textBoxEva2);
             this.groupBox5.Controls.Add(this.textBoxEva1);
-            this.groupBox5.Location = new System.Drawing.Point(957, 24);
+            this.groupBox5.Location = new System.Drawing.Point(923, 24);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(52, 209);
             this.groupBox5.TabIndex = 59;
@@ -892,7 +887,7 @@
             this.groupBox6.Controls.Add(this.textBoxMnd4);
             this.groupBox6.Controls.Add(this.textBoxMnd2);
             this.groupBox6.Controls.Add(this.textBoxMnd3);
-            this.groupBox6.Location = new System.Drawing.Point(783, 24);
+            this.groupBox6.Location = new System.Drawing.Point(749, 24);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(52, 209);
             this.groupBox6.TabIndex = 56;
@@ -941,7 +936,7 @@
             this.groupBox7.Controls.Add(this.textBoxRes3);
             this.groupBox7.Controls.Add(this.textBoxRes2);
             this.groupBox7.Controls.Add(this.textBoxRes1);
-            this.groupBox7.Location = new System.Drawing.Point(899, 24);
+            this.groupBox7.Location = new System.Drawing.Point(865, 24);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(52, 209);
             this.groupBox7.TabIndex = 58;
@@ -990,7 +985,7 @@
             this.groupBox8.Controls.Add(this.textBoxSpd3);
             this.groupBox8.Controls.Add(this.textBoxSpd2);
             this.groupBox8.Controls.Add(this.textBoxSpd1);
-            this.groupBox8.Location = new System.Drawing.Point(1015, 24);
+            this.groupBox8.Location = new System.Drawing.Point(981, 24);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(52, 209);
             this.groupBox8.TabIndex = 60;
@@ -1039,7 +1034,7 @@
             this.groupBox9.Controls.Add(this.textBoxHP3);
             this.groupBox9.Controls.Add(this.textBoxHP2);
             this.groupBox9.Controls.Add(this.textBoxHP1);
-            this.groupBox9.Location = new System.Drawing.Point(609, 24);
+            this.groupBox9.Location = new System.Drawing.Point(575, 24);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(52, 209);
             this.groupBox9.TabIndex = 53;
@@ -1083,7 +1078,7 @@
             // 
             // textBoxEnemyDef
             // 
-            this.textBoxEnemyDef.Location = new System.Drawing.Point(860, 250);
+            this.textBoxEnemyDef.Location = new System.Drawing.Point(826, 250);
             this.textBoxEnemyDef.Name = "textBoxEnemyDef";
             this.textBoxEnemyDef.Size = new System.Drawing.Size(59, 20);
             this.textBoxEnemyDef.TabIndex = 41;
@@ -1092,7 +1087,7 @@
             // 
             // textBoxEnemyRes
             // 
-            this.textBoxEnemyRes.Location = new System.Drawing.Point(860, 277);
+            this.textBoxEnemyRes.Location = new System.Drawing.Point(826, 277);
             this.textBoxEnemyRes.Name = "textBoxEnemyRes";
             this.textBoxEnemyRes.Size = new System.Drawing.Size(59, 20);
             this.textBoxEnemyRes.TabIndex = 42;
@@ -1102,7 +1097,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(795, 253);
+            this.label2.Location = new System.Drawing.Point(761, 253);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 62;
@@ -1111,7 +1106,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(793, 280);
+            this.label3.Location = new System.Drawing.Point(759, 280);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 64;
@@ -1260,7 +1255,7 @@
             this.groupBox10.Controls.Add(this.checkBoxMentalBreakdown);
             this.groupBox10.Controls.Add(this.checkBoxFullBreak);
             this.groupBox10.Controls.Add(this.checkBoxArmorBreakdown);
-            this.groupBox10.Location = new System.Drawing.Point(783, 303);
+            this.groupBox10.Location = new System.Drawing.Point(749, 303);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(278, 119);
             this.groupBox10.TabIndex = 52;
@@ -1343,7 +1338,7 @@
             // 
             // textBoxEnemyEffectiveDef
             // 
-            this.textBoxEnemyEffectiveDef.Location = new System.Drawing.Point(925, 250);
+            this.textBoxEnemyEffectiveDef.Location = new System.Drawing.Point(891, 250);
             this.textBoxEnemyEffectiveDef.Name = "textBoxEnemyEffectiveDef";
             this.textBoxEnemyEffectiveDef.ReadOnly = true;
             this.textBoxEnemyEffectiveDef.Size = new System.Drawing.Size(59, 20);
@@ -1352,7 +1347,7 @@
             // 
             // textBoxEnemyEffectiveRes
             // 
-            this.textBoxEnemyEffectiveRes.Location = new System.Drawing.Point(925, 276);
+            this.textBoxEnemyEffectiveRes.Location = new System.Drawing.Point(891, 276);
             this.textBoxEnemyEffectiveRes.Name = "textBoxEnemyEffectiveRes";
             this.textBoxEnemyEffectiveRes.ReadOnly = true;
             this.textBoxEnemyEffectiveRes.Size = new System.Drawing.Size(59, 20);
@@ -1368,7 +1363,7 @@
             this.groupBox11.Controls.Add(this.comboBoxPartyMember5);
             this.groupBox11.Location = new System.Drawing.Point(6, 24);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(88, 522);
+            this.groupBox11.Size = new System.Drawing.Size(89, 522);
             this.groupBox11.TabIndex = 66;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Characters";
@@ -1405,7 +1400,7 @@
             this.groupBox12.Controls.Add(this.textBoxAbilityDamage3);
             this.groupBox12.Controls.Add(this.textBoxAbilityDamage2);
             this.groupBox12.Controls.Add(this.textBoxSoulBreakDamage1);
-            this.groupBox12.Location = new System.Drawing.Point(100, 24);
+            this.groupBox12.Location = new System.Drawing.Point(101, 24);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(204, 522);
             this.groupBox12.TabIndex = 67;
@@ -1434,9 +1429,9 @@
             this.groupBox13.Controls.Add(this.comboBoxWeapon3);
             this.groupBox13.Controls.Add(this.comboBoxWeapon2);
             this.groupBox13.Controls.Add(this.comboBoxWeapon1);
-            this.groupBox13.Location = new System.Drawing.Point(318, 24);
+            this.groupBox13.Location = new System.Drawing.Point(311, 24);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(285, 521);
+            this.groupBox13.Size = new System.Drawing.Size(258, 521);
             this.groupBox13.TabIndex = 68;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Equipment and Record Materias";
