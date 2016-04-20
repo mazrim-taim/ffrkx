@@ -229,7 +229,7 @@ namespace FFRKInspector.UI
                 }
                 else
                 {
-                    characterBoxes[i].Text = "";
+                    characterBoxes[i].Text = "Character";
                 }
                 UpdateDropdownsForCharacter(i);
             }
@@ -637,7 +637,7 @@ namespace FFRKInspector.UI
             }
             else
             {
-                weaponBoxes[index].Text = "";
+                weaponBoxes[index].Text = "Weapon";
             }
 
             DataEquipmentInformation selectedArmor = (DataEquipmentInformation)armorBoxes[index].SelectedItem;
@@ -664,7 +664,7 @@ namespace FFRKInspector.UI
             }
             else
             {
-                armorBoxes[index].Text = "";
+                armorBoxes[index].Text = "Armor";
             }
 
             DataEquipmentInformation selectedAccessory = (DataEquipmentInformation)accessoryBoxes[index].SelectedItem;
@@ -688,7 +688,7 @@ namespace FFRKInspector.UI
             }
             else
             {
-                accessoryBoxes[index].Text = "";
+                accessoryBoxes[index].Text = "Accessory";
             }
 
             DataRecordMateriaInformation selectedRecordMateria = (DataRecordMateriaInformation)recordMateriaBoxes[index].SelectedItem;
@@ -712,7 +712,7 @@ namespace FFRKInspector.UI
             }
             else
             {
-                recordMateriaBoxes[index].Text = "";
+                recordMateriaBoxes[index].Text = "Record Materia";
             }
 
             FFRKInspector.GameData.Ability selectedAbility1 = (FFRKInspector.GameData.Ability)abilityBoxes[index * 2].SelectedItem;
@@ -748,7 +748,7 @@ namespace FFRKInspector.UI
             }
             else
             {
-                abilityBoxes[index * 2].Text = "";
+                abilityBoxes[index * 2].Text = "Ability";
             }
 
             if (ability2Index > -1)
@@ -757,7 +757,7 @@ namespace FFRKInspector.UI
             }
             else
             {
-                abilityBoxes[index * 2 + 1].Text = "";
+                abilityBoxes[index * 2 + 1].Text = "Ability";
             }
 
             GameData.SoulBreak selectedSoulBreak = (GameData.SoulBreak)soulBreakBoxes[index].SelectedItem;
@@ -781,7 +781,7 @@ namespace FFRKInspector.UI
             }
             else
             {
-                soulBreakBoxes[index].Text = "";
+                soulBreakBoxes[index].Text = "Soul Break";
             }
 
             RecalculateStats(index);
