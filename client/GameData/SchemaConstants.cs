@@ -223,6 +223,7 @@ namespace FFRKInspector.GameData
             LEON = 10200400,
             MINWU = 10200500,
             GORDON = 10200600,
+            LEILA = 10200700,
             RICHARD = 10200800,
             JOSEF = 10200900,
             LUNETH = 10300100,
