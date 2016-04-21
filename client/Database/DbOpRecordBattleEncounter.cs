@@ -80,7 +80,7 @@ namespace FFRKInspector.Database
                 command.Parameters.AddWithValue("@battle_id", battle_id);
                 command.Parameters.AddWithValue("@item_id", drop.ItemId);
                 command.Parameters.AddWithValue("@enemy_id", drop.EnemyId);
-                command.Parameters.AddWithValue("@item_count", 1);
+                command.Parameters.AddWithValue("@item_count", drop.NumberOfItems);
                 return command.ExecuteNonQuery();
             }
         }
