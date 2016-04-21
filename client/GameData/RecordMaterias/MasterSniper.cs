@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class MasterSniper : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111080061; } }
+        public override uint RecordMateriaId { get { return 111080061; } }
         public override string Name { get { return "Master Sniper"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

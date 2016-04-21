@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class HelmExpertise : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111000220; } }
+        public override uint RecordMateriaId { get { return 111000220; } }
         public override string Name { get { return "Helm Expertise"; } }
 
         public override double DefModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

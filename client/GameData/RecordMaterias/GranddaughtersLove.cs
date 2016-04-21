@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class GranddaughtersLove : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111060130; } }
+        public override uint RecordMateriaId { get { return 111060130; } }
         public override string Name { get { return "Granddaughter's Love"; } }
 
         public override double MndModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

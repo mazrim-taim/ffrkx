@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class WitchOfSuccession : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111080021; } }
+        public override uint RecordMateriaId { get { return 111080021; } }
         public override string Name { get { return "Witch of Succession"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

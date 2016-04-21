@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class HolyKnightsPride : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111500021; } }
+        public override uint RecordMateriaId { get { return 111500021; } }
         public override string Name { get { return "Holy Knight's Pride"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class SelfSacrifice : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111020090; } }
+        public override uint RecordMateriaId { get { return 111020090; } }
         public override string Name { get { return "Self-Sacrifice"; } }
 
         public override double AtkModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

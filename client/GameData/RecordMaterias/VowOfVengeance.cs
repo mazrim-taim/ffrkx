@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class VowOfVengeance : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111120056; } }
+        public override uint RecordMateriaId { get { return 111120056; } }
         public override string Name { get { return "Vow of Vengeance"; } }
 
         public override double AtkModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

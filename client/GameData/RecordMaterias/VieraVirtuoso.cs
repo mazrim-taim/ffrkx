@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class VieraVirtuoso : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111120031; } }
+        public override uint RecordMateriaId { get { return 111120031; } }
         public override string Name { get { return "Viera Virtuoso"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

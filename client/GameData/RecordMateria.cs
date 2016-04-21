@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData
 {
     abstract class RecordMateria
     {
-        public virtual uint RecordMaterId { get { return 0; } }
+        public virtual uint RecordMateriaId { get { return 0; } }
         public abstract string Name { get; }
 
         private static List<RecordMateria> mRecordMaterias = null;
@@ -32,7 +32,7 @@ namespace FFRKInspector.GameData
 
         public static RecordMateria Find(uint recordMateriaId)
         {
-            RecordMateria recordMateria = AllRecordMaterias().Where(rm => rm.RecordMaterId == recordMateriaId).FirstOrDefault();
+            RecordMateria recordMateria = AllRecordMaterias().Where(rm => rm.RecordMateriaId == recordMateriaId).FirstOrDefault();
             if (recordMateria == null || recordMateria.Equals(default(RecordMateria)))
             {
                 return new RecordMaterias.NullRecordMateria();

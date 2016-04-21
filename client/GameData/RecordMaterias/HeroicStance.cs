@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class HeroicStance : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111070102; } }
+        public override uint RecordMateriaId { get { return 111070102; } }
         public override string Name { get { return "Heroic Stance"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

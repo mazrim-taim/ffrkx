@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class NullRecordMateria : RecordMateria
     {
-        public override uint RecordMaterId { get { return 0; } }
+        public override uint RecordMateriaId { get { return 0; } }
         public override string Name { get { return "Null"; } }
     }
 }

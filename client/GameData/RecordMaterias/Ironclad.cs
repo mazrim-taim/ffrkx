@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class Ironclad : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111090040; } }
+        public override uint RecordMateriaId { get { return 111090040; } }
         public override string Name { get { return "Ironclad"; } }
 
         public override double DefModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

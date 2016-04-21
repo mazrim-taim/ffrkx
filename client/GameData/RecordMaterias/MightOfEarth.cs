@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class MightOfEarth : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111039960; } }
+        public override uint RecordMateriaId { get { return 111039960; } }
         public override string Name { get { return "Might of Earth"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class WindWanderer : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111050010; } }
+        public override uint RecordMateriaId { get { return 111050010; } }
         public override string Name { get { return "Wind Wanderer"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

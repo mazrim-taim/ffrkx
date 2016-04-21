@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class IceBeauty : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111100041; } }
+        public override uint RecordMateriaId { get { return 111100041; } }
         public override string Name { get { return "Ice Beauty"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

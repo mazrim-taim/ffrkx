@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class FistOfDawn : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111050052; } }
+        public override uint RecordMateriaId { get { return 111050052; } }
         public override string Name { get { return "Fist of Dawn"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

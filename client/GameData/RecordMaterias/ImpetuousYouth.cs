@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class ImpetuousYouth : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111090070; } }
+        public override uint RecordMateriaId { get { return 111090070; } }
         public override string Name { get { return "Impetuous Youth"; } }
 
         public override double MagModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

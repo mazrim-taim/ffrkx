@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class FleshUndying : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111070080; } }
+        public override uint RecordMateriaId { get { return 111070080; } }
         public override string Name { get { return "Flesh Undying"; } }
 
         public override double MagModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class CetrasDestiny : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111070042; } }
+        public override uint RecordMateriaId { get { return 111070042; } }
         public override string Name { get { return "Cetra's Destiny"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class ZanganWay : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111070031; } }
+        public override uint RecordMateriaId { get { return 111070031; } }
         public override string Name { get { return "The Zangan Way"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

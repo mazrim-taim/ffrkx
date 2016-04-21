@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class OathOfTycoon : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111050020; } }
+        public override uint RecordMateriaId { get { return 111050020; } }
         public override string Name { get { return "Oath of Tycoon"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

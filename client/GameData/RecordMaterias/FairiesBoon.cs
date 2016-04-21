@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class FairiesBoon : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111080090; } }
+        public override uint RecordMateriaId { get { return 111080090; } }
         public override string Name { get { return "The Fairies' Boon"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

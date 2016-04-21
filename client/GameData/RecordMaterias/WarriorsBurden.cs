@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class WarriorsBurden : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111050070; } }
+        public override uint RecordMateriaId { get { return 111050070; } }
         public override string Name { get { return "Warrior's Burden"; } }
 
         public override double DefModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

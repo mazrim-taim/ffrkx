@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class ConcertMusician : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111000280; } }
+        public override uint RecordMateriaId { get { return 111000280; } }
         public override string Name { get { return "Concert Musician"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)

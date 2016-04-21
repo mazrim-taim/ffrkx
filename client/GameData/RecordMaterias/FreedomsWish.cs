@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class FreedomsWish : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111120010; } }
+        public override uint RecordMateriaId { get { return 111120010; } }
         public override string Name { get { return "Freedom's Wish"; } }
 
         public override double AtkModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

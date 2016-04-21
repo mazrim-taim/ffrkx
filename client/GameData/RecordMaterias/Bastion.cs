@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class Bastion : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111130020; } }
+        public override uint RecordMateriaId { get { return 111130020; } }
         public override string Name { get { return "Bastion"; } }
 
         public override double AtkModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

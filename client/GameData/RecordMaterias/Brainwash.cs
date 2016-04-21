@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class Brainwash : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111040031; } }
+        public override uint RecordMateriaId { get { return 111040031; } }
         public override string Name { get { return "Brainwash"; } }
 
         public override double AtkModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

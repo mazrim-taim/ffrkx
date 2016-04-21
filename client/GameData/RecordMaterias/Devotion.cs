@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class Devotion : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111090031; } }
+        public override uint RecordMateriaId { get { return 111090031; } }
         public override string Name { get { return "Devotion"; } }
 
         public override double MagModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)

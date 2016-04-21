@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 {
     class GranPulseWarrior : RecordMateria
     {
-        public override uint RecordMaterId { get { return 111130060; } }
+        public override uint RecordMateriaId { get { return 111130060; } }
         public override string Name { get { return "Gran Pulse Warrior"; } }
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)
