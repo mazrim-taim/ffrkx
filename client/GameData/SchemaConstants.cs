@@ -269,6 +269,7 @@ namespace FFRKInspector.GameData
             TIFA = 10700300,
             AERITH = 10700400,
             RED_XIII = 10700500,
+            YUFFIE = 10700600,
             VINCENT = 10700800,
             ZACK = 10700900,
             SEPHIROTH = 10701000,
