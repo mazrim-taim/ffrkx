@@ -496,6 +496,16 @@ namespace FFRKInspector.UI
                 (armor != null ? armor.StatWithSynergy("Spd", armorHasSynergy) : 0) +
                 (accessory != null ? accessory.StatWithSynergy("Spd", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
+            if(recordMateria != null && (recordMateria.RecordMateriaId == 111070100 || recordMateria.RecordMateriaId == 111080060))
+            {
+                // Loner or Solitude
+                for(int i = 0; i < characterBoxes.Count(box => box.SelectedItem == null); i++)
+                {
+                    atkFields[characterIndex].Text = Math.Floor(Double.Parse(atkFields[characterIndex].Text) * 1.1).ToString("#,##0.##");
+                    defFields[characterIndex].Text = Math.Floor(Double.Parse(defFields[characterIndex].Text) * 1.1).ToString("#,##0.##");
+                }
+            }
+
             if (checkBoxShout.Checked)
             {
                 atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * 1.5).ToString("#,##0.##");
@@ -790,6 +800,16 @@ namespace FFRKInspector.UI
         {
             int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
             UpdateDropdownsForCharacter(index);
+            for(int i = 0; i < 5; i++)
+            {
+                if(characterBoxes[i].SelectedItem != null && recordMateriaBoxes[i].SelectedItem != null &&
+                    (((DataRecordMateriaInformation)recordMateriaBoxes[i].SelectedItem).RecordMateriaId == 111070100 ||
+                    ((DataRecordMateriaInformation)recordMateriaBoxes[i].SelectedItem).RecordMateriaId == 111080060))
+                {
+                    // Check if anyone has Loner or Solitude equipped
+                    UpdateDropdownsForCharacter(i);
+                }
+            }
         }
 
         private void comboBoxWeapon_SelectedIndexChanged(object sender, EventArgs e)
