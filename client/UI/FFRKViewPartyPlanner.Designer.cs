@@ -394,6 +394,7 @@
             this.comboBoxWeapon5.Name = "comboBoxWeapon5";
             this.comboBoxWeapon5.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon5.TabIndex = 36;
+            this.comboBoxWeapon5.Text = "Weapon";
             this.comboBoxWeapon5.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon5.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
@@ -406,6 +407,7 @@
             this.comboBoxWeapon4.Name = "comboBoxWeapon4";
             this.comboBoxWeapon4.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon4.TabIndex = 28;
+            this.comboBoxWeapon4.Text = "Weapon";
             this.comboBoxWeapon4.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon4.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
@@ -418,6 +420,7 @@
             this.comboBoxWeapon3.Name = "comboBoxWeapon3";
             this.comboBoxWeapon3.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon3.TabIndex = 20;
+            this.comboBoxWeapon3.Text = "Weapon";
             this.comboBoxWeapon3.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon3.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
@@ -430,6 +433,7 @@
             this.comboBoxWeapon2.Name = "comboBoxWeapon2";
             this.comboBoxWeapon2.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon2.TabIndex = 12;
+            this.comboBoxWeapon2.Text = "Weapon";
             this.comboBoxWeapon2.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon2.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
@@ -442,6 +446,7 @@
             this.comboBoxWeapon1.Name = "comboBoxWeapon1";
             this.comboBoxWeapon1.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon1.TabIndex = 4;
+            this.comboBoxWeapon1.Text = "Weapon";
             this.comboBoxWeapon1.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon1.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
@@ -454,6 +459,7 @@
             this.comboBoxArmor5.Name = "comboBoxArmor5";
             this.comboBoxArmor5.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor5.TabIndex = 37;
+            this.comboBoxArmor5.Text = "Armor";
             this.comboBoxArmor5.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor5.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
@@ -466,6 +472,7 @@
             this.comboBoxArmor4.Name = "comboBoxArmor4";
             this.comboBoxArmor4.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor4.TabIndex = 29;
+            this.comboBoxArmor4.Text = "Armor";
             this.comboBoxArmor4.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor4.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
@@ -478,6 +485,7 @@
             this.comboBoxArmor3.Name = "comboBoxArmor3";
             this.comboBoxArmor3.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor3.TabIndex = 21;
+            this.comboBoxArmor3.Text = "Armor";
             this.comboBoxArmor3.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor3.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
@@ -490,6 +498,7 @@
             this.comboBoxArmor2.Name = "comboBoxArmor2";
             this.comboBoxArmor2.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor2.TabIndex = 13;
+            this.comboBoxArmor2.Text = "Armor";
             this.comboBoxArmor2.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor2.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
@@ -502,6 +511,7 @@
             this.comboBoxArmor1.Name = "comboBoxArmor1";
             this.comboBoxArmor1.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor1.TabIndex = 5;
+            this.comboBoxArmor1.Text = "Armor";
             this.comboBoxArmor1.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor1.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
@@ -514,6 +524,7 @@
             this.comboBoxAccessory5.Name = "comboBoxAccessory5";
             this.comboBoxAccessory5.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory5.TabIndex = 38;
+            this.comboBoxAccessory5.Text = "Accessory";
             this.comboBoxAccessory5.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory5.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 
@@ -526,6 +537,7 @@
             this.comboBoxAccessory4.Name = "comboBoxAccessory4";
             this.comboBoxAccessory4.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory4.TabIndex = 30;
+            this.comboBoxAccessory4.Text = "Accessory";
             this.comboBoxAccessory4.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory4.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 
@@ -538,6 +550,7 @@
             this.comboBoxAccessory3.Name = "comboBoxAccessory3";
             this.comboBoxAccessory3.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory3.TabIndex = 22;
+            this.comboBoxAccessory3.Text = "Accessory";
             this.comboBoxAccessory3.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory3.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 
@@ -550,6 +563,7 @@
             this.comboBoxAccessory2.Name = "comboBoxAccessory2";
             this.comboBoxAccessory2.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory2.TabIndex = 14;
+            this.comboBoxAccessory2.Text = "Accessory";
             this.comboBoxAccessory2.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory2.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 
@@ -562,6 +576,7 @@
             this.comboBoxAccessory1.Name = "comboBoxAccessory1";
             this.comboBoxAccessory1.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory1.TabIndex = 6;
+            this.comboBoxAccessory1.Text = "Accessory";
             this.comboBoxAccessory1.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory1.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 
