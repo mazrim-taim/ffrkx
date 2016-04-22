@@ -914,6 +914,7 @@ namespace FFRKInspector.UI
             if (equipmentModal.ShowDialog(this) == DialogResult.OK)
             {
                 SelectEquipment((ComboBox)sender, equipmentModal.SelectedInstanceId);
+                ((ComboBox)sender).Select(0, 0);
             }
         }
 
@@ -941,6 +942,7 @@ namespace FFRKInspector.UI
             if (equipmentModal.ShowDialog(this) == DialogResult.OK)
             {
                 SelectEquipment((ComboBox)sender, equipmentModal.SelectedInstanceId);
+                ((ComboBox)sender).Select(0, 0);
             }
         }
 
@@ -968,6 +970,7 @@ namespace FFRKInspector.UI
             if (equipmentModal.ShowDialog(this) == DialogResult.OK)
             {
                 SelectEquipment((ComboBox)sender, equipmentModal.SelectedInstanceId);
+                ((ComboBox)sender).Select(0, 0);
             }
         }
     }

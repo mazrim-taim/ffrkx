@@ -387,181 +387,181 @@
             // 
             // comboBoxWeapon5
             // 
+            this.comboBoxWeapon5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxWeapon5.FormattingEnabled = true;
             this.comboBoxWeapon5.Location = new System.Drawing.Point(6, 436);
             this.comboBoxWeapon5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon5.Name = "comboBoxWeapon5";
             this.comboBoxWeapon5.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon5.TabIndex = 36;
-            this.comboBoxWeapon5.Text = "Weapon";
             this.comboBoxWeapon5.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon5.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
             // comboBoxWeapon4
             // 
+            this.comboBoxWeapon4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxWeapon4.FormattingEnabled = true;
             this.comboBoxWeapon4.Location = new System.Drawing.Point(6, 338);
             this.comboBoxWeapon4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon4.Name = "comboBoxWeapon4";
             this.comboBoxWeapon4.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon4.TabIndex = 28;
-            this.comboBoxWeapon4.Text = "Weapon";
             this.comboBoxWeapon4.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon4.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
             // comboBoxWeapon3
             // 
+            this.comboBoxWeapon3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxWeapon3.FormattingEnabled = true;
             this.comboBoxWeapon3.Location = new System.Drawing.Point(6, 238);
             this.comboBoxWeapon3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon3.Name = "comboBoxWeapon3";
             this.comboBoxWeapon3.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon3.TabIndex = 20;
-            this.comboBoxWeapon3.Text = "Weapon";
             this.comboBoxWeapon3.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon3.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
             // comboBoxWeapon2
             // 
+            this.comboBoxWeapon2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxWeapon2.FormattingEnabled = true;
             this.comboBoxWeapon2.Location = new System.Drawing.Point(6, 139);
             this.comboBoxWeapon2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon2.Name = "comboBoxWeapon2";
             this.comboBoxWeapon2.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon2.TabIndex = 12;
-            this.comboBoxWeapon2.Text = "Weapon";
             this.comboBoxWeapon2.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon2.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
             // comboBoxWeapon1
             // 
+            this.comboBoxWeapon1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxWeapon1.FormattingEnabled = true;
             this.comboBoxWeapon1.Location = new System.Drawing.Point(6, 29);
             this.comboBoxWeapon1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxWeapon1.Name = "comboBoxWeapon1";
             this.comboBoxWeapon1.Size = new System.Drawing.Size(115, 21);
             this.comboBoxWeapon1.TabIndex = 4;
-            this.comboBoxWeapon1.Text = "Weapon";
             this.comboBoxWeapon1.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeapon_SelectedIndexChanged);
             this.comboBoxWeapon1.Click += new System.EventHandler(this.comboBoxWeapon_Click);
             // 
             // comboBoxArmor5
             // 
+            this.comboBoxArmor5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxArmor5.FormattingEnabled = true;
             this.comboBoxArmor5.Location = new System.Drawing.Point(6, 465);
             this.comboBoxArmor5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor5.Name = "comboBoxArmor5";
             this.comboBoxArmor5.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor5.TabIndex = 37;
-            this.comboBoxArmor5.Text = "Armor";
             this.comboBoxArmor5.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor5.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
             // comboBoxArmor4
             // 
+            this.comboBoxArmor4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxArmor4.FormattingEnabled = true;
             this.comboBoxArmor4.Location = new System.Drawing.Point(6, 367);
             this.comboBoxArmor4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor4.Name = "comboBoxArmor4";
             this.comboBoxArmor4.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor4.TabIndex = 29;
-            this.comboBoxArmor4.Text = "Armor";
             this.comboBoxArmor4.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor4.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
             // comboBoxArmor3
             // 
+            this.comboBoxArmor3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxArmor3.FormattingEnabled = true;
             this.comboBoxArmor3.Location = new System.Drawing.Point(6, 267);
             this.comboBoxArmor3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor3.Name = "comboBoxArmor3";
             this.comboBoxArmor3.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor3.TabIndex = 21;
-            this.comboBoxArmor3.Text = "Armor";
             this.comboBoxArmor3.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor3.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
             // comboBoxArmor2
             // 
+            this.comboBoxArmor2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxArmor2.FormattingEnabled = true;
             this.comboBoxArmor2.Location = new System.Drawing.Point(6, 168);
             this.comboBoxArmor2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor2.Name = "comboBoxArmor2";
             this.comboBoxArmor2.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor2.TabIndex = 13;
-            this.comboBoxArmor2.Text = "Armor";
             this.comboBoxArmor2.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor2.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
             // comboBoxArmor1
             // 
+            this.comboBoxArmor1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxArmor1.FormattingEnabled = true;
             this.comboBoxArmor1.Location = new System.Drawing.Point(6, 58);
             this.comboBoxArmor1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxArmor1.Name = "comboBoxArmor1";
             this.comboBoxArmor1.Size = new System.Drawing.Size(115, 21);
             this.comboBoxArmor1.TabIndex = 5;
-            this.comboBoxArmor1.Text = "Armor";
             this.comboBoxArmor1.SelectedIndexChanged += new System.EventHandler(this.comboBoxArmor_SelectedIndexChanged);
             this.comboBoxArmor1.Click += new System.EventHandler(this.comboBoxArmor_Click);
             // 
             // comboBoxAccessory5
             // 
+            this.comboBoxAccessory5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxAccessory5.FormattingEnabled = true;
             this.comboBoxAccessory5.Location = new System.Drawing.Point(6, 494);
             this.comboBoxAccessory5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory5.Name = "comboBoxAccessory5";
             this.comboBoxAccessory5.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory5.TabIndex = 38;
-            this.comboBoxAccessory5.Text = "Accessory";
             this.comboBoxAccessory5.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory5.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 
             // comboBoxAccessory4
             // 
+            this.comboBoxAccessory4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxAccessory4.FormattingEnabled = true;
             this.comboBoxAccessory4.Location = new System.Drawing.Point(6, 396);
             this.comboBoxAccessory4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory4.Name = "comboBoxAccessory4";
             this.comboBoxAccessory4.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory4.TabIndex = 30;
-            this.comboBoxAccessory4.Text = "Accessory";
             this.comboBoxAccessory4.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory4.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 
             // comboBoxAccessory3
             // 
+            this.comboBoxAccessory3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxAccessory3.FormattingEnabled = true;
             this.comboBoxAccessory3.Location = new System.Drawing.Point(6, 296);
             this.comboBoxAccessory3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory3.Name = "comboBoxAccessory3";
             this.comboBoxAccessory3.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory3.TabIndex = 22;
-            this.comboBoxAccessory3.Text = "Accessory";
             this.comboBoxAccessory3.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory3.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 
             // comboBoxAccessory2
             // 
+            this.comboBoxAccessory2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxAccessory2.FormattingEnabled = true;
             this.comboBoxAccessory2.Location = new System.Drawing.Point(6, 197);
             this.comboBoxAccessory2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory2.Name = "comboBoxAccessory2";
             this.comboBoxAccessory2.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory2.TabIndex = 14;
-            this.comboBoxAccessory2.Text = "Accessory";
             this.comboBoxAccessory2.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory2.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 
             // comboBoxAccessory1
             // 
+            this.comboBoxAccessory1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxAccessory1.FormattingEnabled = true;
             this.comboBoxAccessory1.Location = new System.Drawing.Point(6, 87);
             this.comboBoxAccessory1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxAccessory1.Name = "comboBoxAccessory1";
             this.comboBoxAccessory1.Size = new System.Drawing.Size(115, 21);
             this.comboBoxAccessory1.TabIndex = 6;
-            this.comboBoxAccessory1.Text = "Accessory";
             this.comboBoxAccessory1.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccessory_SelectedIndexChanged);
             this.comboBoxAccessory1.Click += new System.EventHandler(this.comboBoxAccessory_Click);
             // 

@@ -31,6 +31,14 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.dataGridViewEquipment = new System.Windows.Forms.DataGridView();
             this.ItemColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.AtkColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MagColunm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MndColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DefColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AccColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EvaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBoxRealmSynergy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,14 +49,6 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AtkColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MagColunm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MndColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DefColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AccColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EvaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipment)).BeginInit();
@@ -56,10 +56,11 @@
             // 
             // buttonClose
             // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClose.Location = new System.Drawing.Point(682, 476);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 2;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -69,6 +70,9 @@
             this.dataGridViewEquipment.AllowUserToAddRows = false;
             this.dataGridViewEquipment.AllowUserToDeleteRows = false;
             this.dataGridViewEquipment.AllowUserToOrderColumns = true;
+            this.dataGridViewEquipment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewEquipment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEquipment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemColumn,
@@ -83,8 +87,9 @@
             this.dataGridViewEquipment.Location = new System.Drawing.Point(12, 39);
             this.dataGridViewEquipment.Name = "dataGridViewEquipment";
             this.dataGridViewEquipment.ReadOnly = true;
+            this.dataGridViewEquipment.RowHeadersVisible = false;
             this.dataGridViewEquipment.Size = new System.Drawing.Size(745, 431);
-            this.dataGridViewEquipment.TabIndex = 71;
+            this.dataGridViewEquipment.TabIndex = 1;
             this.dataGridViewEquipment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEquipment_CellContentClick);
             // 
             // ItemColumn
@@ -96,17 +101,83 @@
             this.ItemColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ItemColumn.Width = 52;
             // 
+            // AtkColumn
+            // 
+            this.AtkColumn.HeaderText = "Atk";
+            this.AtkColumn.MaxInputLength = 4;
+            this.AtkColumn.Name = "AtkColumn";
+            this.AtkColumn.ReadOnly = true;
+            this.AtkColumn.Width = 65;
+            // 
+            // MagColunm
+            // 
+            this.MagColunm.HeaderText = "Mag";
+            this.MagColunm.MaxInputLength = 4;
+            this.MagColunm.Name = "MagColunm";
+            this.MagColunm.ReadOnly = true;
+            this.MagColunm.Width = 66;
+            // 
+            // MndColumn
+            // 
+            this.MndColumn.HeaderText = "Mnd";
+            this.MndColumn.MaxInputLength = 4;
+            this.MndColumn.Name = "MndColumn";
+            this.MndColumn.ReadOnly = true;
+            this.MndColumn.Width = 66;
+            // 
+            // DefColumn
+            // 
+            this.DefColumn.HeaderText = "Def";
+            this.DefColumn.MaxInputLength = 4;
+            this.DefColumn.Name = "DefColumn";
+            this.DefColumn.ReadOnly = true;
+            this.DefColumn.Width = 66;
+            // 
+            // ResColumn
+            // 
+            this.ResColumn.HeaderText = "Res";
+            this.ResColumn.MaxInputLength = 4;
+            this.ResColumn.Name = "ResColumn";
+            this.ResColumn.ReadOnly = true;
+            this.ResColumn.Width = 66;
+            // 
+            // AccColumn
+            // 
+            this.AccColumn.HeaderText = "Acc";
+            this.AccColumn.MaxInputLength = 4;
+            this.AccColumn.Name = "AccColumn";
+            this.AccColumn.ReadOnly = true;
+            this.AccColumn.Width = 66;
+            // 
+            // EvaColumn
+            // 
+            this.EvaColumn.HeaderText = "Eva";
+            this.EvaColumn.MaxInputLength = 4;
+            this.EvaColumn.Name = "EvaColumn";
+            this.EvaColumn.ReadOnly = true;
+            this.EvaColumn.Width = 66;
+            // 
+            // SpdColumn
+            // 
+            this.SpdColumn.HeaderText = "Spd";
+            this.SpdColumn.MaxInputLength = 4;
+            this.SpdColumn.Name = "SpdColumn";
+            this.SpdColumn.ReadOnly = true;
+            this.SpdColumn.Width = 66;
+            // 
             // comboBoxRealmSynergy
             // 
+            this.comboBoxRealmSynergy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxRealmSynergy.FormattingEnabled = true;
             this.comboBoxRealmSynergy.Location = new System.Drawing.Point(636, 12);
             this.comboBoxRealmSynergy.Name = "comboBoxRealmSynergy";
             this.comboBoxRealmSynergy.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxRealmSynergy.TabIndex = 72;
+            this.comboBoxRealmSynergy.TabIndex = 0;
             this.comboBoxRealmSynergy.SelectedIndexChanged += new System.EventHandler(this.comboBoxRealmSynergy_SelectedIndexChanged);
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(552, 15);
             this.label1.Name = "label1";
@@ -177,70 +248,6 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.Width = 66;
-            // 
-            // AtkColumn
-            // 
-            this.AtkColumn.HeaderText = "Atk";
-            this.AtkColumn.MaxInputLength = 4;
-            this.AtkColumn.Name = "AtkColumn";
-            this.AtkColumn.ReadOnly = true;
-            this.AtkColumn.Width = 65;
-            // 
-            // MagColunm
-            // 
-            this.MagColunm.HeaderText = "Mag";
-            this.MagColunm.MaxInputLength = 4;
-            this.MagColunm.Name = "MagColunm";
-            this.MagColunm.ReadOnly = true;
-            this.MagColunm.Width = 66;
-            // 
-            // MndColumn
-            // 
-            this.MndColumn.HeaderText = "Mnd";
-            this.MndColumn.MaxInputLength = 4;
-            this.MndColumn.Name = "MndColumn";
-            this.MndColumn.ReadOnly = true;
-            this.MndColumn.Width = 66;
-            // 
-            // DefColumn
-            // 
-            this.DefColumn.HeaderText = "Def";
-            this.DefColumn.MaxInputLength = 4;
-            this.DefColumn.Name = "DefColumn";
-            this.DefColumn.ReadOnly = true;
-            this.DefColumn.Width = 66;
-            // 
-            // ResColumn
-            // 
-            this.ResColumn.HeaderText = "Res";
-            this.ResColumn.MaxInputLength = 4;
-            this.ResColumn.Name = "ResColumn";
-            this.ResColumn.ReadOnly = true;
-            this.ResColumn.Width = 66;
-            // 
-            // AccColumn
-            // 
-            this.AccColumn.HeaderText = "Acc";
-            this.AccColumn.MaxInputLength = 4;
-            this.AccColumn.Name = "AccColumn";
-            this.AccColumn.ReadOnly = true;
-            this.AccColumn.Width = 66;
-            // 
-            // EvaColumn
-            // 
-            this.EvaColumn.HeaderText = "Eva";
-            this.EvaColumn.MaxInputLength = 4;
-            this.EvaColumn.Name = "EvaColumn";
-            this.EvaColumn.ReadOnly = true;
-            this.EvaColumn.Width = 66;
-            // 
-            // SpdColumn
-            // 
-            this.SpdColumn.HeaderText = "Spd";
-            this.SpdColumn.MaxInputLength = 4;
-            this.SpdColumn.Name = "SpdColumn";
-            this.SpdColumn.ReadOnly = true;
-            this.SpdColumn.Width = 66;
             // 
             // label2
             // 
