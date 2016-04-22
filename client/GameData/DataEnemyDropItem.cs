@@ -20,7 +20,7 @@ namespace FFRKInspector.GameData
             HiAbPotion = 32,
             Equipment = 41,
             Orb = 51,
-            Magicite = 61,
+            EventItem = 61,
             Materia = 99,
         };
 
