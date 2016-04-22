@@ -355,13 +355,13 @@ namespace FFRKInspector.UI
         private void RecalculateAllStats()
         {
             textBoxEnemyEffectiveDef.Text = Math.Ceiling(Double.Parse(textBoxEnemyDef.Text) *
-                DebuffedDefMultiplier(1
+                DebuffedDefensiveMultiplier(1
                 * (checkBoxFullBreak.Checked ? (checkBoxArmorBreakResistant.Checked ? 0.85 : 0.7) : 1)
                 * (checkBoxArmorBreakdown.Checked ? (checkBoxArmorBreakResistant.Checked ? 0.8 : 0.6) : 1)
                 * (checkBoxBanishingBlade.Checked ? (checkBoxArmorBreakResistant.Checked ? 0.75 : 0.5) : 1))).ToString();
 
             textBoxEnemyEffectiveRes.Text = Math.Ceiling(Double.Parse(textBoxEnemyRes.Text) *
-                DebuffedResMultiplier(1
+                DebuffedDefensiveMultiplier(1
                 * (checkBoxFullBreak.Checked ? (checkBoxMentalBreakResistant.Checked ? 0.85 : 0.7) : 1)
                 * (checkBoxMentalBreakdown.Checked ? (checkBoxMentalBreakResistant.Checked ? 0.75 : 0.5) : 1))).ToString();
             
@@ -371,17 +371,27 @@ namespace FFRKInspector.UI
             }
         }
 
-        private double DebuffedDefMultiplier(double multiplier)
+        private double BuffedOffensiveMultiplier(double multiplier)
         {
-            if (multiplier >= 0.3)
+            if (multiplier <= 2.5)
             {
                 return multiplier;
             }
-            double newMultiplier = 0.3 - 1.5 * Math.Log10(1 + (0.3 - multiplier));
-            return Math.Max(newMultiplier, 0.2);
+            double newMultiplier = 2.5 + 0.3 * Math.Log(1 + (multiplier - 2.5));
+            return Math.Min(3, newMultiplier);
         }
 
-        private double DebuffedResMultiplier(double multiplier)
+        private double BuffedDefensiveMultiplier(double multiplier)
+        {
+            if (multiplier <= 4.5)
+            {
+                return multiplier;
+            }
+            double newMultiplier = 4.5 + 1.05 * Math.Log(1 + (multiplier - 4.5));
+            return Math.Min(9, newMultiplier);
+        }
+
+        private double DebuffedOffensiveMultiplier(double multiplier)
         {
             if (multiplier >= 0.35)
             {
@@ -389,6 +399,16 @@ namespace FFRKInspector.UI
             }
             double newMultiplier = 0.35 - 1.1 * Math.Log10(1 + (0.35 - multiplier));
             return Math.Max(newMultiplier, 0.3);
+        }
+
+        private double DebuffedDefensiveMultiplier(double multiplier)
+        {
+            if (multiplier >= 0.3)
+            {
+                return multiplier;
+            }
+            double newMultiplier = 0.3 - 1.5 * Math.Log10(1 + (0.3 - multiplier));
+            return Math.Max(newMultiplier, 0.2);
         }
         
         private void RecalculateStats(int characterIndex)
@@ -453,39 +473,34 @@ namespace FFRKInspector.UI
                 (accessory != null ? accessory.StatWithSynergy("HP", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             atkFields[characterIndex].Text = (
-                ((character != null ? (characterHasSynergy ? character.SeriesAtk : character.Atk) : 0) +
+                (character != null ? (characterHasSynergy ? character.SeriesAtk : character.Atk) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Atk", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Atk", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Atk", accessoryHasSynergy) : 0))
-                * (recordMateria != null ? recordMateria.AtkModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Atk", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             magFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesMag : character.Mag) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Mag", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Mag", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Mag", accessoryHasSynergy) : 0)
-                * (recordMateria != null ? recordMateria.MagModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Mag", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             mndFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesMag : character.Mag) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Mnd", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Mnd", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Mnd", accessoryHasSynergy) : 0)
-                * (recordMateria != null ? recordMateria.MndModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Mnd", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             defFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesDef : character.Def) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Def", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Def", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Def", accessoryHasSynergy) : 0)
-                * (recordMateria != null ? recordMateria.DefModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Def", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             resFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesRes : character.Res) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Res", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Res", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Res", accessoryHasSynergy) : 0)
-                * (recordMateria != null ? recordMateria.ResModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Res", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             evaFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesEva : character.Eva) : 0) +
@@ -499,37 +514,49 @@ namespace FFRKInspector.UI
                 (armor != null ? armor.StatWithSynergy("Spd", armorHasSynergy) : 0) +
                 (accessory != null ? accessory.StatWithSynergy("Spd", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
+            double atkMultiplier = (recordMateria != null ? recordMateria.AtkModifier(weapon, armor, accessory) : 1);
+            double magMultiplier = (recordMateria != null ? recordMateria.MagModifier(weapon, armor, accessory) : 1);
+            double mndMultiplier = (recordMateria != null ? recordMateria.MndModifier(weapon, armor, accessory) : 1);
+            double defMultiplier = (recordMateria != null ? recordMateria.DefModifier(weapon, armor, accessory) : 1);
+            double resMultiplier = (recordMateria != null ? recordMateria.ResModifier(weapon, armor, accessory) : 1);
+
             if(recordMateria != null && (recordMateria.RecordMateriaId == 111070100 || recordMateria.RecordMateriaId == 111080060))
             {
                 // Loner or Solitude
                 for(int i = 0; i < characterBoxes.Count(box => box.SelectedItem == null); i++)
                 {
-                    atkFields[characterIndex].Text = Math.Floor(Double.Parse(atkFields[characterIndex].Text) * 1.1).ToString("#,##0.##");
-                    defFields[characterIndex].Text = Math.Floor(Double.Parse(defFields[characterIndex].Text) * 1.1).ToString("#,##0.##");
+                    atkMultiplier *= 1.1;
+                    defMultiplier *= 1.1;
                 }
             }
 
             if (checkBoxShout.Checked)
             {
-                atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * 1.5).ToString("#,##0.##");
+                atkMultiplier *= 1.5;
             }
 
             if (checkBoxHotE.Checked)
             {
-                atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * 1.3).ToString("#,##0.##");
-                defFields[characterIndex].Text = (Double.Parse(defFields[characterIndex].Text) * 1.3).ToString("#,##0.##");
+                atkMultiplier *= 1.3;
+                defMultiplier *= 1.3;
             }
 
             if (checkBoxFocus.Checked)
             {
-                magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * 1.2).ToString("#,##0.##");
-                resFields[characterIndex].Text = (Double.Parse(resFields[characterIndex].Text) * 1.5).ToString("#,##0.##");
+                magMultiplier *= 1.2;
+                resMultiplier *= 1.5;
             }
 
             if (checkBoxFaith.Checked)
             {
-                magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * 1.2).ToString("#,##0.##");
+                magMultiplier *= 1.2;
             }
+
+            atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * BuffedOffensiveMultiplier(atkMultiplier)).ToString("#,##0.##");
+            magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * BuffedOffensiveMultiplier(magMultiplier)).ToString("#,##0.##");
+            mndFields[characterIndex].Text = (Double.Parse(mndFields[characterIndex].Text) * BuffedOffensiveMultiplier(mndMultiplier)).ToString("#,##0.##");
+            defFields[characterIndex].Text = (Double.Parse(defFields[characterIndex].Text) * BuffedDefensiveMultiplier(defMultiplier)).ToString("#,##0.##");
+            resFields[characterIndex].Text = (Double.Parse(resFields[characterIndex].Text) * BuffedDefensiveMultiplier(resMultiplier)).ToString("#,##0.##");
 
             if (abilities[characterIndex * 2] != null)
             {
