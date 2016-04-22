@@ -32,8 +32,9 @@ namespace FFRKInspector.UI
         private TextBox[] spdFields = new TextBox[5];
         private TextBox[] abilityDamageFields = new TextBox[10];
         private TextBox[] soulBreakDamageFields = new TextBox[5];
+        private EquipmentSelectorModal equipmentModal = new EquipmentSelectorModal();
 
-        private class Synergy
+        public class Synergy
         {
             public Synergy(string name, uint seriesId, GameData.SchemaConstants.AbilityCategory nightmareCategory)
             {
@@ -176,6 +177,8 @@ namespace FFRKInspector.UI
             comboBoxRealmSynergy.Items.Add(new Synergy("Tetra Foul Nightmare", 405001, GameData.SchemaConstants.AbilityCategory.Support));
             comboBoxRealmSynergy.Items.Add(new Synergy("Northern Cross Nightmare", 406001, GameData.SchemaConstants.AbilityCategory.Celerity));
             comboBoxRealmSynergy.Items.Add(new Synergy("Meltdown Nightmare", 407001, GameData.SchemaConstants.AbilityCategory.BlackMagic));
+
+            equipmentModal.UpdateRealmSynergies(comboBoxRealmSynergy.Items);
         }
 
         private void FFRKViewPartyPlanner_Load(object sender, EventArgs e)
@@ -796,6 +799,15 @@ namespace FFRKInspector.UI
 
             RecalculateStats(index);
         }
+
+        private ComboBox mCurrentEquipmentList = null;
+
+        private void UpdateEquipmentGrid(GameData.DataBuddyInformation character, ComboBox equipmentList, List<uint> equippedItems)
+        {
+            mCurrentEquipmentList = equipmentList;
+            equipmentModal.UpdateEquipmentGrid(character, equipmentList, equippedItems, RealmSynergy);
+        }
+
         private void comboBoxPartyMember_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
@@ -864,6 +876,99 @@ namespace FFRKInspector.UI
         private void checkBoxDebuff_CheckedChanged(object sender, EventArgs e)
         {
             RecalculateAllStats();
+        }
+
+        private void SelectEquipment(ComboBox equipmentList, uint instanceId)
+        {
+            for (int i = 0; i < equipmentList.Items.Count; i++)
+            {
+                if (((DataEquipmentInformation)equipmentList.Items[i]).InstanceId == instanceId)
+                {
+                    equipmentList.SelectedIndex = i;
+                    return;
+                }
+            }
+        }
+        
+        private void comboBoxWeapon_Click(object sender, EventArgs e)
+        {
+            if(((ComboBox)sender).Items.Count == 0)
+            {
+                return;
+            }
+            int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
+            GameData.DataBuddyInformation character = characters[index];
+            List<uint> equippedItems = new List<uint>();
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == index)
+                {
+                    continue;
+                }
+                if (weaponBoxes[i].SelectedItem != null)
+                {
+                    equippedItems.Add(((DataEquipmentInformation)weaponBoxes[i].SelectedItem).InstanceId);
+                }
+            }
+            UpdateEquipmentGrid(character, (ComboBox)sender, equippedItems);
+            if (equipmentModal.ShowDialog(this) == DialogResult.OK)
+            {
+                SelectEquipment((ComboBox)sender, equipmentModal.SelectedInstanceId);
+            }
+        }
+
+        private void comboBoxArmor_Click(object sender, EventArgs e)
+        {
+            if (((ComboBox)sender).Items.Count == 0)
+            {
+                return;
+            }
+            int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
+            GameData.DataBuddyInformation character = characters[index];
+            List<uint> equippedItems = new List<uint>();
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == index)
+                {
+                    continue;
+                }
+                if (armorBoxes[i].SelectedItem != null)
+                {
+                    equippedItems.Add(((DataEquipmentInformation)armorBoxes[i].SelectedItem).InstanceId);
+                }
+            }
+            UpdateEquipmentGrid(character, (ComboBox)sender, equippedItems);
+            if (equipmentModal.ShowDialog(this) == DialogResult.OK)
+            {
+                SelectEquipment((ComboBox)sender, equipmentModal.SelectedInstanceId);
+            }
+        }
+
+        private void comboBoxAccessory_Click(object sender, EventArgs e)
+        {
+            if (((ComboBox)sender).Items.Count == 0)
+            {
+                return;
+            }
+            int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
+            GameData.DataBuddyInformation character = characters[index];
+            List<uint> equippedItems = new List<uint>();
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == index)
+                {
+                    continue;
+                }
+                if (accessoryBoxes[i].SelectedItem != null)
+                {
+                    equippedItems.Add(((DataEquipmentInformation)accessoryBoxes[i].SelectedItem).InstanceId);
+                }
+            }
+            UpdateEquipmentGrid(character, (ComboBox)sender, equippedItems);
+            if (equipmentModal.ShowDialog(this) == DialogResult.OK)
+            {
+                SelectEquipment((ComboBox)sender, equipmentModal.SelectedInstanceId);
+            }
         }
     }
 }

@@ -84,6 +84,7 @@
     <Compile Include="DataCache\Worlds.cs" />
     <Compile Include="EquipmentStatsDataSet.cs">
       <DependentUpon>EquipmentStatsDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="EquipmentStatsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -730,6 +731,12 @@
     <Compile Include="UI\DatabaseUI\FFRKViewDatabase.Designer.cs">
       <DependentUpon>FFRKViewDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\EquipmentSelectorModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EquipmentSelectorModal.Designer.cs">
+      <DependentUpon>EquipmentSelectorModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FFRKViewAbout.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -850,6 +857,9 @@
   <ItemGroup>
     <EmbeddedResource Include="UI\DatabaseUI\ItemStatsPanel.resx">
       <DependentUpon>ItemStatsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EquipmentSelectorModal.resx">
+      <DependentUpon>EquipmentSelectorModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FFRKViewAbout.resx">
       <DependentUpon>FFRKViewAbout.cs</DependentUpon>
