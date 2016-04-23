@@ -1186,7 +1186,6 @@ namespace FFRKInspector.UI
                 {
                     weaponBoxes[i].SelectedIndex = -1;
                     weaponBoxes[i].Text = "Weapon";
-                    weaponBoxes[i].Items.Clear();
                 }
 
                 if (member["armorId"] > 0)
@@ -1204,7 +1203,6 @@ namespace FFRKInspector.UI
                 {
                     armorBoxes[i].SelectedIndex = -1;
                     armorBoxes[i].Text = "Armor";
-                    armorBoxes[i].Items.Clear();
                 }
 
                 if (member["accessoryId"] > 0)
@@ -1222,7 +1220,6 @@ namespace FFRKInspector.UI
                 {
                     accessoryBoxes[i].SelectedIndex = -1;
                     accessoryBoxes[i].Text = "Accessory";
-                    accessoryBoxes[i].Items.Clear();
                 }
 
                 if (member["recordMateriaId"] > 0)
@@ -1257,7 +1254,6 @@ namespace FFRKInspector.UI
                 {
                     abilityBoxes[i * 2].SelectedIndex = -1;
                     abilityBoxes[i * 2].Text = "Ability";
-                    abilityBoxes[i * 2].Items.Clear();
                 }
 
                 if (member["ability2Id"] > 0)
@@ -1275,7 +1271,6 @@ namespace FFRKInspector.UI
                 {
                     abilityBoxes[i * 2 + 1].SelectedIndex = -1;
                     abilityBoxes[i * 2 + 1].Text = "Ability";
-                    abilityBoxes[i * 2 + 1].Items.Clear();
                 }
 
                 if (member["soulBreakId"] > 0)
@@ -1293,7 +1288,6 @@ namespace FFRKInspector.UI
                 {
                     soulBreakBoxes[i].SelectedIndex = -1;
                     soulBreakBoxes[i].Text = "Soul Break";
-                    soulBreakBoxes[i].Items.Clear();
                 }
             }
 
