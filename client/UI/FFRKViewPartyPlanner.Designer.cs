@@ -155,6 +155,11 @@
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.buttonSaveParty = new System.Windows.Forms.Button();
+            this.buttonLoadParty = new System.Windows.Forms.Button();
+            this.comboBoxSavedParties = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonDeleteParty = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1477,10 +1482,62 @@
             this.label4.Text = "Dropdowns empty?  The game only sends this information the first time you view yo" +
     "ur party screen.  You may need to close and re-open the app.";
             // 
+            // buttonSaveParty
+            // 
+            this.buttonSaveParty.Location = new System.Drawing.Point(575, 460);
+            this.buttonSaveParty.Name = "buttonSaveParty";
+            this.buttonSaveParty.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveParty.TabIndex = 70;
+            this.buttonSaveParty.Text = "Save";
+            this.buttonSaveParty.UseVisualStyleBackColor = true;
+            this.buttonSaveParty.Click += new System.EventHandler(this.buttonSaveParty_Click);
+            // 
+            // buttonLoadParty
+            // 
+            this.buttonLoadParty.Location = new System.Drawing.Point(656, 460);
+            this.buttonLoadParty.Name = "buttonLoadParty";
+            this.buttonLoadParty.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoadParty.TabIndex = 71;
+            this.buttonLoadParty.Text = "Load";
+            this.buttonLoadParty.UseVisualStyleBackColor = true;
+            this.buttonLoadParty.Click += new System.EventHandler(this.buttonLoadParty_Click);
+            // 
+            // comboBoxSavedParties
+            // 
+            this.comboBoxSavedParties.FormattingEnabled = true;
+            this.comboBoxSavedParties.Location = new System.Drawing.Point(654, 428);
+            this.comboBoxSavedParties.Name = "comboBoxSavedParties";
+            this.comboBoxSavedParties.Size = new System.Drawing.Size(158, 21);
+            this.comboBoxSavedParties.TabIndex = 72;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(575, 431);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.TabIndex = 73;
+            this.label5.Text = "Saved Parties";
+            // 
+            // buttonDeleteParty
+            // 
+            this.buttonDeleteParty.Location = new System.Drawing.Point(737, 460);
+            this.buttonDeleteParty.Name = "buttonDeleteParty";
+            this.buttonDeleteParty.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteParty.TabIndex = 74;
+            this.buttonDeleteParty.Text = "Delete";
+            this.buttonDeleteParty.UseVisualStyleBackColor = true;
+            this.buttonDeleteParty.Click += new System.EventHandler(this.buttonDeleteParty_Click);
+            // 
             // FFRKViewPartyPlanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonDeleteParty);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBoxSavedParties);
+            this.Controls.Add(this.buttonLoadParty);
+            this.Controls.Add(this.buttonSaveParty);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox13);
             this.Controls.Add(this.groupBox12);
@@ -1664,5 +1721,10 @@
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button buttonSaveParty;
+        private System.Windows.Forms.Button buttonLoadParty;
+        private System.Windows.Forms.ComboBox comboBoxSavedParties;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonDeleteParty;
     }
 }

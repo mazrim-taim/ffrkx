@@ -846,8 +846,15 @@
     <Compile Include="UI\DatabaseUI\MissingItemsPanel.Designer.cs">
       <DependentUpon>MissingItemsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SavedPartyData.cs" />
     <Compile Include="UI\SeriesDataGridViewCell.cs" />
     <Compile Include="Analyzer\AnalyzerSettings.cs" />
+    <Compile Include="UI\TextInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TextInput.Designer.cs">
+      <DependentUpon>TextInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\CriticalZ.cs" />
     <Compile Include="Utility\Histogram.cs" />
     <Compile Include="Utility\IConverter.cs" />
@@ -903,6 +910,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ListViewEx.resx">
       <DependentUpon>ListViewEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TextInput.resx">
+      <DependentUpon>TextInput.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="EquipmentStatsDataSet.xsc">

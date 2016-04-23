@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData
 {
     abstract class Ability
     {       
-        public virtual uint AbilityId { get { return 0; } }
+        public virtual uint AbilityId { get { return 9999999; } }
         public virtual SchemaConstants.AbilityCategory Category { get { return SchemaConstants.AbilityCategory.None; } }
         public virtual SchemaConstants.ElementID Element { get { return SchemaConstants.ElementID.None; } }
         public virtual SchemaConstants.Formulas Formula { get { return SchemaConstants.Formulas.None; } }
