@@ -13,7 +13,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 
         public override double AbilityModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory, Ability ability)
         {
-            if (weapon.Category == SchemaConstants.EquipmentCategory.Bow && ability.Formula == SchemaConstants.Formulas.Physical)
+            if (weapon != null && weapon.Category == SchemaConstants.EquipmentCategory.Bow && ability.Formula == SchemaConstants.Formulas.Physical)
             {
                 return 1.2;
             }

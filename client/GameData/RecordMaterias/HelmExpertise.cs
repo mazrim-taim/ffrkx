@@ -13,7 +13,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 
         public override double DefModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)
         {
-            if (armor.Category == SchemaConstants.EquipmentCategory.Helm)
+            if (armor != null && armor.Category == SchemaConstants.EquipmentCategory.Helm)
             {
                 return 1.1;
             }
