@@ -160,6 +160,8 @@
             this.comboBoxSavedParties = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonDeleteParty = new System.Windows.Forms.Button();
+            this.buttonOptimize = new System.Windows.Forms.Button();
+            this.backgroundWorkerOptimizer = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1529,10 +1531,28 @@
             this.buttonDeleteParty.UseVisualStyleBackColor = true;
             this.buttonDeleteParty.Click += new System.EventHandler(this.buttonDeleteParty_Click);
             // 
+            // buttonOptimize
+            // 
+            this.buttonOptimize.Location = new System.Drawing.Point(573, 522);
+            this.buttonOptimize.Name = "buttonOptimize";
+            this.buttonOptimize.Size = new System.Drawing.Size(75, 23);
+            this.buttonOptimize.TabIndex = 33;
+            this.buttonOptimize.Text = "Optimize";
+            this.buttonOptimize.UseVisualStyleBackColor = true;
+            this.buttonOptimize.Click += new System.EventHandler(this.buttonOptimize_Click);
+            // 
+            // backgroundWorkerOptimizer
+            // 
+            this.backgroundWorkerOptimizer.WorkerReportsProgress = true;
+            this.backgroundWorkerOptimizer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerOptimizer_DoWork);
+            this.backgroundWorkerOptimizer.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerOptimizer_ProgressChanged);
+            this.backgroundWorkerOptimizer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerOptimizer_RunWorkerCompleted);
+            // 
             // FFRKViewPartyPlanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonOptimize);
             this.Controls.Add(this.buttonDeleteParty);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxSavedParties);
@@ -1726,5 +1746,7 @@
         private System.Windows.Forms.ComboBox comboBoxSavedParties;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonDeleteParty;
+        private System.Windows.Forms.Button buttonOptimize;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerOptimizer;
     }
 }

@@ -852,6 +852,18 @@
     <Compile Include="UI\DatabaseUI\MissingItemsPanel.Designer.cs">
       <DependentUpon>MissingItemsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\OptimizerRoleSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OptimizerRoleSelector.Designer.cs">
+      <DependentUpon>OptimizerRoleSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProgressDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProgressDisplay.Designer.cs">
+      <DependentUpon>ProgressDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SeriesDataGridViewCell.cs" />
     <Compile Include="Analyzer\AnalyzerSettings.cs" />
     <Compile Include="UI\TextInput.cs">
@@ -915,6 +927,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ListViewEx.resx">
       <DependentUpon>ListViewEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OptimizerRoleSelector.resx">
+      <DependentUpon>OptimizerRoleSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProgressDisplay.resx">
+      <DependentUpon>ProgressDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TextInput.resx">
       <DependentUpon>TextInput.cs</DependentUpon>
