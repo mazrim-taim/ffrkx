@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -102,6 +102,7 @@
     <Compile Include="GameData\Abilities\Alexander.cs" />
     <Compile Include="GameData\Abilities\ArmorBreakdown.cs" />
     <Compile Include="GameData\Abilities\ArmorStrike.cs" />
+    <Compile Include="GameData\Abilities\Attack.cs" />
     <Compile Include="GameData\Abilities\Bahamut.cs" />
     <Compile Include="GameData\Abilities\BanishingStrike.cs" />
     <Compile Include="GameData\Abilities\BioStrike.cs" />
@@ -351,6 +352,7 @@
     <Compile Include="GameData\RecordMaterias\CulturedConjurer.cs" />
     <Compile Include="GameData\RecordMaterias\Devotion.cs" />
     <Compile Include="GameData\RecordMaterias\DragoonsDetermination.cs" />
+    <Compile Include="GameData\RecordMaterias\DrMogsTeachings.cs" />
     <Compile Include="GameData\RecordMaterias\EidolonsBond.cs" />
     <Compile Include="GameData\RecordMaterias\ElderSage.cs" />
     <Compile Include="GameData\RecordMaterias\FairiesBoon.cs" />
@@ -378,6 +380,7 @@
     <Compile Include="GameData\RecordMaterias\LightOfTheFayth.cs" />
     <Compile Include="GameData\RecordMaterias\LovingSoul.cs" />
     <Compile Include="GameData\RecordMaterias\MagicMadness.cs" />
+    <Compile Include="GameData\RecordMaterias\MakoMight.cs" />
     <Compile Include="GameData\RecordMaterias\MasterArcher.cs" />
     <Compile Include="GameData\RecordMaterias\MasterSniper.cs" />
     <Compile Include="GameData\RecordMaterias\MightOfEarth.cs" />
@@ -608,6 +611,7 @@
     <Compile Include="GameData\SoulBreaks\SeikenShock.cs" />
     <Compile Include="GameData\SoulBreaks\SeikenStockBreak.cs" />
     <Compile Include="GameData\SoulBreaks\Sending.cs" />
+    <Compile Include="GameData\SoulBreaks\SentinelsGrimoire.cs" />
     <Compile Include="GameData\SoulBreaks\Shadowbringer.cs" />
     <Compile Include="GameData\SoulBreaks\ShadowFang.cs" />
     <Compile Include="GameData\SoulBreaks\ShadowFlare.cs" />
@@ -616,6 +620,7 @@
     <Compile Include="GameData\SoulBreaks\ShiftBreak.cs" />
     <Compile Include="GameData\SoulBreaks\ShiningWave.cs" />
     <Compile Include="GameData\SoulBreaks\ShootingStar.cs" />
+    <Compile Include="GameData\SoulBreaks\Shout.cs" />
     <Compile Include="GameData\SoulBreaks\ShurikenStrike.cs" />
     <Compile Include="GameData\SoulBreaks\SledFang.cs" />
     <Compile Include="GameData\SoulBreaks\SliceAndDice.cs" />
@@ -634,6 +639,7 @@
     <Compile Include="GameData\SoulBreaks\SteadyShotI.cs" />
     <Compile Include="GameData\SoulBreaks\SteadyShotII.cs" />
     <Compile Include="GameData\SoulBreaks\StellarCircle5.cs" />
+    <Compile Include="GameData\SoulBreaks\StoneskinII.cs" />
     <Compile Include="GameData\SoulBreaks\StormlanceGrimoire.cs" />
     <Compile Include="GameData\SoulBreaks\StrahlStrafe.cs" />
     <Compile Include="GameData\SoulBreaks\SummonEidolonI.cs" />
