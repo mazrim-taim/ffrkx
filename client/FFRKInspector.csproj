@@ -118,6 +118,7 @@
     <Compile Include="GameData\Abilities\Chakra.cs" />
     <Compile Include="GameData\Abilities\ChiBlast.cs" />
     <Compile Include="GameData\Abilities\Chocobo.cs" />
+    <Compile Include="GameData\Abilities\ConfuseShell.cs" />
     <Compile Include="GameData\Abilities\Cry.cs" />
     <Compile Include="GameData\Abilities\DaggerToss.cs" />
     <Compile Include="GameData\Abilities\DarkAttack.cs" />
@@ -350,6 +351,7 @@
     <Compile Include="GameData\RecordMaterias\CetrasDestiny.cs" />
     <Compile Include="GameData\RecordMaterias\ConcertMusician.cs" />
     <Compile Include="GameData\RecordMaterias\CulturedConjurer.cs" />
+    <Compile Include="GameData\RecordMaterias\DesertBloom.cs" />
     <Compile Include="GameData\RecordMaterias\Devotion.cs" />
     <Compile Include="GameData\RecordMaterias\DragoonsDetermination.cs" />
     <Compile Include="GameData\RecordMaterias\DrMogsTeachings.cs" />
@@ -398,6 +400,7 @@
     <Compile Include="GameData\RecordMaterias\RodMaster.cs" />
     <Compile Include="GameData\RecordMaterias\RonsoPride.cs" />
     <Compile Include="GameData\RecordMaterias\SelfSacrifice.cs" />
+    <Compile Include="GameData\RecordMaterias\ShieldOfDalmasca.cs" />
     <Compile Include="GameData\RecordMaterias\ShurikenMaster.cs" />
     <Compile Include="GameData\RecordMaterias\SoldiersPride.cs" />
     <Compile Include="GameData\RecordMaterias\SoldierStrike.cs" />
@@ -521,6 +524,7 @@
     <Compile Include="GameData\SoulBreaks\FlamesOfRebirth.cs" />
     <Compile Include="GameData\SoulBreaks\FluidAura.cs" />
     <Compile Include="GameData\SoulBreaks\Froststrike.cs" />
+    <Compile Include="GameData\SoulBreaks\FulminatingDarkness.cs" />
     <Compile Include="GameData\SoulBreaks\Gauntlet.cs" />
     <Compile Include="GameData\SoulBreaks\GoddesssBell.cs" />
     <Compile Include="GameData\SoulBreaks\GrandCross.cs" />
