@@ -12,7 +12,7 @@ namespace FFRKInspector.GameData.Abilities
         public override SchemaConstants.AbilityCategory Category { get { return SchemaConstants.AbilityCategory.Knight; } }
         public override SchemaConstants.Formulas Formula { get { return SchemaConstants.Formulas.Physical; } }
         public override double Multiplier { get { return 1.6; } }
-        public override string Name { get { return "Shield Bask"; } }
+        public override string Name { get { return "Shield Bash"; } }
         public override int Rarity { get { return 3; } }
     }
 }
