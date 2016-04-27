@@ -11,6 +11,6 @@ namespace FFRKInspector.GameData.Abilities
         public override uint AbilityId { get { return 30241041; } }
         public override SchemaConstants.AbilityCategory Category { get { return SchemaConstants.AbilityCategory.Bard; } }
         public override string Name { get { return "Enveloping Etude"; } }
-        public override int Rarity { get { return 3; } }
+        public override int Rarity { get { return 4; } }
     }
 }
