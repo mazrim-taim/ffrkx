@@ -944,7 +944,12 @@ namespace FFRKInspector.UI
 
         private void comboBoxAbility_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RecalculateStats((Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1) / 2);
+            int index = (Int32.Parse(((ComboBox)sender).Name.Last().ToString())) - 1;
+            if(index == -1)
+            {
+                index = 9;
+            }
+            RecalculateStats(index / 2);
         }
 
         private void textBoxEnemyStats_TextChanged(object sender, EventArgs e)
