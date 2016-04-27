@@ -665,10 +665,6 @@ namespace FFRKInspector.UI
 
         private string damageStringForCharacter(int characterIndex, GameData.Ability ability)
         {
-            if (ability.Name == "Cactuar")
-            {
-                return 1000.ToString("#,##0.##") + " * 3";
-            }
             GameData.DataBuddyInformation character = characters[characterIndex];
             DataEquipmentInformation weapon = weapons[characterIndex];
             DataEquipmentInformation armor = armors[characterIndex];
