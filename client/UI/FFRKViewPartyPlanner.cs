@@ -1464,7 +1464,12 @@ namespace FFRKInspector.UI
             }
 
             atkArmor = atkArmor.OrderByDescending(armor => armor.StatWithSynergy(stat,
-                armor.SeriesId == RealmSynergy.SeriesId || character.EligibleForNightmareShift(RealmSynergy.NightmareCategory))).ToList();
+                armor.SeriesId == RealmSynergy.SeriesId || character.EligibleForNightmareShift(RealmSynergy.NightmareCategory)))
+                .ThenByDescending(armor => armor.StatWithSynergy("Res", armor.SeriesId == RealmSynergy.SeriesId
+                    || character.EligibleForNightmareShift(RealmSynergy.NightmareCategory))
+                        + armor.StatWithSynergy("Def", armor.SeriesId == RealmSynergy.SeriesId
+                        || character.EligibleForNightmareShift(RealmSynergy.NightmareCategory)))
+                .ToList();
             List<DataEquipmentInformation> possibleArmor = new List<DataEquipmentInformation>();
             foreach (DataEquipmentInformation armor in atkArmor)
             {
@@ -1478,7 +1483,12 @@ namespace FFRKInspector.UI
             DataEquipmentInformation accessory = party.Equipments.Where(equip => equip.Type == GameData.SchemaConstants.ItemType.Accessory
                 && !equippedAccessories.Contains(equip.InstanceId))
                 .OrderByDescending(acc => acc.StatWithSynergy(stat, acc.SeriesId == RealmSynergy.SeriesId
-                    || character.EligibleForNightmareShift(RealmSynergy.NightmareCategory))).First();
+                    || character.EligibleForNightmareShift(RealmSynergy.NightmareCategory)))
+                    .ThenByDescending(acc => acc.StatWithSynergy("Res", acc.SeriesId == RealmSynergy.SeriesId
+                    || character.EligibleForNightmareShift(RealmSynergy.NightmareCategory))
+                        + acc.StatWithSynergy("Def", acc.SeriesId == RealmSynergy.SeriesId
+                        || character.EligibleForNightmareShift(RealmSynergy.NightmareCategory)))
+                    .First();
 
             List<DataRecordMateriaInformation> possibleRecordMateria = new List<DataRecordMateriaInformation>();
             if (!ignoreRecordMateria)
@@ -1568,6 +1578,15 @@ namespace FFRKInspector.UI
                                 armorToEquip = armor;
                                 recordMateriaToEquip = recordMateria;
                             }
+                            else if (damage == maxDamage && weapon == weaponToEquip && armor != armorToEquip)
+                            {
+                                bool otherArmorSynergy = armorToEquip.SeriesId == RealmSynergy.SeriesId || characterHasNightmareShift;
+                                if ((armor.StatWithSynergy("Def", armorHasSynergy) + armor.StatWithSynergy("Res", armorHasSynergy)) >
+                                    (armorToEquip.StatWithSynergy("Def", otherArmorSynergy) + armorToEquip.StatWithSynergy("Res", otherArmorSynergy)))
+                                {
+                                    armorToEquip = armor;
+                                }
+                            }
                         }
                     }
                     else
@@ -1587,6 +1606,15 @@ namespace FFRKInspector.UI
                             weaponToEquip = weapon;
                             armorToEquip = armor;
                             recordMateriaToEquip = recordMateria;
+                        }
+                        else if (damage == maxDamage && weapon == weaponToEquip && armor != armorToEquip)
+                        {
+                            bool otherArmorSynergy = armorToEquip.SeriesId == RealmSynergy.SeriesId || characterHasNightmareShift;
+                            if ((armor.StatWithSynergy("Def", armorHasSynergy) + armor.StatWithSynergy("Res", armorHasSynergy)) >
+                                (armorToEquip.StatWithSynergy("Def", otherArmorSynergy) + armorToEquip.StatWithSynergy("Res", otherArmorSynergy)))
+                            {
+                                armorToEquip = armor;
+                            }
                         }
                     }
                 }
