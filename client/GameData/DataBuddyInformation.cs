@@ -31,7 +31,7 @@ namespace FFRKInspector.GameData
         [JsonProperty("level_max")]
         public byte LevelMax;
 
-        [JsonProperty("soul_strike_id")]
+        [JsonProperty("default_soul_strike_id")]
         public uint SoulStrike;
 
         [JsonProperty("job_name")]
@@ -118,7 +118,8 @@ namespace FFRKInspector.GameData
 
         public IEnumerable<SoulBreak> UsableSoulBreaks
         {
-            get { return SoulBreak.AllSoulBreaks().Where(soulBreak => SoulBreakExpMap.Keys.Any(sb => sb == soulBreak.SoulBreakId)); }
+            get { return SoulBreak.AllSoulBreaks().Where(soulBreak => SoulBreakExpMap.Keys.Any(sb => sb == soulBreak.SoulBreakId)
+                || soulBreak.SoulBreakId == SoulStrike); }
         }
 
         public short StatInRealm(string stat, uint gameSeries)
