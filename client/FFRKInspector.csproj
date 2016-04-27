@@ -84,7 +84,6 @@
     <Compile Include="DataCache\Worlds.cs" />
     <Compile Include="EquipmentStatsDataSet.cs">
       <DependentUpon>EquipmentStatsDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="EquipmentStatsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
