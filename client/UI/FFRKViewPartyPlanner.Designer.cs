@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboBoxPartyMember1 = new System.Windows.Forms.ComboBox();
             this.comboBoxPartyMember2 = new System.Windows.Forms.ComboBox();
             this.comboBoxPartyMember3 = new System.Windows.Forms.ComboBox();
@@ -162,6 +163,21 @@
             this.buttonDeleteParty = new System.Windows.Forms.Button();
             this.buttonOptimize = new System.Windows.Forms.Button();
             this.backgroundWorkerOptimizer = new System.ComponentModel.BackgroundWorker();
+            this.toolTipAbilityDamage1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbilityDamage2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbilityDamage3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbilityDamage4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbilityDamage5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbilityDamage6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbilityDamage7 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbilityDamage8 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbilityDamage9 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbilityDamage10 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipSoulBreakDamage1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipSoulBreakDamage2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipSoulBreakDamage3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipSoulBreakDamage4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipSoulBreakDamage5 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1748,5 +1764,20 @@
         private System.Windows.Forms.Button buttonDeleteParty;
         private System.Windows.Forms.Button buttonOptimize;
         private System.ComponentModel.BackgroundWorker backgroundWorkerOptimizer;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage1;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage2;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage3;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage4;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage5;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage6;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage7;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage8;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage9;
+        private System.Windows.Forms.ToolTip toolTipAbilityDamage10;
+        private System.Windows.Forms.ToolTip toolTipSoulBreakDamage1;
+        private System.Windows.Forms.ToolTip toolTipSoulBreakDamage2;
+        private System.Windows.Forms.ToolTip toolTipSoulBreakDamage3;
+        private System.Windows.Forms.ToolTip toolTipSoulBreakDamage4;
+        private System.Windows.Forms.ToolTip toolTipSoulBreakDamage5;
     }
 }

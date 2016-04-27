@@ -31,7 +31,9 @@ namespace FFRKInspector.UI
         private TextBox[] evaFields = new TextBox[5];
         private TextBox[] spdFields = new TextBox[5];
         private TextBox[] abilityDamageFields = new TextBox[10];
+        private ToolTip[] abilityDamageTooltips = new ToolTip[10];
         private TextBox[] soulBreakDamageFields = new TextBox[5];
+        private ToolTip[] soulBreakDamageTooltips = new ToolTip[5];
         private EquipmentSelectorModal equipmentModal = new EquipmentSelectorModal();
         private TextInput textInputModal = new TextInput();
         private ProgressDisplay progressDisplay = new ProgressDisplay();
@@ -164,11 +166,28 @@ namespace FFRKInspector.UI
             abilityDamageFields[8] = textBoxAbilityDamage9;
             abilityDamageFields[9] = textBoxAbilityDamage10;
 
+            abilityDamageTooltips[0] = toolTipAbilityDamage1;
+            abilityDamageTooltips[1] = toolTipAbilityDamage2;
+            abilityDamageTooltips[2] = toolTipAbilityDamage3;
+            abilityDamageTooltips[3] = toolTipAbilityDamage4;
+            abilityDamageTooltips[4] = toolTipAbilityDamage5;
+            abilityDamageTooltips[5] = toolTipAbilityDamage6;
+            abilityDamageTooltips[6] = toolTipAbilityDamage7;
+            abilityDamageTooltips[7] = toolTipAbilityDamage8;
+            abilityDamageTooltips[8] = toolTipAbilityDamage9;
+            abilityDamageTooltips[9] = toolTipAbilityDamage10;
+
             soulBreakDamageFields[0] = textBoxSoulBreakDamage1;
             soulBreakDamageFields[1] = textBoxSoulBreakDamage2;
             soulBreakDamageFields[2] = textBoxSoulBreakDamage3;
             soulBreakDamageFields[3] = textBoxSoulBreakDamage4;
             soulBreakDamageFields[4] = textBoxSoulBreakDamage5;
+
+            soulBreakDamageTooltips[0] = toolTipSoulBreakDamage1;
+            soulBreakDamageTooltips[1] = toolTipSoulBreakDamage2;
+            soulBreakDamageTooltips[2] = toolTipSoulBreakDamage3;
+            soulBreakDamageTooltips[3] = toolTipSoulBreakDamage4;
+            soulBreakDamageTooltips[4] = toolTipSoulBreakDamage5;
 
             foreach (GameData.RealmSynergy.SynergyValue synergy in GameData.RealmSynergy.Values)
             {
@@ -518,7 +537,7 @@ namespace FFRKInspector.UI
             if (abilities[characterIndex * 2] != null)
             {
                 GameData.Ability ability = abilities[characterIndex * 2];
-                abilityDamageFields[characterIndex * 2].Text = damageStringForCharacter(characterIndex, ability);
+                abilityDamageFields[characterIndex * 2].Text = damageStringForCharacter(characterIndex, ability, abilityDamageFields[characterIndex * 2], abilityDamageTooltips[characterIndex * 2]);
                 if (ability.Formula == GameData.SchemaConstants.Formulas.Healing)
                 {
                     abilityDamageFields[characterIndex * 2].BackColor = System.Drawing.Color.Lime;
@@ -532,12 +551,13 @@ namespace FFRKInspector.UI
             {
                 abilityDamageFields[characterIndex * 2].Text = "";
                 abilityDamageFields[characterIndex * 2].BackColor = System.Drawing.SystemColors.Control;
+                abilityDamageTooltips[characterIndex * 2].SetToolTip(abilityDamageFields[characterIndex * 2], "");
             }
 
             if (abilities[characterIndex * 2 + 1] != null)
             {
                 GameData.Ability ability = abilities[characterIndex * 2 + 1];
-                abilityDamageFields[characterIndex * 2 + 1].Text = damageStringForCharacter(characterIndex, ability);
+                abilityDamageFields[characterIndex * 2 + 1].Text = damageStringForCharacter(characterIndex, ability, abilityDamageFields[characterIndex * 2 + 1], abilityDamageTooltips[characterIndex * 2 + 1]);
                 if (ability.Formula == GameData.SchemaConstants.Formulas.Healing)
                 {
                     abilityDamageFields[characterIndex * 2 + 1].BackColor = System.Drawing.Color.Lime;
@@ -551,12 +571,14 @@ namespace FFRKInspector.UI
             {
                 abilityDamageFields[characterIndex * 2 + 1].Text = "";
                 abilityDamageFields[characterIndex * 2 + 1].BackColor = System.Drawing.SystemColors.Control;
+                abilityDamageTooltips[characterIndex * 2 + 1].SetToolTip(abilityDamageFields[characterIndex * 2 + 1], "");
             }
 
             if (soulBreaks[characterIndex] != null)
             {
                 GameData.SoulBreak soulBreak = soulBreaks[characterIndex];
-                soulBreakDamageFields[characterIndex].Text = damageStringForCharacter(characterIndex, soulBreak);
+                soulBreakDamageFields[characterIndex].Text = damageStringForCharacter(characterIndex, soulBreak, soulBreakDamageFields[characterIndex], soulBreakDamageTooltips[characterIndex]);
+
                 if (soulBreak.Formula == GameData.SchemaConstants.Formulas.Healing)
                 {
                     soulBreakDamageFields[characterIndex].BackColor = System.Drawing.Color.Lime;
@@ -570,6 +592,7 @@ namespace FFRKInspector.UI
             {
                 soulBreakDamageFields[characterIndex].Text = "";
                 soulBreakDamageFields[characterIndex].BackColor = System.Drawing.SystemColors.Control;
+                soulBreakDamageTooltips[characterIndex].SetToolTip(soulBreakDamageFields[characterIndex], "");
             }
         }
 
@@ -663,7 +686,7 @@ namespace FFRKInspector.UI
             return baseValue;
         }
 
-        private string damageStringForCharacter(int characterIndex, GameData.Ability ability)
+        private string damageStringForCharacter(int characterIndex, GameData.Ability ability, TextBox damageField, ToolTip tooltip)
         {
             GameData.DataBuddyInformation character = characters[characterIndex];
             DataEquipmentInformation weapon = weapons[characterIndex];
@@ -683,7 +706,12 @@ namespace FFRKInspector.UI
                 {
                     hits = Math.Max(1, (int)Math.Floor((Double.Parse(spdFields[characterIndex].Text) - 120) / 10));
                 }
+                tooltip.SetToolTip(damageField, (Math.Min(damage, 9999) * hits).ToString("#,##0.##") + " total damage");
                 damageString += " * " + hits;
+            }
+            else
+            {
+                tooltip.SetToolTip(damageField, "");
             }
             return damageString;
         }
