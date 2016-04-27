@@ -573,6 +573,7 @@
     <Compile Include="GameData\SoulBreaks\MeteorBarrage.cs" />
     <Compile Include="GameData\SoulBreaks\MiraclePrayer.cs" />
     <Compile Include="GameData\SoulBreaks\MirageDive.cs" />
+    <Compile Include="GameData\SoulBreaks\MistOverload.cs" />
     <Compile Include="GameData\SoulBreaks\Nekodamashi.cs" />
     <Compile Include="GameData\SoulBreaks\NibelheimNightmare.cs" />
     <Compile Include="GameData\SoulBreaks\Nightglow.cs" />
