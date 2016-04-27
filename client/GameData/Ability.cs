@@ -70,7 +70,7 @@ namespace FFRKInspector.GameData
             double normal_damage = Math.Min(2000, Math.Pow(mag, 1.15)) * Math.Pow(mag, 0.5) / Math.Pow(res, 0.5);
             if (MinimumDamage > 0)
             {
-                normal_damage = Math.Max(normal_damage, MinimumDamage / Math.Pow(res, 0.05));
+                normal_damage = Math.Max(normal_damage, MinimumDamage / Math.Pow(res, 0.05) / Multiplier);
             }
             return normal_damage;
         }
