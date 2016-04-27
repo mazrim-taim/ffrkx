@@ -11,7 +11,6 @@ namespace FFRKInspector.GameData.SoulBreaks
         public override uint SoulBreakId { get { return 20140004; } }
         public override SchemaConstants.BuddyID BuddyId { get { return SchemaConstants.BuddyID.DESHI; } }
         public override SchemaConstants.Formulas Formula { get { return SchemaConstants.Formulas.None; } }
-        public override double Multiplier { get { return 0; } }
         public override string Name { get { return "Sentinel's Grimoire"; } }
         public override int NumberOfHits { get { return 0; } }
     }

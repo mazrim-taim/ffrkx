@@ -11,7 +11,6 @@ namespace FFRKInspector.GameData.SoulBreaks
         public override uint SoulBreakId { get { return 20960002; } }
         public override SchemaConstants.BuddyID BuddyId { get { return SchemaConstants.BuddyID.YSHTOLA; } }
         public override SchemaConstants.Formulas Formula { get { return SchemaConstants.Formulas.None; } }
-        public override double Multiplier { get { return 0; } }
         public override string Name { get { return "Stoneskin II"; } }
         public override int NumberOfHits { get { return 0; } }
     }
