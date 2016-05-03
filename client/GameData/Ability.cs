@@ -8,7 +8,7 @@ namespace FFRKInspector.GameData
 {
     abstract class Ability
     {       
-        public virtual uint AbilityId { get { return 0; } }
+        public virtual uint AbilityId { get { return 9999999; } }
         public virtual SchemaConstants.AbilityCategory Category { get { return SchemaConstants.AbilityCategory.None; } }
         public virtual SchemaConstants.ElementID Element { get { return SchemaConstants.ElementID.None; } }
         public virtual SchemaConstants.Formulas Formula { get { return SchemaConstants.Formulas.None; } }
@@ -68,9 +68,9 @@ namespace FFRKInspector.GameData
         public virtual double MagicalDamage(double mag, double res)
         {
             double normal_damage = Math.Min(2000, Math.Pow(mag, 1.15)) * Math.Pow(mag, 0.5) / Math.Pow(res, 0.5);
-            if (MinimumDamage > 0)
+            if (MinimumDamage > 0 && MinimumDamage / Math.Pow(res, 0.05) > normal_damage)
             {
-                normal_damage = Math.Max(normal_damage, MinimumDamage / Math.Pow(res, 0.05));
+                normal_damage = MinimumDamage / Math.Pow(res, 0.05) / Multiplier;
             }
             return normal_damage;
         }

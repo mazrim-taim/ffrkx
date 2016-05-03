@@ -32,8 +32,11 @@ namespace FFRKInspector.UI
         private TextBox[] spdFields = new TextBox[5];
         private TextBox[] abilityDamageFields = new TextBox[10];
         private TextBox[] soulBreakDamageFields = new TextBox[5];
+        private EquipmentSelectorModal equipmentModal = new EquipmentSelectorModal();
+        private TextInput textInputModal = new TextInput();
+        private Dictionary<string, PartyData> savedPartyData = new Dictionary<string, PartyData>();
 
-        private class Synergy
+        public class Synergy
         {
             public Synergy(string name, uint seriesId, GameData.SchemaConstants.AbilityCategory nightmareCategory)
             {
@@ -176,8 +179,46 @@ namespace FFRKInspector.UI
             comboBoxRealmSynergy.Items.Add(new Synergy("Tetra Foul Nightmare", 405001, GameData.SchemaConstants.AbilityCategory.Support));
             comboBoxRealmSynergy.Items.Add(new Synergy("Northern Cross Nightmare", 406001, GameData.SchemaConstants.AbilityCategory.Celerity));
             comboBoxRealmSynergy.Items.Add(new Synergy("Meltdown Nightmare", 407001, GameData.SchemaConstants.AbilityCategory.BlackMagic));
+
+            equipmentModal.UpdateRealmSynergies(comboBoxRealmSynergy.Items);
+            LoadSavedParties();
         }
 
+        private string SavedPartiesFilePath
+        {
+            get
+            {
+                string dirPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                dirPath = System.IO.Path.GetDirectoryName(dirPath);
+                return dirPath + @"\" + "partyData.json";
+            }
+        }
+
+        private void LoadSavedParties()
+        {
+            try
+            {
+                string input = System.IO.File.ReadAllText(SavedPartiesFilePath);
+                savedPartyData = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, PartyData>>(input);
+            }
+            catch (Exception) { }
+            if (savedPartyData == null)
+            {
+                savedPartyData = new Dictionary<string, PartyData>();
+            }
+            RefreshSavedParties();
+        }
+
+        private void RefreshSavedParties()
+        {
+            comboBoxSavedParties.Items.Clear();
+            comboBoxSavedParties.SelectedIndex = -1;
+            comboBoxSavedParties.Text = "";
+            foreach (string partyName in savedPartyData.Keys.OrderBy(name => name))
+            {
+                comboBoxSavedParties.Items.Add(partyName);
+            }
+        }
         private void FFRKViewPartyPlanner_Load(object sender, EventArgs e)
         {
             if (DesignMode)
@@ -352,13 +393,13 @@ namespace FFRKInspector.UI
         private void RecalculateAllStats()
         {
             textBoxEnemyEffectiveDef.Text = Math.Ceiling(Double.Parse(textBoxEnemyDef.Text) *
-                DebuffedDefMultiplier(1
+                DebuffedDefensiveMultiplier(1
                 * (checkBoxFullBreak.Checked ? (checkBoxArmorBreakResistant.Checked ? 0.85 : 0.7) : 1)
                 * (checkBoxArmorBreakdown.Checked ? (checkBoxArmorBreakResistant.Checked ? 0.8 : 0.6) : 1)
                 * (checkBoxBanishingBlade.Checked ? (checkBoxArmorBreakResistant.Checked ? 0.75 : 0.5) : 1))).ToString();
 
             textBoxEnemyEffectiveRes.Text = Math.Ceiling(Double.Parse(textBoxEnemyRes.Text) *
-                DebuffedResMultiplier(1
+                DebuffedDefensiveMultiplier(1
                 * (checkBoxFullBreak.Checked ? (checkBoxMentalBreakResistant.Checked ? 0.85 : 0.7) : 1)
                 * (checkBoxMentalBreakdown.Checked ? (checkBoxMentalBreakResistant.Checked ? 0.75 : 0.5) : 1))).ToString();
             
@@ -368,17 +409,27 @@ namespace FFRKInspector.UI
             }
         }
 
-        private double DebuffedDefMultiplier(double multiplier)
+        private double BuffedOffensiveMultiplier(double multiplier)
         {
-            if (multiplier >= 0.3)
+            if (multiplier <= 2.5)
             {
                 return multiplier;
             }
-            double newMultiplier = 0.3 - 1.5 * Math.Log10(1 + (0.3 - multiplier));
-            return Math.Max(newMultiplier, 0.2);
+            double newMultiplier = 2.5 + 0.3 * Math.Log(1 + (multiplier - 2.5));
+            return Math.Min(3, newMultiplier);
         }
 
-        private double DebuffedResMultiplier(double multiplier)
+        private double BuffedDefensiveMultiplier(double multiplier)
+        {
+            if (multiplier <= 4.5)
+            {
+                return multiplier;
+            }
+            double newMultiplier = 4.5 + 1.05 * Math.Log(1 + (multiplier - 4.5));
+            return Math.Min(9, newMultiplier);
+        }
+
+        private double DebuffedOffensiveMultiplier(double multiplier)
         {
             if (multiplier >= 0.35)
             {
@@ -386,6 +437,16 @@ namespace FFRKInspector.UI
             }
             double newMultiplier = 0.35 - 1.1 * Math.Log10(1 + (0.35 - multiplier));
             return Math.Max(newMultiplier, 0.3);
+        }
+
+        private double DebuffedDefensiveMultiplier(double multiplier)
+        {
+            if (multiplier >= 0.3)
+            {
+                return multiplier;
+            }
+            double newMultiplier = 0.3 - 1.5 * Math.Log10(1 + (0.3 - multiplier));
+            return Math.Max(newMultiplier, 0.2);
         }
         
         private void RecalculateStats(int characterIndex)
@@ -450,39 +511,34 @@ namespace FFRKInspector.UI
                 (accessory != null ? accessory.StatWithSynergy("HP", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             atkFields[characterIndex].Text = (
-                ((character != null ? (characterHasSynergy ? character.SeriesAtk : character.Atk) : 0) +
+                (character != null ? (characterHasSynergy ? character.SeriesAtk : character.Atk) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Atk", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Atk", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Atk", accessoryHasSynergy) : 0))
-                * (recordMateria != null ? recordMateria.AtkModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Atk", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             magFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesMag : character.Mag) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Mag", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Mag", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Mag", accessoryHasSynergy) : 0)
-                * (recordMateria != null ? recordMateria.MagModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Mag", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             mndFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesMag : character.Mag) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Mnd", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Mnd", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Mnd", accessoryHasSynergy) : 0)
-                * (recordMateria != null ? recordMateria.MndModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Mnd", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             defFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesDef : character.Def) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Def", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Def", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Def", accessoryHasSynergy) : 0)
-                * (recordMateria != null ? recordMateria.DefModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Def", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             resFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesRes : character.Res) : 0) +
                 (weapon != null ? weapon.StatWithSynergy("Res", weaponHasSynergy) : 0) +
                 (armor != null ? armor.StatWithSynergy("Res", armorHasSynergy) : 0) +
-                (accessory != null ? accessory.StatWithSynergy("Res", accessoryHasSynergy) : 0)
-                * (recordMateria != null ? recordMateria.ResModifier(weapon, armor, accessory) : 1)).ToString("#,##0.##");
+                (accessory != null ? accessory.StatWithSynergy("Res", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
             evaFields[characterIndex].Text = (
                 (character != null ? (characterHasSynergy ? character.SeriesEva : character.Eva) : 0) +
@@ -496,37 +552,49 @@ namespace FFRKInspector.UI
                 (armor != null ? armor.StatWithSynergy("Spd", armorHasSynergy) : 0) +
                 (accessory != null ? accessory.StatWithSynergy("Spd", accessoryHasSynergy) : 0)).ToString("#,##0.##");
 
+            double atkMultiplier = (recordMateria != null ? recordMateria.AtkModifier(weapon, armor, accessory) : 1);
+            double magMultiplier = (recordMateria != null ? recordMateria.MagModifier(weapon, armor, accessory) : 1);
+            double mndMultiplier = (recordMateria != null ? recordMateria.MndModifier(weapon, armor, accessory) : 1);
+            double defMultiplier = (recordMateria != null ? recordMateria.DefModifier(weapon, armor, accessory) : 1);
+            double resMultiplier = (recordMateria != null ? recordMateria.ResModifier(weapon, armor, accessory) : 1);
+
             if(recordMateria != null && (recordMateria.RecordMateriaId == 111070100 || recordMateria.RecordMateriaId == 111080060))
             {
                 // Loner or Solitude
                 for(int i = 0; i < characterBoxes.Count(box => box.SelectedItem == null); i++)
                 {
-                    atkFields[characterIndex].Text = Math.Floor(Double.Parse(atkFields[characterIndex].Text) * 1.1).ToString("#,##0.##");
-                    defFields[characterIndex].Text = Math.Floor(Double.Parse(defFields[characterIndex].Text) * 1.1).ToString("#,##0.##");
+                    atkMultiplier *= 1.1;
+                    defMultiplier *= 1.1;
                 }
             }
 
             if (checkBoxShout.Checked)
             {
-                atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * 1.5).ToString("#,##0.##");
+                atkMultiplier *= 1.5;
             }
 
             if (checkBoxHotE.Checked)
             {
-                atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * 1.3).ToString("#,##0.##");
-                defFields[characterIndex].Text = (Double.Parse(defFields[characterIndex].Text) * 1.3).ToString("#,##0.##");
+                atkMultiplier *= 1.3;
+                defMultiplier *= 1.3;
             }
 
             if (checkBoxFocus.Checked)
             {
-                magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * 1.2).ToString("#,##0.##");
-                resFields[characterIndex].Text = (Double.Parse(resFields[characterIndex].Text) * 1.5).ToString("#,##0.##");
+                magMultiplier *= 1.2;
+                resMultiplier *= 1.5;
             }
 
             if (checkBoxFaith.Checked)
             {
-                magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * 1.2).ToString("#,##0.##");
+                magMultiplier *= 1.2;
             }
+
+            atkFields[characterIndex].Text = (Double.Parse(atkFields[characterIndex].Text) * BuffedOffensiveMultiplier(atkMultiplier)).ToString("#,##0.##");
+            magFields[characterIndex].Text = (Double.Parse(magFields[characterIndex].Text) * BuffedOffensiveMultiplier(magMultiplier)).ToString("#,##0.##");
+            mndFields[characterIndex].Text = (Double.Parse(mndFields[characterIndex].Text) * BuffedOffensiveMultiplier(mndMultiplier)).ToString("#,##0.##");
+            defFields[characterIndex].Text = (Double.Parse(defFields[characterIndex].Text) * BuffedDefensiveMultiplier(defMultiplier)).ToString("#,##0.##");
+            resFields[characterIndex].Text = (Double.Parse(resFields[characterIndex].Text) * BuffedDefensiveMultiplier(resMultiplier)).ToString("#,##0.##");
 
             if (abilities[characterIndex * 2] != null)
             {
@@ -796,6 +864,15 @@ namespace FFRKInspector.UI
 
             RecalculateStats(index);
         }
+
+        private ComboBox mCurrentEquipmentList = null;
+
+        private void UpdateEquipmentGrid(GameData.DataBuddyInformation character, ComboBox equipmentList, List<uint> equippedItems)
+        {
+            mCurrentEquipmentList = equipmentList;
+            equipmentModal.UpdateEquipmentGrid(character, equipmentList, equippedItems, RealmSynergy);
+        }
+
         private void comboBoxPartyMember_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
@@ -839,7 +916,12 @@ namespace FFRKInspector.UI
 
         private void comboBoxAbility_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RecalculateStats((Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1) / 2);
+            int index = (Int32.Parse(((ComboBox)sender).Name.Last().ToString())) - 1;
+            if(index == -1)
+            {
+                index = 9;
+            }
+            RecalculateStats(index / 2);
         }
 
         private void textBoxEnemyStats_TextChanged(object sender, EventArgs e)
@@ -864,6 +946,395 @@ namespace FFRKInspector.UI
         private void checkBoxDebuff_CheckedChanged(object sender, EventArgs e)
         {
             RecalculateAllStats();
+        }
+
+        private void SelectEquipment(ComboBox equipmentList, uint instanceId)
+        {
+            for (int i = 0; i < equipmentList.Items.Count; i++)
+            {
+                if (((DataEquipmentInformation)equipmentList.Items[i]).InstanceId == instanceId)
+                {
+                    equipmentList.SelectedIndex = i;
+                    return;
+                }
+            }
+        }
+        
+        private void comboBoxWeapon_Click(object sender, EventArgs e)
+        {
+            if(((ComboBox)sender).Items.Count == 0)
+            {
+                return;
+            }
+            int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
+            GameData.DataBuddyInformation character = characters[index];
+            List<uint> equippedItems = new List<uint>();
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == index)
+                {
+                    continue;
+                }
+                if (weaponBoxes[i].SelectedItem != null)
+                {
+                    equippedItems.Add(((DataEquipmentInformation)weaponBoxes[i].SelectedItem).InstanceId);
+                }
+            }
+            UpdateEquipmentGrid(character, (ComboBox)sender, equippedItems);
+            if (equipmentModal.ShowDialog(this) == DialogResult.OK)
+            {
+                SelectEquipment((ComboBox)sender, equipmentModal.SelectedInstanceId);
+                ((ComboBox)sender).Select(0, 0);
+            }
+        }
+
+        private void comboBoxArmor_Click(object sender, EventArgs e)
+        {
+            if (((ComboBox)sender).Items.Count == 0)
+            {
+                return;
+            }
+            int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
+            GameData.DataBuddyInformation character = characters[index];
+            List<uint> equippedItems = new List<uint>();
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == index)
+                {
+                    continue;
+                }
+                if (armorBoxes[i].SelectedItem != null)
+                {
+                    equippedItems.Add(((DataEquipmentInformation)armorBoxes[i].SelectedItem).InstanceId);
+                }
+            }
+            UpdateEquipmentGrid(character, (ComboBox)sender, equippedItems);
+            if (equipmentModal.ShowDialog(this) == DialogResult.OK)
+            {
+                SelectEquipment((ComboBox)sender, equipmentModal.SelectedInstanceId);
+                ((ComboBox)sender).Select(0, 0);
+            }
+        }
+
+        private void comboBoxAccessory_Click(object sender, EventArgs e)
+        {
+            if (((ComboBox)sender).Items.Count == 0)
+            {
+                return;
+            }
+            int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
+            GameData.DataBuddyInformation character = characters[index];
+            List<uint> equippedItems = new List<uint>();
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == index)
+                {
+                    continue;
+                }
+                if (accessoryBoxes[i].SelectedItem != null)
+                {
+                    equippedItems.Add(((DataEquipmentInformation)accessoryBoxes[i].SelectedItem).InstanceId);
+                }
+            }
+            UpdateEquipmentGrid(character, (ComboBox)sender, equippedItems);
+            if (equipmentModal.ShowDialog(this) == DialogResult.OK)
+            {
+                SelectEquipment((ComboBox)sender, equipmentModal.SelectedInstanceId);
+                ((ComboBox)sender).Select(0, 0);
+            }
+        }
+
+        class PartyData
+        {
+            public Dictionary<string, uint>[] PartyMembers;
+            public uint RealmSynergy { get; set; }
+            public string EnemyDef { get; set; }
+            public string EnemyRes { get; set; }
+            public bool Shout { get; set; }
+            public bool HotE { get; set; }
+            public bool Focus { get; set; }
+            public bool Faith { get; set; }
+            public bool FullBreak { get; set; }
+            public bool ArmorBreakdown { get; set; }
+            public bool MentalBreakdown { get; set; }
+            public bool BanishingBlade { get; set; }
+            public bool ArmorBreakResistant { get; set; }
+            public bool MentalBreakResistant { get; set; }
+            
+            public PartyData()
+            {
+                PartyMembers = new Dictionary<string, uint>[5];
+            }
+        }
+        
+        private void buttonSaveParty_Click(object sender, EventArgs e)
+        {
+            textInputModal.Text = "Save Party";
+            textInputModal.Label = "Enter a new party name or the same name to overwrite an existing party.";
+            textInputModal.Value = (string)comboBoxSavedParties.SelectedItem;
+            if (textInputModal.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+            
+            PartyData data = new PartyData();
+
+            for (int i = 0; i < 5; i++)
+            {
+                data.PartyMembers[i] = new Dictionary<string, uint>();
+                GameData.DataBuddyInformation character = (GameData.DataBuddyInformation)characterBoxes[i].SelectedItem;
+                if (character == null)
+                {
+                    continue;
+                }
+                data.PartyMembers[i]["characterId"] = character.BuddyId;
+                data.PartyMembers[i]["weaponId"] = weaponBoxes[i].SelectedItem != null ? ((GameData.Party.DataEquipmentInformation)weaponBoxes[i].SelectedItem).InstanceId : 0;
+                data.PartyMembers[i]["armorId"] = armorBoxes[i].SelectedItem != null ? ((GameData.Party.DataEquipmentInformation)armorBoxes[i].SelectedItem).InstanceId : 0;
+                data.PartyMembers[i]["accessoryId"] = accessoryBoxes[i].SelectedItem != null ? ((GameData.Party.DataEquipmentInformation)accessoryBoxes[i].SelectedItem).InstanceId : 0;
+                data.PartyMembers[i]["recordMateriaId"] = recordMateriaBoxes[i].SelectedItem != null ? ((DataRecordMateriaInformation)recordMateriaBoxes[i].SelectedItem).RecordMateriaId : 0;
+                data.PartyMembers[i]["ability1Id"] = abilityBoxes[i * 2].SelectedItem != null ? ((GameData.Ability)abilityBoxes[i * 2].SelectedItem).AbilityId : 0;
+                data.PartyMembers[i]["ability2Id"] = abilityBoxes[i * 2 + 1].SelectedItem != null ? ((GameData.Ability)abilityBoxes[i * 2 + 1].SelectedItem).AbilityId : 0;
+                data.PartyMembers[i]["soulBreakId"] = soulBreakBoxes[i].SelectedItem != null ? ((GameData.SoulBreak)soulBreakBoxes[i].SelectedItem).SoulBreakId : 0;
+            }
+            data.RealmSynergy = RealmSynergy.SeriesId;
+            data.Shout = checkBoxShout.Checked;
+            data.HotE = checkBoxHotE.Checked;
+            data.Focus = checkBoxFocus.Checked;
+            data.Faith = checkBoxFaith.Checked;
+            data.FullBreak = checkBoxFullBreak.Checked;
+            data.ArmorBreakdown = checkBoxArmorBreakdown.Checked;
+            data.MentalBreakdown = checkBoxMentalBreakdown.Checked;
+            data.ArmorBreakResistant = checkBoxArmorBreakResistant.Checked;
+            data.MentalBreakResistant = checkBoxMentalBreakResistant.Checked;
+            data.BanishingBlade = checkBoxBanishingBlade.Checked;
+            data.EnemyDef = textBoxEnemyDef.Text;
+            data.EnemyRes = textBoxEnemyRes.Text;
+
+            string partyName = textInputModal.Value;
+            savedPartyData[partyName] = data;
+            WriteSavedPartiesFile(partyName);
+        }
+
+        private void WriteSavedPartiesFile(string partyName)
+        {
+            System.IO.File.WriteAllText(SavedPartiesFilePath, Newtonsoft.Json.JsonConvert.SerializeObject(savedPartyData));
+
+            RefreshSavedParties();
+            for (int i = 0; i < comboBoxSavedParties.Items.Count; i++)
+            {
+                if ((string)comboBoxSavedParties.Items[i] == partyName)
+                {
+                    comboBoxSavedParties.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void buttonLoadParty_Click(object sender, EventArgs e)
+        {
+            string partyName = (string)comboBoxSavedParties.SelectedItem;
+            if(partyName == null) {
+                return;
+            }
+            PartyData data = savedPartyData[partyName];
+            for (int i = 0; i < 5; i++)
+            {
+                Dictionary<string, uint> member = data.PartyMembers[i];
+                if (member.Keys.Count == 0)
+                {
+                    characterBoxes[i].SelectedIndex = -1;
+                    characterBoxes[i].Text = "Character";
+                    weaponBoxes[i].SelectedIndex = -1;
+                    weaponBoxes[i].Text = "Weapon";
+                    weaponBoxes[i].Items.Clear();
+                    armorBoxes[i].SelectedIndex = -1;
+                    armorBoxes[i].Text = "Armor";
+                    armorBoxes[i].Items.Clear();
+                    accessoryBoxes[i].SelectedIndex = -1;
+                    accessoryBoxes[i].Text = "Accessory";
+                    accessoryBoxes[i].Items.Clear();
+                    recordMateriaBoxes[i].SelectedIndex = -1;
+                    recordMateriaBoxes[i].Text = "Record Materia";
+                    abilityBoxes[i * 2].SelectedIndex = -1;
+                    abilityBoxes[i * 2].Text = "Ability";
+                    abilityBoxes[i * 2].Items.Clear();
+                    abilityBoxes[i * 2 + 1].SelectedIndex = -1;
+                    abilityBoxes[i * 2 + 1].Text = "Ability";
+                    abilityBoxes[i * 2 + 1].Items.Clear();
+                    soulBreakBoxes[i].SelectedIndex = -1;
+                    soulBreakBoxes[i].Text = "Soul Break";
+                    soulBreakBoxes[i].Items.Clear();
+                    continue;
+                }
+
+                for (int j = 0; j < characterBoxes[i].Items.Count; j++)
+                {
+                    if (((GameData.DataBuddyInformation)characterBoxes[i].Items[j]).BuddyId == member["characterId"])
+                    {
+                        characterBoxes[i].SelectedIndex = j;
+                        break;
+                    }
+                }
+
+                if (member["weaponId"] > 0)
+                {
+                    for (int j = 0; j < weaponBoxes[i].Items.Count; j++)
+                    {
+                        if (((GameData.Party.DataEquipmentInformation)weaponBoxes[i].Items[j]).InstanceId == member["weaponId"])
+                        {
+                            weaponBoxes[i].SelectedIndex = j;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    weaponBoxes[i].SelectedIndex = -1;
+                    weaponBoxes[i].Text = "Weapon";
+                }
+
+                if (member["armorId"] > 0)
+                {
+                    for (int j = 0; j < armorBoxes[i].Items.Count; j++)
+                    {
+                        if (((GameData.Party.DataEquipmentInformation)armorBoxes[i].Items[j]).InstanceId == member["armorId"])
+                        {
+                            armorBoxes[i].SelectedIndex = j;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    armorBoxes[i].SelectedIndex = -1;
+                    armorBoxes[i].Text = "Armor";
+                }
+
+                if (member["accessoryId"] > 0)
+                {
+                    for (int j = 0; j < accessoryBoxes[i].Items.Count; j++)
+                    {
+                        if (((GameData.Party.DataEquipmentInformation)accessoryBoxes[i].Items[j]).InstanceId == member["accessoryId"])
+                        {
+                            accessoryBoxes[i].SelectedIndex = j;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    accessoryBoxes[i].SelectedIndex = -1;
+                    accessoryBoxes[i].Text = "Accessory";
+                }
+
+                if (member["recordMateriaId"] > 0)
+                {
+                    for (int j = 0; j < recordMateriaBoxes[i].Items.Count; j++)
+                    {
+                        if (((DataRecordMateriaInformation)recordMateriaBoxes[i].Items[j]).RecordMateriaId == member["recordMateriaId"])
+                        {
+                            recordMateriaBoxes[i].SelectedIndex = j;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    recordMateriaBoxes[i].SelectedIndex = -1;
+                    recordMateriaBoxes[i].Text = "Record Materia";
+                }
+
+                if (member["ability1Id"] > 0)
+                {
+                    for (int j = 0; j < abilityBoxes[i * 2].Items.Count; j++)
+                    {
+                        if (((GameData.Ability)abilityBoxes[i * 2].Items[j]).AbilityId == member["ability1Id"])
+                        {
+                            abilityBoxes[i * 2].SelectedIndex = j;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    abilityBoxes[i * 2].SelectedIndex = -1;
+                    abilityBoxes[i * 2].Text = "Ability";
+                }
+
+                if (member["ability2Id"] > 0)
+                {
+                    for (int j = 0; j < abilityBoxes[i * 2 + 1].Items.Count; j++)
+                    {
+                        if (((GameData.Ability)abilityBoxes[i * 2 + 1].Items[j]).AbilityId == member["ability2Id"])
+                        {
+                            abilityBoxes[i * 2 + 1].SelectedIndex = j;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    abilityBoxes[i * 2 + 1].SelectedIndex = -1;
+                    abilityBoxes[i * 2 + 1].Text = "Ability";
+                }
+
+                if (member["soulBreakId"] > 0)
+                {
+                    for (int j = 0; j < soulBreakBoxes[i].Items.Count; j++)
+                    {
+                        if (((GameData.SoulBreak)soulBreakBoxes[i].Items[j]).SoulBreakId == member["soulBreakId"])
+                        {
+                            soulBreakBoxes[i].SelectedIndex = j;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    soulBreakBoxes[i].SelectedIndex = -1;
+                    soulBreakBoxes[i].Text = "Soul Break";
+                }
+            }
+
+            for (int i = 0; i < comboBoxRealmSynergy.Items.Count; i++)
+            {
+                if (((Synergy)comboBoxRealmSynergy.Items[i]).SeriesId == data.RealmSynergy)
+                {
+                    comboBoxRealmSynergy.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            textBoxEnemyDef.Text = data.EnemyDef;
+            textBoxEnemyRes.Text = data.EnemyRes;
+            checkBoxShout.Checked = data.Shout;
+            checkBoxHotE.Checked = data.HotE;
+            checkBoxFocus.Checked = data.Focus;
+            checkBoxFaith.Checked = data.Faith;
+            checkBoxFullBreak.Checked = data.FullBreak;
+            checkBoxArmorBreakdown.Checked = data.ArmorBreakdown;
+            checkBoxMentalBreakdown.Checked = data.MentalBreakdown;
+            checkBoxArmorBreakResistant.Checked = data.ArmorBreakResistant;
+            checkBoxMentalBreakResistant.Checked = data.MentalBreakResistant;
+            checkBoxBanishingBlade.Checked = data.BanishingBlade;
+
+            RecalculateAllStats();
+        }
+
+        private void buttonDeleteParty_Click(object sender, EventArgs e)
+        {
+            string partyName = (string)comboBoxSavedParties.SelectedItem;
+            if (partyName == null)
+            {
+                return;
+            }
+            if(MessageBox.Show(this, "Are you sure you want to delete the party " + partyName + "?", "Confirm party deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
+                != DialogResult.Yes)
+            {
+                return;
+            }
+            savedPartyData.Remove(partyName);
+            WriteSavedPartiesFile(partyName);
         }
     }
 }

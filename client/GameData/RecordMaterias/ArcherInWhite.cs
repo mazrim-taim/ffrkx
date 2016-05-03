@@ -13,7 +13,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 
         public override double MndModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)
         {
-            if (weapon.Category == SchemaConstants.EquipmentCategory.Bow)
+            if (weapon != null && weapon.Category == SchemaConstants.EquipmentCategory.Bow)
             {
                 return 1.1;
             }

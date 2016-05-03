@@ -13,7 +13,7 @@ namespace FFRKInspector.GameData.RecordMaterias
 
         public override double MagModifier(Party.DataEquipmentInformation weapon, Party.DataEquipmentInformation armor, Party.DataEquipmentInformation accessory)
         {
-            if (weapon.Category == SchemaConstants.EquipmentCategory.Gun)
+            if (weapon != null && weapon.Category == SchemaConstants.EquipmentCategory.Gun)
             {
                 return 1.1;
             }

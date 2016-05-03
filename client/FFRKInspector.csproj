@@ -116,6 +116,7 @@
     <Compile Include="GameData\Abilities\Chakra.cs" />
     <Compile Include="GameData\Abilities\ChiBlast.cs" />
     <Compile Include="GameData\Abilities\Chocobo.cs" />
+    <Compile Include="GameData\Abilities\ConfuseShell.cs" />
     <Compile Include="GameData\Abilities\Cry.cs" />
     <Compile Include="GameData\Abilities\DaggerToss.cs" />
     <Compile Include="GameData\Abilities\DarkAttack.cs" />
@@ -348,6 +349,7 @@
     <Compile Include="GameData\RecordMaterias\CetrasDestiny.cs" />
     <Compile Include="GameData\RecordMaterias\ConcertMusician.cs" />
     <Compile Include="GameData\RecordMaterias\CulturedConjurer.cs" />
+    <Compile Include="GameData\RecordMaterias\DesertBloom.cs" />
     <Compile Include="GameData\RecordMaterias\Devotion.cs" />
     <Compile Include="GameData\RecordMaterias\DragoonsDetermination.cs" />
     <Compile Include="GameData\RecordMaterias\EidolonsBond.cs" />
@@ -394,6 +396,7 @@
     <Compile Include="GameData\RecordMaterias\RodMaster.cs" />
     <Compile Include="GameData\RecordMaterias\RonsoPride.cs" />
     <Compile Include="GameData\RecordMaterias\SelfSacrifice.cs" />
+    <Compile Include="GameData\RecordMaterias\ShieldOfDalmasca.cs" />
     <Compile Include="GameData\RecordMaterias\ShurikenMaster.cs" />
     <Compile Include="GameData\RecordMaterias\SoldiersPride.cs" />
     <Compile Include="GameData\RecordMaterias\SoldierStrike.cs" />
@@ -517,6 +520,7 @@
     <Compile Include="GameData\SoulBreaks\FlamesOfRebirth.cs" />
     <Compile Include="GameData\SoulBreaks\FluidAura.cs" />
     <Compile Include="GameData\SoulBreaks\Froststrike.cs" />
+    <Compile Include="GameData\SoulBreaks\FulminatingDarkness.cs" />
     <Compile Include="GameData\SoulBreaks\Gauntlet.cs" />
     <Compile Include="GameData\SoulBreaks\GoddesssBell.cs" />
     <Compile Include="GameData\SoulBreaks\GrandCross.cs" />
@@ -565,6 +569,7 @@
     <Compile Include="GameData\SoulBreaks\MeteorBarrage.cs" />
     <Compile Include="GameData\SoulBreaks\MiraclePrayer.cs" />
     <Compile Include="GameData\SoulBreaks\MirageDive.cs" />
+    <Compile Include="GameData\SoulBreaks\MistOverload.cs" />
     <Compile Include="GameData\SoulBreaks\Nekodamashi.cs" />
     <Compile Include="GameData\SoulBreaks\NibelheimNightmare.cs" />
     <Compile Include="GameData\SoulBreaks\Nightglow.cs" />
@@ -730,6 +735,12 @@
     <Compile Include="UI\DatabaseUI\FFRKViewDatabase.Designer.cs">
       <DependentUpon>FFRKViewDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\EquipmentSelectorModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EquipmentSelectorModal.Designer.cs">
+      <DependentUpon>EquipmentSelectorModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FFRKViewAbout.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -841,6 +852,12 @@
     </Compile>
     <Compile Include="UI\SeriesDataGridViewCell.cs" />
     <Compile Include="Analyzer\AnalyzerSettings.cs" />
+    <Compile Include="UI\TextInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TextInput.Designer.cs">
+      <DependentUpon>TextInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\CriticalZ.cs" />
     <Compile Include="Utility\Histogram.cs" />
     <Compile Include="Utility\IConverter.cs" />
@@ -850,6 +867,9 @@
   <ItemGroup>
     <EmbeddedResource Include="UI\DatabaseUI\ItemStatsPanel.resx">
       <DependentUpon>ItemStatsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EquipmentSelectorModal.resx">
+      <DependentUpon>EquipmentSelectorModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FFRKViewAbout.resx">
       <DependentUpon>FFRKViewAbout.cs</DependentUpon>
@@ -893,6 +913,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ListViewEx.resx">
       <DependentUpon>ListViewEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TextInput.resx">
+      <DependentUpon>TextInput.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="EquipmentStatsDataSet.xsc">
