@@ -84,7 +84,6 @@
     <Compile Include="DataCache\Worlds.cs" />
     <Compile Include="EquipmentStatsDataSet.cs">
       <DependentUpon>EquipmentStatsDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="EquipmentStatsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -343,12 +342,14 @@
     <Compile Include="GameData\RecordMaterias\ArcherMage.cs" />
     <Compile Include="GameData\RecordMaterias\Ascendance.cs" />
     <Compile Include="GameData\RecordMaterias\AxeMaster.cs" />
+    <Compile Include="GameData\RecordMaterias\BalambFirebrand.cs" />
     <Compile Include="GameData\RecordMaterias\Bastion.cs" />
     <Compile Include="GameData\RecordMaterias\BestialAffinity.cs" />
     <Compile Include="GameData\RecordMaterias\Brainwash.cs" />
     <Compile Include="GameData\RecordMaterias\BurmecianDragonKnight.cs" />
     <Compile Include="GameData\RecordMaterias\Bushido.cs" />
     <Compile Include="GameData\RecordMaterias\CetrasDestiny.cs" />
+    <Compile Include="GameData\RecordMaterias\ChosenSorceress.cs" />
     <Compile Include="GameData\RecordMaterias\ConcertMusician.cs" />
     <Compile Include="GameData\RecordMaterias\CulturedConjurer.cs" />
     <Compile Include="GameData\RecordMaterias\DesertBloom.cs" />
@@ -422,6 +423,7 @@
     <Compile Include="GameData\SoulBreaks\AngelWingQuake.cs" />
     <Compile Include="GameData\SoulBreaks\Apocalypse.cs" />
     <Compile Include="GameData\SoulBreaks\AquaBreath.cs" />
+    <Compile Include="GameData\SoulBreaks\AstralPunch.cs" />
     <Compile Include="GameData\SoulBreaks\AttackReels.cs" />
     <Compile Include="GameData\SoulBreaks\AurochsReels.cs" />
     <Compile Include="GameData\SoulBreaks\AutoCrossbow.cs" />
@@ -447,6 +449,7 @@
     <Compile Include="GameData\SoulBreaks\BoostJump.cs" />
     <Compile Include="GameData\SoulBreaks\BowMaster.cs" />
     <Compile Include="GameData\SoulBreaks\Braver.cs" />
+    <Compile Include="GameData\SoulBreaks\Brothers.cs" />
     <Compile Include="GameData\SoulBreaks\BrutalSanction.cs" />
     <Compile Include="GameData\SoulBreaks\BurningArrow.cs" />
     <Compile Include="GameData\SoulBreaks\BurningRave.cs" />
@@ -458,11 +461,13 @@
     <Compile Include="GameData\SoulBreaks\CanisterShot.cs" />
     <Compile Include="GameData\SoulBreaks\CelebrationGrimoire.cs" />
     <Compile Include="GameData\SoulBreaks\CerberusShell.cs" />
+    <Compile Include="GameData\SoulBreaks\ChaincastBoltstorm.cs" />
     <Compile Include="GameData\SoulBreaks\Chainsaw.cs" />
     <Compile Include="GameData\SoulBreaks\ChainShot.cs" />
     <Compile Include="GameData\SoulBreaks\CherryBlossom.cs" />
     <Compile Include="GameData\SoulBreaks\CleansingStrike.cs" />
     <Compile Include="GameData\SoulBreaks\ClenchedFist.cs" />
+    <Compile Include="GameData\SoulBreaks\CosmicRay.cs" />
     <Compile Include="GameData\SoulBreaks\CriticalI.cs" />
     <Compile Include="GameData\SoulBreaks\CrossSlash.cs" />
     <Compile Include="GameData\SoulBreaks\CrushingBlow.cs" />
@@ -482,8 +487,10 @@
     <Compile Include="GameData\SoulBreaks\Deshell.cs" />
     <Compile Include="GameData\SoulBreaks\Desperado.cs" />
     <Compile Include="GameData\SoulBreaks\DifferentBeat.cs" />
+    <Compile Include="GameData\SoulBreaks\DireMeteor.cs" />
     <Compile Include="GameData\SoulBreaks\DiveBomb.cs" />
     <Compile Include="GameData\SoulBreaks\DivineFavor.cs" />
+    <Compile Include="GameData\SoulBreaks\DivineHeal.cs" />
     <Compile Include="GameData\SoulBreaks\DolphinBlow.cs" />
     <Compile Include="GameData\SoulBreaks\DoubleAttackI.cs" />
     <Compile Include="GameData\SoulBreaks\DoubleAttackII.cs" />
@@ -502,6 +509,7 @@
     <Compile Include="GameData\SoulBreaks\Dynamite.cs" />
     <Compile Include="GameData\SoulBreaks\Earthquake.cs" />
     <Compile Include="GameData\SoulBreaks\Eat.cs" />
+    <Compile Include="GameData\SoulBreaks\EblanDualWield.cs" />
     <Compile Include="GameData\SoulBreaks\EblanStunner.cs" />
     <Compile Include="GameData\SoulBreaks\EblanWaterVeil.cs" />
     <Compile Include="GameData\SoulBreaks\Electrocute.cs" />
@@ -547,6 +555,7 @@
     <Compile Include="GameData\SoulBreaks\HighJump.cs" />
     <Compile Include="GameData\SoulBreaks\HymnOfTheFayth.cs" />
     <Compile Include="GameData\SoulBreaks\HyperJump.cs" />
+    <Compile Include="GameData\SoulBreaks\IceStrike.cs" />
     <Compile Include="GameData\SoulBreaks\IndomitableBlade.cs" />
     <Compile Include="GameData\SoulBreaks\InkBlast.cs" />
     <Compile Include="GameData\SoulBreaks\InnerFocusI.cs" />
@@ -562,7 +571,10 @@
     <Compile Include="GameData\SoulBreaks\LastResort.cs" />
     <Compile Include="GameData\SoulBreaks\LeafSwirl.cs" />
     <Compile Include="GameData\SoulBreaks\Leviathan.cs" />
+    <Compile Include="GameData\SoulBreaks\LimitHailstorm.cs" />
+    <Compile Include="GameData\SoulBreaks\LionsRoar.cs" />
     <Compile Include="GameData\SoulBreaks\LordOfArms.cs" />
+    <Compile Include="GameData\SoulBreaks\LunarAuspice.cs" />
     <Compile Include="GameData\SoulBreaks\LupineBarrage.cs" />
     <Compile Include="GameData\SoulBreaks\MachinaSabotage.cs" />
     <Compile Include="GameData\SoulBreaks\MarchOfTheMoogles.cs" />
@@ -573,6 +585,7 @@
     <Compile Include="GameData\SoulBreaks\MeteorBarrage.cs" />
     <Compile Include="GameData\SoulBreaks\MiraclePrayer.cs" />
     <Compile Include="GameData\SoulBreaks\MirageDive.cs" />
+    <Compile Include="GameData\SoulBreaks\MissileSalvo.cs" />
     <Compile Include="GameData\SoulBreaks\MistOverload.cs" />
     <Compile Include="GameData\SoulBreaks\Nekodamashi.cs" />
     <Compile Include="GameData\SoulBreaks\NibelheimNightmare.cs" />
@@ -582,7 +595,9 @@
     <Compile Include="GameData\SoulBreaks\NormalAmmo.cs" />
     <Compile Include="GameData\SoulBreaks\NorthswainsGlow.cs" />
     <Compile Include="GameData\SoulBreaks\Oblivion.cs" />
+    <Compile Include="GameData\SoulBreaks\Odin.cs" />
     <Compile Include="GameData\SoulBreaks\OerbasBoon.cs" />
+    <Compile Include="GameData\SoulBreaks\PaladinForce.cs" />
     <Compile Include="GameData\SoulBreaks\PhoenixPlunder.cs" />
     <Compile Include="GameData\SoulBreaks\PortraitOfLakshmi.cs" />
     <Compile Include="GameData\SoulBreaks\Prayer.cs" />
@@ -595,11 +610,13 @@
     <Compile Include="GameData\SoulBreaks\RadiantWings.cs" />
     <Compile Include="GameData\SoulBreaks\RagingFist.cs" />
     <Compile Include="GameData\SoulBreaks\Ramuh.cs" />
+    <Compile Include="GameData\SoulBreaks\Rapture.cs" />
     <Compile Include="GameData\SoulBreaks\RazorGale.cs" />
     <Compile Include="GameData\SoulBreaks\Recall.cs" />
     <Compile Include="GameData\SoulBreaks\RedSpiral.cs" />
     <Compile Include="GameData\SoulBreaks\Repentance.cs" />
     <Compile Include="GameData\SoulBreaks\RicochetSnipe.cs" />
+    <Compile Include="GameData\SoulBreaks\RisingDrive.cs" />
     <Compile Include="GameData\SoulBreaks\RisingPhoenix.cs" />
     <Compile Include="GameData\SoulBreaks\RonsoJump.cs" />
     <Compile Include="GameData\SoulBreaks\RopeKnife.cs" />
@@ -611,6 +628,7 @@
     <Compile Include="GameData\SoulBreaks\SabreSoul.cs" />
     <Compile Include="GameData\SoulBreaks\SaintsFall.cs" />
     <Compile Include="GameData\SoulBreaks\ScoopArt.cs" />
+    <Compile Include="GameData\SoulBreaks\Scorch.cs" />
     <Compile Include="GameData\SoulBreaks\SeaLordsBroadside.cs" />
     <Compile Include="GameData\SoulBreaks\SeedCannon.cs" />
     <Compile Include="GameData\SoulBreaks\SeikenShock.cs" />
@@ -632,6 +650,7 @@
     <Compile Include="GameData\SoulBreaks\SneakAttack.cs" />
     <Compile Include="GameData\SoulBreaks\Sommersault.cs" />
     <Compile Include="GameData\SoulBreaks\SonicBreak.cs" />
+    <Compile Include="GameData\SoulBreaks\SorceressAwakening.cs" />
     <Compile Include="GameData\SoulBreaks\SoulEater.cs" />
     <Compile Include="GameData\SoulBreaks\SovereignFist.cs" />
     <Compile Include="GameData\SoulBreaks\SpearMaster.cs" />
@@ -650,6 +669,7 @@
     <Compile Include="GameData\SoulBreaks\SummonEidolonI.cs" />
     <Compile Include="GameData\SoulBreaks\SummonEidolonII.cs" />
     <Compile Include="GameData\SoulBreaks\SwordArtStockBreak.cs" />
+    <Compile Include="GameData\SoulBreaks\Sync.cs" />
     <Compile Include="GameData\SoulBreaks\TeleportXVI.cs" />
     <Compile Include="GameData\SoulBreaks\Threaten.cs" />
     <Compile Include="GameData\SoulBreaks\ThunderFury.cs" />
@@ -657,6 +677,7 @@
     <Compile Include="GameData\SoulBreaks\ThunderSlash.cs" />
     <Compile Include="GameData\SoulBreaks\ThunderXVI.cs" />
     <Compile Include="GameData\SoulBreaks\TidesOfFate.cs" />
+    <Compile Include="GameData\SoulBreaks\TimeCrush.cs" />
     <Compile Include="GameData\SoulBreaks\TrabiasLight.cs" />
     <Compile Include="GameData\SoulBreaks\TranceAttack.cs" />
     <Compile Include="GameData\SoulBreaks\TranceFira.cs" />
