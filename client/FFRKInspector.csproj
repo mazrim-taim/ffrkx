@@ -341,12 +341,14 @@
     <Compile Include="GameData\RecordMaterias\ArcherMage.cs" />
     <Compile Include="GameData\RecordMaterias\Ascendance.cs" />
     <Compile Include="GameData\RecordMaterias\AxeMaster.cs" />
+    <Compile Include="GameData\RecordMaterias\BalambFirebrand.cs" />
     <Compile Include="GameData\RecordMaterias\Bastion.cs" />
     <Compile Include="GameData\RecordMaterias\BestialAffinity.cs" />
     <Compile Include="GameData\RecordMaterias\Brainwash.cs" />
     <Compile Include="GameData\RecordMaterias\BurmecianDragonKnight.cs" />
     <Compile Include="GameData\RecordMaterias\Bushido.cs" />
     <Compile Include="GameData\RecordMaterias\CetrasDestiny.cs" />
+    <Compile Include="GameData\RecordMaterias\ChosenSorceress.cs" />
     <Compile Include="GameData\RecordMaterias\ConcertMusician.cs" />
     <Compile Include="GameData\RecordMaterias\CulturedConjurer.cs" />
     <Compile Include="GameData\RecordMaterias\DesertBloom.cs" />
