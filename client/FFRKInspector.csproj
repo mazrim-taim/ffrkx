@@ -84,6 +84,7 @@
     <Compile Include="DataCache\Worlds.cs" />
     <Compile Include="EquipmentStatsDataSet.cs">
       <DependentUpon>EquipmentStatsDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="EquipmentStatsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -344,6 +345,7 @@
     <Compile Include="GameData\RecordMaterias\BalambFirebrand.cs" />
     <Compile Include="GameData\RecordMaterias\Bastion.cs" />
     <Compile Include="GameData\RecordMaterias\BestialAffinity.cs" />
+    <Compile Include="GameData\RecordMaterias\BlackMagicAdept.cs" />
     <Compile Include="GameData\RecordMaterias\Brainwash.cs" />
     <Compile Include="GameData\RecordMaterias\BurmecianDragonKnight.cs" />
     <Compile Include="GameData\RecordMaterias\Bushido.cs" />
@@ -402,6 +404,7 @@
     <Compile Include="GameData\RecordMaterias\ShurikenMaster.cs" />
     <Compile Include="GameData\RecordMaterias\SoldiersPride.cs" />
     <Compile Include="GameData\RecordMaterias\SoldierStrike.cs" />
+    <Compile Include="GameData\RecordMaterias\SummonerOfMist.cs" />
     <Compile Include="GameData\RecordMaterias\SummonersPrayer.cs" />
     <Compile Include="GameData\RecordMaterias\UnbreakableSpellblade.cs" />
     <Compile Include="GameData\RecordMaterias\UnerringShot.cs" />
@@ -409,6 +412,7 @@
     <Compile Include="GameData\RecordMaterias\VowOfVengeance.cs" />
     <Compile Include="GameData\RecordMaterias\WarriorsBurden.cs" />
     <Compile Include="GameData\RecordMaterias\WayOfTheFist.cs" />
+    <Compile Include="GameData\RecordMaterias\WhiteMagicProdigy.cs" />
     <Compile Include="GameData\RecordMaterias\WhiteShepherd.cs" />
     <Compile Include="GameData\RecordMaterias\WindWanderer.cs" />
     <Compile Include="GameData\RecordMaterias\WitchOfSuccession.cs" />
