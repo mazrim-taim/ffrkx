@@ -122,6 +122,7 @@
     <Compile Include="GameData\Abilities\Cry.cs" />
     <Compile Include="GameData\Abilities\DaggerToss.cs" />
     <Compile Include="GameData\Abilities\DarkAttack.cs" />
+    <Compile Include="GameData\Abilities\DarkBargain.cs" />
     <Compile Include="GameData\Abilities\DarkBuster.cs" />
     <Compile Include="GameData\Abilities\Darkmoon.cs" />
     <Compile Include="GameData\Abilities\DeathStrike.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="GameData\Abilities\Revive.cs" />
     <Compile Include="GameData\Abilities\SaintCross.cs" />
     <Compile Include="GameData\Abilities\Salve.cs" />
+    <Compile Include="GameData\Abilities\SanguineCross.cs" />
     <Compile Include="GameData\Abilities\Shadowbind.cs" />
     <Compile Include="GameData\Abilities\Shadowsteel.cs" />
     <Compile Include="GameData\Abilities\ShieldBash.cs" />
