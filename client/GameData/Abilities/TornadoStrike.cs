@@ -14,7 +14,7 @@ namespace FFRKInspector.GameData.Abilities
         public override SchemaConstants.Formulas Formula { get { return SchemaConstants.Formulas.Physical; } }
         public override double Multiplier { get { return 1.2; } }
         public override string Name { get { return "Tornado Strike"; } }
-        public virtual int NumberOfHits { get { return 2; } }
         public override int Rarity { get { return 5; } }
+        public override int NumberOfHits { get { return 2; } }
     }
 }
