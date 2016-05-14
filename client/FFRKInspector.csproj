@@ -211,9 +211,11 @@
     <Compile Include="GameData\Abilities\Syldra.cs" />
     <Compile Include="GameData\Abilities\TempoFlurry.cs" />
     <Compile Include="GameData\Abilities\ThiefsRevenge.cs" />
+    <Compile Include="GameData\Abilities\TornadoStrike.cs" />
     <Compile Include="GameData\Abilities\Valefor.cs" />
     <Compile Include="GameData\Abilities\VenomAttack.cs" />
     <Compile Include="GameData\Abilities\VenomBuster.cs" />
+    <Compile Include="GameData\Abilities\WatergaStrike.cs" />
     <Compile Include="GameData\Abilities\WaterVeil.cs" />
     <Compile Include="GameData\Abilities\WeakPolka.cs" />
     <Compile Include="GameData\Abilities\WindJump.cs" />
