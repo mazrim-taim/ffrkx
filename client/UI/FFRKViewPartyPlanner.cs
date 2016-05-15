@@ -1842,7 +1842,10 @@ namespace FFRKInspector.UI
                     weaponBoxes[i].SelectedIndex = -1;
                     armorBoxes[i].SelectedIndex = -1;
                     accessoryBoxes[i].SelectedIndex = -1;
-                    recordMateriaBoxes[i].SelectedIndex = -1;
+                    if (!ignoreRecordMateria[characters[i].BuddyId])
+                    {
+                        recordMateriaBoxes[i].SelectedIndex = -1;
+                    }
                 }
             }
 
