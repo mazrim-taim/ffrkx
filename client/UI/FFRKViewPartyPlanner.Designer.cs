@@ -178,6 +178,16 @@
             this.toolTipSoulBreakDamage3 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipSoulBreakDamage4 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipSoulBreakDamage5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility7 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility8 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility9 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAbility10 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -245,6 +255,7 @@
             // 
             // comboBoxAbility1
             // 
+            this.comboBoxAbility1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility1.FormattingEnabled = true;
             this.comboBoxAbility1.Location = new System.Drawing.Point(5, 29);
             this.comboBoxAbility1.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -252,10 +263,12 @@
             this.comboBoxAbility1.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility1.TabIndex = 1;
             this.comboBoxAbility1.Text = "Ability";
+            this.comboBoxAbility1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility1.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility2
             // 
+            this.comboBoxAbility2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility2.FormattingEnabled = true;
             this.comboBoxAbility2.Location = new System.Drawing.Point(5, 58);
             this.comboBoxAbility2.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -263,10 +276,12 @@
             this.comboBoxAbility2.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility2.TabIndex = 2;
             this.comboBoxAbility2.Text = "Ability";
+            this.comboBoxAbility2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility2.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility3
             // 
+            this.comboBoxAbility3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility3.FormattingEnabled = true;
             this.comboBoxAbility3.Location = new System.Drawing.Point(5, 139);
             this.comboBoxAbility3.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -274,10 +289,12 @@
             this.comboBoxAbility3.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility3.TabIndex = 9;
             this.comboBoxAbility3.Text = "Ability";
+            this.comboBoxAbility3.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility3.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility4
             // 
+            this.comboBoxAbility4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility4.FormattingEnabled = true;
             this.comboBoxAbility4.Location = new System.Drawing.Point(5, 168);
             this.comboBoxAbility4.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -285,10 +302,12 @@
             this.comboBoxAbility4.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility4.TabIndex = 10;
             this.comboBoxAbility4.Text = "Ability";
+            this.comboBoxAbility4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility4.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility5
             // 
+            this.comboBoxAbility5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility5.FormattingEnabled = true;
             this.comboBoxAbility5.Location = new System.Drawing.Point(5, 238);
             this.comboBoxAbility5.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -296,10 +315,12 @@
             this.comboBoxAbility5.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility5.TabIndex = 17;
             this.comboBoxAbility5.Text = "Ability";
+            this.comboBoxAbility5.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility5.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility6
             // 
+            this.comboBoxAbility6.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility6.FormattingEnabled = true;
             this.comboBoxAbility6.Location = new System.Drawing.Point(5, 267);
             this.comboBoxAbility6.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -307,10 +328,12 @@
             this.comboBoxAbility6.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility6.TabIndex = 18;
             this.comboBoxAbility6.Text = "Ability";
+            this.comboBoxAbility6.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility6.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility7
             // 
+            this.comboBoxAbility7.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility7.FormattingEnabled = true;
             this.comboBoxAbility7.Location = new System.Drawing.Point(5, 338);
             this.comboBoxAbility7.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -318,10 +341,12 @@
             this.comboBoxAbility7.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility7.TabIndex = 25;
             this.comboBoxAbility7.Text = "Ability";
+            this.comboBoxAbility7.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility7.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility8
             // 
+            this.comboBoxAbility8.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility8.FormattingEnabled = true;
             this.comboBoxAbility8.Location = new System.Drawing.Point(5, 367);
             this.comboBoxAbility8.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -329,10 +354,12 @@
             this.comboBoxAbility8.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility8.TabIndex = 26;
             this.comboBoxAbility8.Text = "Ability";
+            this.comboBoxAbility8.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility8.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility9
             // 
+            this.comboBoxAbility9.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility9.FormattingEnabled = true;
             this.comboBoxAbility9.Location = new System.Drawing.Point(5, 436);
             this.comboBoxAbility9.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -340,10 +367,12 @@
             this.comboBoxAbility9.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility9.TabIndex = 33;
             this.comboBoxAbility9.Text = "Ability";
+            this.comboBoxAbility9.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility9.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxAbility10
             // 
+            this.comboBoxAbility10.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxAbility10.FormattingEnabled = true;
             this.comboBoxAbility10.Location = new System.Drawing.Point(5, 465);
             this.comboBoxAbility10.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
@@ -351,6 +380,7 @@
             this.comboBoxAbility10.Size = new System.Drawing.Size(114, 21);
             this.comboBoxAbility10.TabIndex = 34;
             this.comboBoxAbility10.Text = "Ability";
+            this.comboBoxAbility10.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxAbility_DrawItem);
             this.comboBoxAbility10.SelectedIndexChanged += new System.EventHandler(this.comboBoxAbility_SelectedIndexChanged);
             // 
             // comboBoxSoulBreak1
@@ -1779,5 +1809,15 @@
         private System.Windows.Forms.ToolTip toolTipSoulBreakDamage3;
         private System.Windows.Forms.ToolTip toolTipSoulBreakDamage4;
         private System.Windows.Forms.ToolTip toolTipSoulBreakDamage5;
+        private System.Windows.Forms.ToolTip toolTipAbility1;
+        private System.Windows.Forms.ToolTip toolTipAbility2;
+        private System.Windows.Forms.ToolTip toolTipAbility3;
+        private System.Windows.Forms.ToolTip toolTipAbility4;
+        private System.Windows.Forms.ToolTip toolTipAbility5;
+        private System.Windows.Forms.ToolTip toolTipAbility6;
+        private System.Windows.Forms.ToolTip toolTipAbility7;
+        private System.Windows.Forms.ToolTip toolTipAbility8;
+        private System.Windows.Forms.ToolTip toolTipAbility9;
+        private System.Windows.Forms.ToolTip toolTipAbility10;
     }
 }

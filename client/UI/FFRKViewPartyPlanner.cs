@@ -17,6 +17,7 @@ namespace FFRKInspector.UI
     {
         private ComboBox[] characterBoxes = new ComboBox[5];
         private ComboBox[] abilityBoxes = new ComboBox[10];
+        private ToolTip[] abilityTooltips = new ToolTip[10];
         private ComboBox[] soulBreakBoxes = new ComboBox[5];
         private ComboBox[] weaponBoxes = new ComboBox[5];
         private ComboBox[] armorBoxes = new ComboBox[5];
@@ -39,6 +40,8 @@ namespace FFRKInspector.UI
         private ProgressDisplay progressDisplay = new ProgressDisplay();
         private OptimizerRoleSelector optimizerRoleSelector = new OptimizerRoleSelector();
         private Dictionary<string, PartyData> savedPartyData = new Dictionary<string, PartyData>();
+        private Dictionary<uint, int> abilityCounts = new Dictionary<uint, int>();
+        private bool skipRecalculations = false;
 
         public class Synergy
         {
@@ -76,6 +79,17 @@ namespace FFRKInspector.UI
             abilityBoxes[7] = comboBoxAbility8;
             abilityBoxes[8] = comboBoxAbility9;
             abilityBoxes[9] = comboBoxAbility10;
+
+            abilityTooltips[0] = toolTipAbility1;
+            abilityTooltips[1] = toolTipAbility2;
+            abilityTooltips[2] = toolTipAbility3;
+            abilityTooltips[3] = toolTipAbility4;
+            abilityTooltips[4] = toolTipAbility5;
+            abilityTooltips[5] = toolTipAbility6;
+            abilityTooltips[6] = toolTipAbility7;
+            abilityTooltips[7] = toolTipAbility8;
+            abilityTooltips[8] = toolTipAbility9;
+            abilityTooltips[9] = toolTipAbility10;
 
             soulBreakBoxes[0] = comboBoxSoulBreak1;
             soulBreakBoxes[1] = comboBoxSoulBreak2;
@@ -294,6 +308,17 @@ namespace FFRKInspector.UI
                     characterBoxes[i].Text = "Character";
                 }
                 UpdateDropdownsForCharacter(i);
+            }
+
+            abilityCounts.Clear();
+            var groupedAbilities = party.Abilities.GroupBy(ability => ability.AbilityId, ability => ability.Name);
+            foreach (var group in groupedAbilities)
+            {
+                if (group.Key == null)
+                {
+                    continue;
+                }
+                abilityCounts[group.Key] = group.Count();
             }
         }
               
@@ -549,6 +574,7 @@ namespace FFRKInspector.UI
             }
             else
             {
+                abilityTooltips[characterIndex * 2].SetToolTip(abilityBoxes[characterIndex * 2], "");
                 abilityDamageFields[characterIndex * 2].Text = "";
                 abilityDamageFields[characterIndex * 2].BackColor = System.Drawing.SystemColors.Control;
                 abilityDamageTooltips[characterIndex * 2].SetToolTip(abilityDamageFields[characterIndex * 2], "");
@@ -569,6 +595,7 @@ namespace FFRKInspector.UI
             }
             else
             {
+                abilityTooltips[characterIndex * 2 + 1].SetToolTip(abilityBoxes[characterIndex * 2 + 1], "");
                 abilityDamageFields[characterIndex * 2 + 1].Text = "";
                 abilityDamageFields[characterIndex * 2 + 1].BackColor = System.Drawing.SystemColors.Control;
                 abilityDamageTooltips[characterIndex * 2 + 1].SetToolTip(abilityDamageFields[characterIndex * 2 + 1], "");
@@ -737,6 +764,30 @@ namespace FFRKInspector.UI
             }
 
             return damage;
+        }
+
+        private string abilityTipFor(GameData.Ability ability)
+        {
+            if (ability == null)
+            {
+                return "";
+            }
+            var _abilities = FFRKProxy.Instance.GameState.PartyDetails.Abilities.Where(ab => ab.AbilityId == ability.AbilityId).OrderByDescending(ab => ab.Level);
+            if (_abilities.Count() == 0)
+            {
+                return "You have 0 of this skill.";
+            }
+
+            StringBuilder sb = new StringBuilder("You have:");
+            var groupedAbilities = _abilities.GroupBy(ab => ab.Level, ab => ab.Name);
+            foreach (var grouping in groupedAbilities)
+            {
+                sb.AppendLine();
+                sb.Append(grouping.Count().ToString());
+                sb.Append("x Rank ");
+                sb.Append(grouping.Key);
+            }
+            return sb.ToString();
         }
 
         private void UpdateDropdownsForCharacter(int index)
@@ -929,6 +980,10 @@ namespace FFRKInspector.UI
         {
             int index = Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1;
             UpdateDropdownsForCharacter(index);
+            if (skipRecalculations)
+            {
+                return;
+            }
             for(int i = 0; i < 5; i++)
             {
                 if(characterBoxes[i].SelectedItem != null && recordMateriaBoxes[i].SelectedItem != null &&
@@ -943,26 +998,46 @@ namespace FFRKInspector.UI
 
         private void comboBoxWeapon_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (skipRecalculations)
+            {
+                return;
+            }
             RecalculateStats(Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1);
         }
 
         private void comboBoxArmor_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (skipRecalculations)
+            {
+                return;
+            }
             RecalculateStats(Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1);
         }
 
         private void comboBoxAccessory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (skipRecalculations)
+            {
+                return;
+            }
             RecalculateStats(Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1);
         }
 
         private void comboBoxRealmSynergy_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (skipRecalculations)
+            {
+                return;
+            }
             RecalculateAllStats();
         }
 
         private void checkBoxBuff_CheckedChanged(object sender, EventArgs e)
         {
+            if (skipRecalculations)
+            {
+                return;
+            }
             RecalculateAllStats();
         }
 
@@ -973,11 +1048,21 @@ namespace FFRKInspector.UI
             {
                 index = 9;
             }
+
+            abilityTooltips[index].SetToolTip((ComboBox)sender, abilityTipFor(abilities[index]));
+            if (skipRecalculations)
+            {
+                return;
+            }
             RecalculateStats(index / 2);
         }
 
         private void textBoxEnemyStats_TextChanged(object sender, EventArgs e)
         {
+            if (skipRecalculations)
+            {
+                return;
+            }
             int val;
             if (Int32.TryParse(((TextBox)sender).Text, out val))
             {
@@ -987,16 +1072,28 @@ namespace FFRKInspector.UI
 
         private void comboBoxSoulBreak_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (skipRecalculations)
+            {
+                return;
+            }
             RecalculateStats(Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1);
         }
 
         private void comboBoxRecordMateria_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (skipRecalculations)
+            {
+                return;
+            }
             RecalculateStats(Int32.Parse(((ComboBox)sender).Name.Last().ToString()) - 1);
         }
 
         private void checkBoxDebuff_CheckedChanged(object sender, EventArgs e)
         {
+            if (skipRecalculations)
+            {
+                return;
+            }
             RecalculateAllStats();
         }
 
@@ -1188,187 +1285,195 @@ namespace FFRKInspector.UI
             if(partyName == null) {
                 return;
             }
-            PartyData data = savedPartyData[partyName];
-            for (int i = 0; i < 5; i++)
+            skipRecalculations = true;
+            try
             {
-                Dictionary<string, uint> member = data.PartyMembers[i];
-                if (member.Keys.Count == 0)
+                PartyData data = savedPartyData[partyName];
+                for (int i = 0; i < 5; i++)
                 {
-                    characterBoxes[i].SelectedIndex = -1;
-                    characterBoxes[i].Text = "Character";
-                    weaponBoxes[i].SelectedIndex = -1;
-                    weaponBoxes[i].Text = "Weapon";
-                    weaponBoxes[i].Items.Clear();
-                    armorBoxes[i].SelectedIndex = -1;
-                    armorBoxes[i].Text = "Armor";
-                    armorBoxes[i].Items.Clear();
-                    accessoryBoxes[i].SelectedIndex = -1;
-                    accessoryBoxes[i].Text = "Accessory";
-                    accessoryBoxes[i].Items.Clear();
-                    recordMateriaBoxes[i].SelectedIndex = -1;
-                    recordMateriaBoxes[i].Text = "Record Materia";
-                    abilityBoxes[i * 2].SelectedIndex = -1;
-                    abilityBoxes[i * 2].Text = "Ability";
-                    abilityBoxes[i * 2].Items.Clear();
-                    abilityBoxes[i * 2 + 1].SelectedIndex = -1;
-                    abilityBoxes[i * 2 + 1].Text = "Ability";
-                    abilityBoxes[i * 2 + 1].Items.Clear();
-                    soulBreakBoxes[i].SelectedIndex = -1;
-                    soulBreakBoxes[i].Text = "Soul Break";
-                    soulBreakBoxes[i].Items.Clear();
-                    continue;
+                    Dictionary<string, uint> member = data.PartyMembers[i];
+                    if (member.Keys.Count == 0)
+                    {
+                        characterBoxes[i].SelectedIndex = -1;
+                        characterBoxes[i].Text = "Character";
+                        weaponBoxes[i].SelectedIndex = -1;
+                        weaponBoxes[i].Text = "Weapon";
+                        weaponBoxes[i].Items.Clear();
+                        armorBoxes[i].SelectedIndex = -1;
+                        armorBoxes[i].Text = "Armor";
+                        armorBoxes[i].Items.Clear();
+                        accessoryBoxes[i].SelectedIndex = -1;
+                        accessoryBoxes[i].Text = "Accessory";
+                        accessoryBoxes[i].Items.Clear();
+                        recordMateriaBoxes[i].SelectedIndex = -1;
+                        recordMateriaBoxes[i].Text = "Record Materia";
+                        abilityBoxes[i * 2].SelectedIndex = -1;
+                        abilityBoxes[i * 2].Text = "Ability";
+                        abilityBoxes[i * 2].Items.Clear();
+                        abilityBoxes[i * 2 + 1].SelectedIndex = -1;
+                        abilityBoxes[i * 2 + 1].Text = "Ability";
+                        abilityBoxes[i * 2 + 1].Items.Clear();
+                        soulBreakBoxes[i].SelectedIndex = -1;
+                        soulBreakBoxes[i].Text = "Soul Break";
+                        soulBreakBoxes[i].Items.Clear();
+                        continue;
+                    }
+
+                    for (int j = 0; j < characterBoxes[i].Items.Count; j++)
+                    {
+                        if (((GameData.DataBuddyInformation)characterBoxes[i].Items[j]).BuddyId == member["characterId"])
+                        {
+                            characterBoxes[i].SelectedIndex = j;
+                            break;
+                        }
+                    }
+
+                    if (member["weaponId"] > 0)
+                    {
+                        for (int j = 0; j < weaponBoxes[i].Items.Count; j++)
+                        {
+                            if (((GameData.Party.DataEquipmentInformation)weaponBoxes[i].Items[j]).InstanceId == member["weaponId"])
+                            {
+                                weaponBoxes[i].SelectedIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        weaponBoxes[i].SelectedIndex = -1;
+                        weaponBoxes[i].Text = "Weapon";
+                    }
+
+                    if (member["armorId"] > 0)
+                    {
+                        for (int j = 0; j < armorBoxes[i].Items.Count; j++)
+                        {
+                            if (((GameData.Party.DataEquipmentInformation)armorBoxes[i].Items[j]).InstanceId == member["armorId"])
+                            {
+                                armorBoxes[i].SelectedIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        armorBoxes[i].SelectedIndex = -1;
+                        armorBoxes[i].Text = "Armor";
+                    }
+
+                    if (member["accessoryId"] > 0)
+                    {
+                        for (int j = 0; j < accessoryBoxes[i].Items.Count; j++)
+                        {
+                            if (((GameData.Party.DataEquipmentInformation)accessoryBoxes[i].Items[j]).InstanceId == member["accessoryId"])
+                            {
+                                accessoryBoxes[i].SelectedIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        accessoryBoxes[i].SelectedIndex = -1;
+                        accessoryBoxes[i].Text = "Accessory";
+                    }
+
+                    if (member["recordMateriaId"] > 0)
+                    {
+                        for (int j = 0; j < recordMateriaBoxes[i].Items.Count; j++)
+                        {
+                            if (((DataRecordMateriaInformation)recordMateriaBoxes[i].Items[j]).RecordMateriaId == member["recordMateriaId"])
+                            {
+                                recordMateriaBoxes[i].SelectedIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        recordMateriaBoxes[i].SelectedIndex = -1;
+                        recordMateriaBoxes[i].Text = "Record Materia";
+                    }
+
+                    if (member["ability1Id"] > 0)
+                    {
+                        for (int j = 0; j < abilityBoxes[i * 2].Items.Count; j++)
+                        {
+                            if (((GameData.Ability)abilityBoxes[i * 2].Items[j]).AbilityId == member["ability1Id"])
+                            {
+                                abilityBoxes[i * 2].SelectedIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        abilityBoxes[i * 2].SelectedIndex = -1;
+                        abilityBoxes[i * 2].Text = "Ability";
+                    }
+
+                    if (member["ability2Id"] > 0)
+                    {
+                        for (int j = 0; j < abilityBoxes[i * 2 + 1].Items.Count; j++)
+                        {
+                            if (((GameData.Ability)abilityBoxes[i * 2 + 1].Items[j]).AbilityId == member["ability2Id"])
+                            {
+                                abilityBoxes[i * 2 + 1].SelectedIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        abilityBoxes[i * 2 + 1].SelectedIndex = -1;
+                        abilityBoxes[i * 2 + 1].Text = "Ability";
+                    }
+
+                    if (member["soulBreakId"] > 0)
+                    {
+                        for (int j = 0; j < soulBreakBoxes[i].Items.Count; j++)
+                        {
+                            if (((GameData.SoulBreak)soulBreakBoxes[i].Items[j]).SoulBreakId == member["soulBreakId"])
+                            {
+                                soulBreakBoxes[i].SelectedIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        soulBreakBoxes[i].SelectedIndex = -1;
+                        soulBreakBoxes[i].Text = "Soul Break";
+                    }
                 }
 
-                for (int j = 0; j < characterBoxes[i].Items.Count; j++)
+                for (int i = 0; i < comboBoxRealmSynergy.Items.Count; i++)
                 {
-                    if (((GameData.DataBuddyInformation)characterBoxes[i].Items[j]).BuddyId == member["characterId"])
+                    if (((Synergy)comboBoxRealmSynergy.Items[i]).SeriesId == data.RealmSynergy)
                     {
-                        characterBoxes[i].SelectedIndex = j;
+                        comboBoxRealmSynergy.SelectedIndex = i;
                         break;
                     }
                 }
 
-                if (member["weaponId"] > 0)
-                {
-                    for (int j = 0; j < weaponBoxes[i].Items.Count; j++)
-                    {
-                        if (((GameData.Party.DataEquipmentInformation)weaponBoxes[i].Items[j]).InstanceId == member["weaponId"])
-                        {
-                            weaponBoxes[i].SelectedIndex = j;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    weaponBoxes[i].SelectedIndex = -1;
-                    weaponBoxes[i].Text = "Weapon";
-                }
-
-                if (member["armorId"] > 0)
-                {
-                    for (int j = 0; j < armorBoxes[i].Items.Count; j++)
-                    {
-                        if (((GameData.Party.DataEquipmentInformation)armorBoxes[i].Items[j]).InstanceId == member["armorId"])
-                        {
-                            armorBoxes[i].SelectedIndex = j;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    armorBoxes[i].SelectedIndex = -1;
-                    armorBoxes[i].Text = "Armor";
-                }
-
-                if (member["accessoryId"] > 0)
-                {
-                    for (int j = 0; j < accessoryBoxes[i].Items.Count; j++)
-                    {
-                        if (((GameData.Party.DataEquipmentInformation)accessoryBoxes[i].Items[j]).InstanceId == member["accessoryId"])
-                        {
-                            accessoryBoxes[i].SelectedIndex = j;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    accessoryBoxes[i].SelectedIndex = -1;
-                    accessoryBoxes[i].Text = "Accessory";
-                }
-
-                if (member["recordMateriaId"] > 0)
-                {
-                    for (int j = 0; j < recordMateriaBoxes[i].Items.Count; j++)
-                    {
-                        if (((DataRecordMateriaInformation)recordMateriaBoxes[i].Items[j]).RecordMateriaId == member["recordMateriaId"])
-                        {
-                            recordMateriaBoxes[i].SelectedIndex = j;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    recordMateriaBoxes[i].SelectedIndex = -1;
-                    recordMateriaBoxes[i].Text = "Record Materia";
-                }
-
-                if (member["ability1Id"] > 0)
-                {
-                    for (int j = 0; j < abilityBoxes[i * 2].Items.Count; j++)
-                    {
-                        if (((GameData.Ability)abilityBoxes[i * 2].Items[j]).AbilityId == member["ability1Id"])
-                        {
-                            abilityBoxes[i * 2].SelectedIndex = j;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    abilityBoxes[i * 2].SelectedIndex = -1;
-                    abilityBoxes[i * 2].Text = "Ability";
-                }
-
-                if (member["ability2Id"] > 0)
-                {
-                    for (int j = 0; j < abilityBoxes[i * 2 + 1].Items.Count; j++)
-                    {
-                        if (((GameData.Ability)abilityBoxes[i * 2 + 1].Items[j]).AbilityId == member["ability2Id"])
-                        {
-                            abilityBoxes[i * 2 + 1].SelectedIndex = j;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    abilityBoxes[i * 2 + 1].SelectedIndex = -1;
-                    abilityBoxes[i * 2 + 1].Text = "Ability";
-                }
-
-                if (member["soulBreakId"] > 0)
-                {
-                    for (int j = 0; j < soulBreakBoxes[i].Items.Count; j++)
-                    {
-                        if (((GameData.SoulBreak)soulBreakBoxes[i].Items[j]).SoulBreakId == member["soulBreakId"])
-                        {
-                            soulBreakBoxes[i].SelectedIndex = j;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    soulBreakBoxes[i].SelectedIndex = -1;
-                    soulBreakBoxes[i].Text = "Soul Break";
-                }
+                textBoxEnemyDef.Text = data.EnemyDef;
+                textBoxEnemyRes.Text = data.EnemyRes;
+                checkBoxShout.Checked = data.Shout;
+                checkBoxHotE.Checked = data.HotE;
+                checkBoxFocus.Checked = data.Focus;
+                checkBoxFaith.Checked = data.Faith;
+                checkBoxFullBreak.Checked = data.FullBreak;
+                checkBoxArmorBreakdown.Checked = data.ArmorBreakdown;
+                checkBoxMentalBreakdown.Checked = data.MentalBreakdown;
+                checkBoxArmorBreakResistant.Checked = data.ArmorBreakResistant;
+                checkBoxMentalBreakResistant.Checked = data.MentalBreakResistant;
+                checkBoxBanishingBlade.Checked = data.BanishingBlade;
             }
-
-            for (int i = 0; i < comboBoxRealmSynergy.Items.Count; i++)
+            finally
             {
-                if (((Synergy)comboBoxRealmSynergy.Items[i]).SeriesId == data.RealmSynergy)
-                {
-                    comboBoxRealmSynergy.SelectedIndex = i;
-                    break;
-                }
+                skipRecalculations = false;
             }
-
-            textBoxEnemyDef.Text = data.EnemyDef;
-            textBoxEnemyRes.Text = data.EnemyRes;
-            checkBoxShout.Checked = data.Shout;
-            checkBoxHotE.Checked = data.HotE;
-            checkBoxFocus.Checked = data.Focus;
-            checkBoxFaith.Checked = data.Faith;
-            checkBoxFullBreak.Checked = data.FullBreak;
-            checkBoxArmorBreakdown.Checked = data.ArmorBreakdown;
-            checkBoxMentalBreakdown.Checked = data.MentalBreakdown;
-            checkBoxArmorBreakResistant.Checked = data.ArmorBreakResistant;
-            checkBoxMentalBreakResistant.Checked = data.MentalBreakResistant;
-            checkBoxBanishingBlade.Checked = data.BanishingBlade;
 
             RecalculateAllStats();
         }
@@ -1774,6 +1879,16 @@ namespace FFRKInspector.UI
         {
             progressDisplay.Value = 0;
             progressDisplay.Close();
+        }
+
+        private void comboBoxAbility_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            ComboBox comboBox = (ComboBox)sender;
+            GameData.Ability ability = (GameData.Ability)comboBox.Items[e.Index];
+            Brush brush = (abilityCounts.ContainsKey(ability.AbilityId) && abilityCounts[ability.AbilityId] > 0) ?
+                            SystemBrushes.WindowText : SystemBrushes.GrayText;
+            e.Graphics.DrawString(ability.Name, comboBox.Font, brush, e.Bounds.X, e.Bounds.Y);
         }
     }
 }

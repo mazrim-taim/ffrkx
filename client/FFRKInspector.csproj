@@ -339,6 +339,7 @@
     <Compile Include="GameData\Abilities\FiraStrike.cs" />
     <Compile Include="GameData\Abilities\FireStrike.cs" />
     <Compile Include="GameData\Abilities\FlareStrike.cs" />
+    <Compile Include="GameData\Party\DataAbilityInformation.cs" />
     <Compile Include="GameData\Party\DataRecordMateriaInformation.cs" />
     <Compile Include="GameData\RecordMateria.cs" />
     <Compile Include="GameData\RecordMaterias\AceTurk.cs" />
