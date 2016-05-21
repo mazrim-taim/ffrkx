@@ -188,6 +188,11 @@
             this.toolTipAbility8 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipAbility9 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipAbility10 = new System.Windows.Forms.ToolTip(this.components);
+            this.dataGridViewBossElementReactions = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ElementColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VulnerabilityColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -201,6 +206,7 @@
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBossElementReactions)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxPartyMember1
@@ -1338,9 +1344,9 @@
             this.groupBox10.Controls.Add(this.checkBoxMentalBreakdown);
             this.groupBox10.Controls.Add(this.checkBoxFullBreak);
             this.groupBox10.Controls.Add(this.checkBoxArmorBreakdown);
-            this.groupBox10.Location = new System.Drawing.Point(749, 303);
+            this.groupBox10.Location = new System.Drawing.Point(728, 303);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(278, 119);
+            this.groupBox10.Size = new System.Drawing.Size(266, 119);
             this.groupBox10.TabIndex = 52;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Debuffs";
@@ -1594,10 +1600,59 @@
             this.backgroundWorkerOptimizer.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerOptimizer_ProgressChanged);
             this.backgroundWorkerOptimizer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerOptimizer_RunWorkerCompleted);
             // 
+            // dataGridViewBossElementReactions
+            // 
+            this.dataGridViewBossElementReactions.AllowUserToAddRows = false;
+            this.dataGridViewBossElementReactions.AllowUserToDeleteRows = false;
+            this.dataGridViewBossElementReactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBossElementReactions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ElementColumn,
+            this.VulnerabilityColumn});
+            this.dataGridViewBossElementReactions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dataGridViewBossElementReactions.Location = new System.Drawing.Point(818, 428);
+            this.dataGridViewBossElementReactions.Name = "dataGridViewBossElementReactions";
+            this.dataGridViewBossElementReactions.RowHeadersVisible = false;
+            this.dataGridViewBossElementReactions.Size = new System.Drawing.Size(215, 118);
+            this.dataGridViewBossElementReactions.TabIndex = 75;
+            this.dataGridViewBossElementReactions.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dataGridViewBossElementReactions_CellParsing);
+            this.dataGridViewBossElementReactions.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBossElementReactions_CellValueChanged);
+            this.dataGridViewBossElementReactions.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridViewBossElementReactions_CurrentCellDirtyStateChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Element";
+            this.dataGridViewTextBoxColumn1.MaxInputLength = 16;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // dataGridViewComboBoxColumn1
+            // 
+            this.dataGridViewComboBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.dataGridViewComboBoxColumn1.HeaderText = "Vulnerability";
+            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            // 
+            // ElementColumn
+            // 
+            this.ElementColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ElementColumn.HeaderText = "Element";
+            this.ElementColumn.MaxInputLength = 16;
+            this.ElementColumn.Name = "ElementColumn";
+            this.ElementColumn.ReadOnly = true;
+            this.ElementColumn.Width = 70;
+            // 
+            // VulnerabilityColumn
+            // 
+            this.VulnerabilityColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.VulnerabilityColumn.HeaderText = "Vulnerability";
+            this.VulnerabilityColumn.Name = "VulnerabilityColumn";
+            // 
             // FFRKViewPartyPlanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dataGridViewBossElementReactions);
             this.Controls.Add(this.buttonOptimize);
             this.Controls.Add(this.buttonDeleteParty);
             this.Controls.Add(this.label5);
@@ -1653,6 +1708,7 @@
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.groupBox13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBossElementReactions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1819,5 +1875,10 @@
         private System.Windows.Forms.ToolTip toolTipAbility8;
         private System.Windows.Forms.ToolTip toolTipAbility9;
         private System.Windows.Forms.ToolTip toolTipAbility10;
+        private System.Windows.Forms.DataGridView dataGridViewBossElementReactions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ElementColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn VulnerabilityColumn;
     }
 }

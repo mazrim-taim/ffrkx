@@ -41,7 +41,24 @@ namespace FFRKInspector.UI
         private OptimizerRoleSelector optimizerRoleSelector = new OptimizerRoleSelector();
         private Dictionary<string, PartyData> savedPartyData = new Dictionary<string, PartyData>();
         private Dictionary<uint, int> abilityCounts = new Dictionary<uint, int>();
-        private bool skipRecalculations = false;
+        private bool skipRecalculations = true;
+
+        public class ElementAdvantage
+        {
+            public ElementAdvantage(string name, uint advantageId, float multiplier)
+            {
+                Name = name;
+                AdvantageId = advantageId;
+                Multiplier = multiplier;
+            }
+            public string Name { get; set; }
+            public uint AdvantageId { get; set; }
+            public float Multiplier { get; set; }
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
 
         public class Synergy
         {
@@ -216,7 +233,9 @@ namespace FFRKInspector.UI
             comboBoxRealmSynergy.Items.Add(new Synergy("Meltdown Nightmare", 407001, GameData.SchemaConstants.AbilityCategory.BlackMagic));
 
             equipmentModal.UpdateRealmSynergies(comboBoxRealmSynergy.Items);
+            fillBossElementalReactions();
             LoadSavedParties();
+            skipRecalculations = false;
         }
 
         private string SavedPartiesFilePath
@@ -314,10 +333,6 @@ namespace FFRKInspector.UI
             var groupedAbilities = party.Abilities.GroupBy(ability => ability.AbilityId, ability => ability.Name);
             foreach (var group in groupedAbilities)
             {
-                if (group.Key == null)
-                {
-                    continue;
-                }
                 abilityCounts[group.Key] = group.Count();
             }
         }
@@ -760,10 +775,24 @@ namespace FFRKInspector.UI
             {
                 damage *= (weapon != null ? weapon.ElementalMultiplier(ability.Element) : 1)
                     * (armor != null ? armor.ElementalMultiplier(ability.Element) : 1)
-                    * (accessory != null ? accessory.ElementalMultiplier(ability.Element) : 1);
+                    * (accessory != null ? accessory.ElementalMultiplier(ability.Element) : 1)
+                    * BossElementalMultiplier(ability.Element);
             }
 
             return damage;
+        }
+
+        private float BossElementalMultiplier(GameData.SchemaConstants.ElementID element)
+        {
+            foreach(DataGridViewRow row in dataGridViewBossElementReactions.Rows)
+            {
+                if (element == (GameData.SchemaConstants.ElementID)row.Tag)
+                {
+                    return ((ElementAdvantage)row.Cells[VulnerabilityColumn.Name].Value).Multiplier;
+                }
+            }
+
+            return 1.0f;
         }
 
         private string abilityTipFor(GameData.Ability ability)
@@ -1196,6 +1225,7 @@ namespace FFRKInspector.UI
         class PartyData
         {
             public Dictionary<string, uint>[] PartyMembers;
+            public Dictionary<ushort, ElementAdvantage> ElementalVulnerabilities;
             public uint RealmSynergy { get; set; }
             public string EnemyDef { get; set; }
             public string EnemyRes { get; set; }
@@ -1213,6 +1243,7 @@ namespace FFRKInspector.UI
             public PartyData()
             {
                 PartyMembers = new Dictionary<string, uint>[5];
+                ElementalVulnerabilities = new Dictionary<ushort, ElementAdvantage>();
             }
         }
         
@@ -1258,6 +1289,10 @@ namespace FFRKInspector.UI
             data.BanishingBlade = checkBoxBanishingBlade.Checked;
             data.EnemyDef = textBoxEnemyDef.Text;
             data.EnemyRes = textBoxEnemyRes.Text;
+            foreach (DataGridViewRow row in dataGridViewBossElementReactions.Rows)
+            {
+                data.ElementalVulnerabilities[(ushort)row.Cells[ElementColumn.Name].Tag] = (ElementAdvantage)row.Cells[VulnerabilityColumn.Name].Value;
+            }
 
             string partyName = textInputModal.Value;
             savedPartyData[partyName] = data;
@@ -1469,6 +1504,31 @@ namespace FFRKInspector.UI
                 checkBoxArmorBreakResistant.Checked = data.ArmorBreakResistant;
                 checkBoxMentalBreakResistant.Checked = data.MentalBreakResistant;
                 checkBoxBanishingBlade.Checked = data.BanishingBlade;
+
+                for (int i = 0; i < dataGridViewBossElementReactions.RowCount; i++)
+                {
+                    dataGridViewBossElementReactions.Rows[i].Cells[VulnerabilityColumn.Name].Value =
+                        ((DataGridViewComboBoxCell)dataGridViewBossElementReactions.Rows[i].Cells[VulnerabilityColumn.Name]).Items[0];
+                }
+                if (data.ElementalVulnerabilities.Count > 0)
+                {
+                    foreach (ushort element in data.ElementalVulnerabilities.Keys)
+                    {
+                        for (int i = 0; i < dataGridViewBossElementReactions.RowCount; i++)
+                        {
+                            if (((ushort)dataGridViewBossElementReactions.Rows[i].Cells[ElementColumn.Name].Tag) != element)
+                            {
+                                continue;
+                            }
+                            ElementAdvantage vulnerability = data.ElementalVulnerabilities[element];
+                            dataGridViewBossElementReactions.Rows[i].Cells[VulnerabilityColumn.Name].Value =
+                                ((DataGridViewComboBoxCell)dataGridViewBossElementReactions.Rows[i].Cells[VulnerabilityColumn.Name])
+                                    .Items.Cast<ElementAdvantage>().Where(vuln => vuln.Name == vulnerability.Name)
+                                    .FirstOrDefault();
+                            break;
+                        }
+                    }
+                }
             }
             finally
             {
@@ -1892,6 +1952,105 @@ namespace FFRKInspector.UI
             Brush brush = (abilityCounts.ContainsKey(ability.AbilityId) && abilityCounts[ability.AbilityId] > 0) ?
                             SystemBrushes.WindowText : SystemBrushes.GrayText;
             e.Graphics.DrawString(ability.Name, comboBox.Font, brush, e.Bounds.X, e.Bounds.Y);
+        }
+
+        private void fillBossElementalReactions()
+        {
+            dataGridViewBossElementReactions.Rows.Clear();
+            VulnerabilityColumn.ValueType = typeof(ElementAdvantage);
+            VulnerabilityColumn.ValueMember = "This";
+            VulnerabilityColumn.DisplayMember = "Name";
+
+            foreach (GameData.SchemaConstants.ElementID element in Enum.GetValues(typeof(GameData.SchemaConstants.ElementID)))
+            {
+                if (element == GameData.SchemaConstants.ElementID.None || element == GameData.SchemaConstants.ElementID.Nothing)
+                {
+                    continue;
+                }
+                DataGridViewRow row = new DataGridViewRow();
+                DataGridViewCell cell = new DataGridViewTextBoxCell();
+                cell.Value = element.ToString();
+                cell.Tag = (ushort)element;
+                row.Cells.Add(cell);
+
+                cell = new DataGridViewComboBoxCell();
+                ((DataGridViewComboBoxCell)cell).Items.Add(new ElementAdvantage("None", 0, 1.0f));
+                ((DataGridViewComboBoxCell)cell).Items.Add(new ElementAdvantage("Resist 50%", 6, 0.5f));
+                ((DataGridViewComboBoxCell)cell).Items.Add(new ElementAdvantage("Vulnerable 100%", 1, 2.0f));
+                ((DataGridViewComboBoxCell)cell).Items.Add(new ElementAdvantage("Immune 100%", 11, 0f));
+                for(int i = 10; i > 0; i--) {
+                    ((DataGridViewComboBoxCell)cell).Items.Add(
+                        new ElementAdvantage(String.Format("Absorb {0}%", i * 10), (uint)(11 + i), -0.1f * (float)i));
+                }
+                for(int i = 2; i <= 10; i++) {
+                    if(i == 6) {
+                        continue;
+                    }
+                    ((DataGridViewComboBoxCell)cell).Items.Add(
+                        new ElementAdvantage(String.Format("Resist {0}%", 100 - ((i - 1) * 10)), (uint)i, 0.1f * (float)(i - 1)));
+                }
+                for(int i = 11; i < 20; i++) {
+                    ((DataGridViewComboBoxCell)cell).Items.Add(
+                        new ElementAdvantage(String.Format("Vulnerable {0}%", (i - 10) * 10), (uint)(41 - i), 1.0f + (0.1f * (float)(i - 10))));
+                }
+
+                cell.Value = ((DataGridViewComboBoxCell)cell).Items[0];
+                row.Cells.Add(cell);
+
+                row.Tag = element;
+                dataGridViewBossElementReactions.Rows.Add(row);
+            }
+
+            if (dataGridViewBossElementReactions.SortedColumn != null)
+            {
+                ListSortDirection sortDirection = dataGridViewBossElementReactions.SortOrder == SortOrder.Descending ?
+                    ListSortDirection.Descending : ListSortDirection.Ascending;
+                dataGridViewBossElementReactions.Sort(dataGridViewBossElementReactions.SortedColumn, sortDirection);
+            }
+            else
+            {
+                dataGridViewBossElementReactions.Sort(dataGridViewBossElementReactions.Columns[0], ListSortDirection.Ascending);
+            }
+        }
+
+        private void dataGridViewBossElementReactions_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+        {
+            if (e == null || e.Value == null ||
+                dataGridViewBossElementReactions.Columns[e.ColumnIndex].Name != VulnerabilityColumn.Name)
+            {
+                return;
+            }
+
+            try
+            {
+                foreach(ElementAdvantage element in ((DataGridViewComboBoxCell)dataGridViewBossElementReactions.Rows[e.RowIndex].Cells[e.ColumnIndex]).Items)
+                {
+                    if (element.Name == e.Value.ToString())
+                    {
+                        e.Value = element;
+                        break;
+                    }
+                }
+                e.ParsingApplied = true;
+            }
+            catch(FormatException)
+            {
+                e.ParsingApplied = false;
+            }
+        }
+
+        private void dataGridViewBossElementReactions_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            dataGridViewBossElementReactions.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void dataGridViewBossElementReactions_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (skipRecalculations)
+            {
+                return;
+            }
+            RecalculateAllStats();
         }
     }
 }
