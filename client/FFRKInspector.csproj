@@ -124,6 +124,7 @@
     <Compile Include="GameData\Abilities\DarkBargain.cs" />
     <Compile Include="GameData\Abilities\DarkBuster.cs" />
     <Compile Include="GameData\Abilities\Darkmoon.cs" />
+    <Compile Include="GameData\Abilities\DarkZone.cs" />
     <Compile Include="GameData\Abilities\DeathStrike.cs" />
     <Compile Include="GameData\Abilities\Dismissal.cs" />
     <Compile Include="GameData\Abilities\Doppelblade.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="GameData\Abilities\MagicBreakdown.cs" />
     <Compile Include="GameData\Abilities\MagicLure.cs" />
     <Compile Include="GameData\Abilities\ManasPaean.cs" />
+    <Compile Include="GameData\Abilities\MementoMori.cs" />
     <Compile Include="GameData\Abilities\MementoOfMight.cs" />
     <Compile Include="GameData\Abilities\MementoOfProtection.cs" />
     <Compile Include="GameData\Abilities\MentalBreakdown.cs" />
