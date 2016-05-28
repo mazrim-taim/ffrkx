@@ -344,6 +344,7 @@
     <Compile Include="GameData\RecordMateria.cs" />
     <Compile Include="GameData\RecordMaterias\AceTurk.cs" />
     <Compile Include="GameData\RecordMaterias\AdventurersDagger.cs" />
+    <Compile Include="GameData\RecordMaterias\AncientPower.cs" />
     <Compile Include="GameData\RecordMaterias\ArcherInWhite.cs" />
     <Compile Include="GameData\RecordMaterias\ArcherMage.cs" />
     <Compile Include="GameData\RecordMaterias\Ascendance.cs" />
@@ -356,9 +357,11 @@
     <Compile Include="GameData\RecordMaterias\BurmecianDragonKnight.cs" />
     <Compile Include="GameData\RecordMaterias\Bushido.cs" />
     <Compile Include="GameData\RecordMaterias\CetrasDestiny.cs" />
+    <Compile Include="GameData\RecordMaterias\ChakramArts.cs" />
     <Compile Include="GameData\RecordMaterias\ChosenSorceress.cs" />
     <Compile Include="GameData\RecordMaterias\ConcertMusician.cs" />
     <Compile Include="GameData\RecordMaterias\CulturedConjurer.cs" />
+    <Compile Include="GameData\RecordMaterias\DarkFate.cs" />
     <Compile Include="GameData\RecordMaterias\DesertBloom.cs" />
     <Compile Include="GameData\RecordMaterias\Devotion.cs" />
     <Compile Include="GameData\RecordMaterias\DragoonsDetermination.cs" />
@@ -397,6 +400,7 @@
     <Compile Include="GameData\RecordMaterias\MightOfWind.cs" />
     <Compile Include="GameData\RecordMaterias\NullRecordMateria.cs" />
     <Compile Include="GameData\RecordMaterias\OathOfTycoon.cs" />
+    <Compile Include="GameData\RecordMaterias\OneEyedGeneral.cs" />
     <Compile Include="GameData\RecordMaterias\PiratesCode.cs" />
     <Compile Include="GameData\RecordMaterias\PrayerOfTheCetra.cs" />
     <Compile Include="GameData\RecordMaterias\PrideOfTheRedWings.cs" />
@@ -408,8 +412,10 @@
     <Compile Include="GameData\RecordMaterias\SelfSacrifice.cs" />
     <Compile Include="GameData\RecordMaterias\ShieldOfDalmasca.cs" />
     <Compile Include="GameData\RecordMaterias\ShurikenMaster.cs" />
+    <Compile Include="GameData\RecordMaterias\SilverGenome.cs" />
     <Compile Include="GameData\RecordMaterias\SoldiersPride.cs" />
     <Compile Include="GameData\RecordMaterias\SoldierStrike.cs" />
+    <Compile Include="GameData\RecordMaterias\SpiritOfSasune.cs" />
     <Compile Include="GameData\RecordMaterias\SummonerOfMist.cs" />
     <Compile Include="GameData\RecordMaterias\SummonersPrayer.cs" />
     <Compile Include="GameData\RecordMaterias\UnbreakableSpellblade.cs" />
