@@ -530,7 +530,7 @@
     <Compile Include="GameData\SoulBreaks\EblanWaterVeil.cs" />
     <Compile Include="GameData\SoulBreaks\Electrocute.cs" />
     <Compile Include="GameData\SoulBreaks\ElectrostaticRod.cs" />
-    <Compile Include="GameData\SoulBreaks\ElementalReels.cs" />
+    <Compile Include="GameData\SoulBreaks\ElementReels.cs" />
     <Compile Include="GameData\SoulBreaks\ElementOfTreachery.cs" />
     <Compile Include="GameData\SoulBreaks\EmeraldLight.cs" />
     <Compile Include="GameData\SoulBreaks\ExhilaratingMagic.cs" />
