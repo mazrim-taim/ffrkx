@@ -454,6 +454,7 @@
     <Compile Include="GameData\SoulBreaks\BlackMateria.cs" />
     <Compile Include="GameData\SoulBreaks\BladeBeam.cs" />
     <Compile Include="GameData\SoulBreaks\BladeFlurry.cs" />
+    <Compile Include="GameData\SoulBreaks\BladeTorrent.cs" />
     <Compile Include="GameData\SoulBreaks\BladeWing.cs" />
     <Compile Include="GameData\SoulBreaks\BlastingZone.cs" />
     <Compile Include="GameData\SoulBreaks\BlazeRush.cs" />
@@ -682,6 +683,7 @@
     <Compile Include="GameData\SoulBreaks\SummonEidolonI.cs" />
     <Compile Include="GameData\SoulBreaks\SummonEidolonII.cs" />
     <Compile Include="GameData\SoulBreaks\SwordArtStockBreak.cs" />
+    <Compile Include="GameData\SoulBreaks\Swordshower.cs" />
     <Compile Include="GameData\SoulBreaks\Sync.cs" />
     <Compile Include="GameData\SoulBreaks\TeleportXVI.cs" />
     <Compile Include="GameData\SoulBreaks\Threaten.cs" />
