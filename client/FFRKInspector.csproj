@@ -104,6 +104,7 @@
     <Compile Include="GameData\Abilities\ArmorStrike.cs" />
     <Compile Include="GameData\Abilities\Bahamut.cs" />
     <Compile Include="GameData\Abilities\BanishingStrike.cs" />
+    <Compile Include="GameData\Abilities\BioGrenade.cs" />
     <Compile Include="GameData\Abilities\BioStrike.cs" />
     <Compile Include="GameData\Abilities\BlindShell.cs" />
     <Compile Include="GameData\Abilities\Bomb.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="GameData\Abilities\FlashingBlade.cs" />
     <Compile Include="GameData\Abilities\FlurryOfPetals.cs" />
     <Compile Include="GameData\Abilities\FullBreak.cs" />
+    <Compile Include="GameData\Abilities\FullCharge.cs" />
     <Compile Include="GameData\Abilities\Goblin.cs" />
     <Compile Include="GameData\Abilities\Guard.cs" />
     <Compile Include="GameData\Abilities\HaltingRumba.cs" />
@@ -178,6 +180,7 @@
     <Compile Include="GameData\Abilities\PiercingStrike.cs" />
     <Compile Include="GameData\Abilities\PoisonShell.cs" />
     <Compile Include="GameData\Abilities\PowerBreakdown.cs" />
+    <Compile Include="GameData\Abilities\Powerchain.cs" />
     <Compile Include="GameData\Abilities\PressurePoint.cs" />
     <Compile Include="GameData\Abilities\PunishingPalm.cs" />
     <Compile Include="GameData\Abilities\Quetzalcoatl.cs" />
