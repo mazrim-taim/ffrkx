@@ -19,6 +19,7 @@ namespace FFRKInspector.GameData
         public virtual int Rarity { get { return 1; } }
         public const double AtkCap = 589.95023429747326088728466463427; // Atk^1.3 == 4000
         public const double MagCap = 1055.8049644771952131356256105084; // Mag^1.15 == 3000
+        public const double NinCap = 370.60095144271811733509290520149; // Mag^0.575 == 30
 
         public override string ToString()
         {
@@ -54,6 +55,10 @@ namespace FFRKInspector.GameData
                     {
                         return MagicalDamage(mnd, res);
                     }
+                    else if (Category == SchemaConstants.AbilityCategory.Ninja)
+                    {
+                        return NinjaDamage(mag);
+                    }
                     return MagicalDamage(mag, res);
                 case SchemaConstants.Formulas.Healing:
                     return HealingAmount(mnd);
@@ -75,6 +80,11 @@ namespace FFRKInspector.GameData
                 normal_damage = MinimumDamage / Math.Pow(res, 0.05) / Multiplier;
             }
             return normal_damage;
+        }
+
+        public virtual double NinjaDamage(double mag)
+        {
+            return ((mag < NinCap) ? Math.Pow(mag, 0.575) : 30) * Math.Pow(mag, 0.25);
         }
         
         public virtual double PhysicalDamage(double atk, double def)
