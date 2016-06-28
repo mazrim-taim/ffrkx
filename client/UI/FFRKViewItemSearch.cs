@@ -195,6 +195,11 @@ namespace FFRKInspector.UI
             request.Name.Value = textBoxNameFilter.Text;
             foreach (RealmSynergy.SynergyValue value in listBoxRealmSynergy.SelectedItems)
                 request.Synergies.AddValue(value);
+            if (listBoxWorld.Enabled)
+            {
+                foreach (WorldListItem world in listBoxWorld.SelectedItems)
+                    request.Worlds.AddValue(world.WorldId);
+            }
             if (listBoxBattle.Enabled)
             {
                 foreach (BattleListItem battle in listBoxBattle.SelectedItems)
@@ -231,8 +236,8 @@ namespace FFRKInspector.UI
         {
             listBoxRealmSynergy.SelectedItems.Clear();
             listBoxWorld.SelectedItems.Clear();
-            listBoxDungeon.SelectedItems.Clear();
-            listBoxBattle.SelectedItems.Clear();
+            DisableDungeonList();
+            DisableBattlesList();
             listBoxRarity.SelectedItems.Clear();
             textBoxNameFilter.Clear();
             radioButtonMinSamples.Checked = false;

@@ -14,6 +14,7 @@ using FFRKInspector.GameData;
 using FFRKInspector.DataCache;
 using FFRKInspector.Analyzer;
 using System.Diagnostics;
+using System.IO;
 
 namespace FFRKInspector.UI
 {
@@ -32,6 +33,14 @@ namespace FFRKInspector.UI
             public EquipStats Stats = new EquipStats();
             public byte Level;
             public byte MaxLevel;
+        }
+
+        private enum ViewFilterTypeComboIndex
+        {
+            All = 0,
+            Weapon = 1,
+            Armor = 2,
+            Accessory = 3
         }
 
         private enum ViewModeComboIndex
@@ -83,6 +92,7 @@ namespace FFRKInspector.UI
             comboBoxViewMode.SelectedIndex = 0;
             comboBoxUpgradeMode.SelectedIndex = (int)ViewUpgradeModeComboIndex.CurrentUpgradeCurrentLevel;
             comboBoxSynergy.SelectedIndex = 0;
+            comboBoxFilterType.SelectedIndex = (int)ViewFilterTypeComboIndex.All;
             comboBoxScoreSelection.SelectedIndex = (int)ScoreUpgradeModeComboIndex.MaxUpgradeMaxLevel;
             dgcCharacterDefensiveStat.CellTemplate = new EnumDataViewGridComboBoxCell<AnalyzerSettings.DefensiveStat>();
             dgcCharacterOffensiveStat.CellTemplate = new EnumDataViewGridComboBoxCell<AnalyzerSettings.OffensiveStat>();
@@ -116,6 +126,15 @@ namespace FFRKInspector.UI
             }
         }
 
+        private void RecalculateInventory()
+        {
+            if (FFRKProxy.Instance != null)
+            {
+                DataPartyDetails party = FFRKProxy.Instance.GameState.PartyDetails;
+                if (party != null) { UpdateEquipmentGrid(party.Equipments); }
+            }
+        }
+
         private class SynergyColumnValue : IComparable
         {
             private RealmSynergy.SynergyValue mValue;
@@ -123,7 +142,7 @@ namespace FFRKInspector.UI
             {
                 mValue = Value;
             }
-        
+
             public int CompareTo(object obj)
             {
                 return mValue.GameSeries.CompareTo(((SynergyColumnValue)obj).mValue.GameSeries);
@@ -159,7 +178,7 @@ namespace FFRKInspector.UI
                 mCurrentLevel = Current;
                 mMaxLevel = Max;
             }
-        
+
             public int CompareTo(object obj)
             {
                 LevelColumnValue other = (LevelColumnValue)obj;
@@ -189,6 +208,46 @@ namespace FFRKInspector.UI
             }
         }
 
+        private class AugmentColumnValue : IComparable
+        {
+            private int mCurrentAugment;
+            private int mMaxAugment;
+
+            public AugmentColumnValue(int Current, int Max)
+            {
+                mCurrentAugment = Current;
+                mMaxAugment = Max;
+            }
+
+            public int CompareTo(object obj)
+            {
+                AugmentColumnValue other = (AugmentColumnValue)obj;
+                int current_result = mCurrentAugment.CompareTo(other.mCurrentAugment);
+                if (current_result != 0)
+                    return current_result;
+                return mMaxAugment.CompareTo(other.mCurrentAugment);
+            }
+
+            public override string ToString()
+            {
+                return String.Format("{0}/{1}", mCurrentAugment, mMaxAugment);
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (obj == null || obj == DBNull.Value)
+                    return false;
+
+                AugmentColumnValue other = (AugmentColumnValue)obj;
+                return (mCurrentAugment == other.mCurrentAugment) && (mMaxAugment == other.mMaxAugment);
+            }
+
+            public override int GetHashCode()
+            {
+                return mCurrentAugment + 30 * mMaxAugment;
+            }
+        }
+
         private class RarityColumnValue : IComparable
         {
             private int mBaseRarity;
@@ -199,7 +258,7 @@ namespace FFRKInspector.UI
                 mBaseRarity = BaseRarity;
                 mUpgrades = Upgrades;
             }
-        
+
             public int CompareTo(object obj)
             {
                 RarityColumnValue other = (RarityColumnValue)obj;
@@ -237,7 +296,7 @@ namespace FFRKInspector.UI
             {
                 mScore = Score;
             }
-        
+
             public int CompareTo(object obj)
             {
                 ScoreColumnValue other = (ScoreColumnValue)obj;
@@ -304,24 +363,44 @@ namespace FFRKInspector.UI
 
         void UpdateEquipmentGrid(DataEquipmentInformation[] EquipList)
         {
+            int filterTypeLowerBound;
+            int filterTypeUpperBound;
+            if (comboBoxFilterType.SelectedIndex.Equals((int)ViewFilterTypeComboIndex.All)) {
+                filterTypeLowerBound = 0; //If "All" filter selected, select all item types (specifically those within index range 0-99).
+                filterTypeUpperBound = 99;
+            }
+            else { //If any other filter selected, set upper and lower bound of item types to that specific type.
+                filterTypeLowerBound = comboBoxFilterType.SelectedIndex;
+                filterTypeUpperBound = comboBoxFilterType.SelectedIndex;
+            }
             mEquipments = EquipList;
             dataGridViewEquipment.Rows.Clear();
             foreach (DataEquipmentInformation equip in EquipList)
             {
-                int row_index = dataGridViewEquipment.Rows.Add();
-                DataGridViewRow row = dataGridViewEquipment.Rows[row_index];
-                row.Tag = equip;
-                row.Cells[dgcItemID.Name].Value = equip.EquipmentId;
-                row.Cells[dgcItem.Name].Value = equip.Name;
-                row.Cells[dgcCategory.Name].Value = equip.Category;
-                row.Cells[dgcType.Name].Value = equip.Type;
-                row.Cells[dgcRarity.Name].Value = new RarityColumnValue((int)equip.BaseRarity, (int)equip.EvolutionNumber);
-                row.Cells[dgcSynergy.Name].Value = new SynergyColumnValue(RealmSynergy.FromSeries(equip.SeriesId));
-                row.Cells[dgcLevel.Name].Value = new LevelColumnValue(equip.Level, equip.LevelMax);
-                row.Cells[dgcScore.Name].Value = new ScoreColumnValue(mAnalyzer.GetScore(equip.InstanceId));
+                //If "All" selected, chooses all item types from 0-99, if "Weapon" is selected, chooses item types in range 1-1 (i.e. =1).
+                if ( ((int)equip.Type>=filterTypeLowerBound) && ((int)equip.Type<=filterTypeUpperBound)
+                        && (equip.Category != SchemaConstants.EquipmentCategory.ArmorUpgrade) //Exclude Armour upgrade mats from "Armour" filter.
+                        && (equip.Category != SchemaConstants.EquipmentCategory.WeaponUpgrade)) //Exclude Weapon upgrade mats from "Weapon" filter.
+                {
+                    int row_index = dataGridViewEquipment.Rows.Add();
+                    DataGridViewRow row = dataGridViewEquipment.Rows[row_index];
+                    row.Tag = equip;
+                    row.Cells[dgcItemID.Name].Value = equip.EquipmentId;
+                    row.Cells[dgcItem.Name].Value = equip.Name;
+                    row.Cells[dgcCategory.Name].Value = equip.Category;
+                    row.Cells[dgcType.Name].Value = equip.Type;
+                    row.Cells[dgcRarity.Name].Value = new RarityColumnValue((int)equip.BaseRarity, (int)equip.EvolutionNumber);
+                    row.Cells[dgcSynergy.Name].Value = new SynergyColumnValue(RealmSynergy.FromSeries(equip.SeriesId));
+                    row.Cells[dgcLevel.Name].Value = new LevelColumnValue(equip.Level, equip.LevelMax);
+                    row.Cells[dgcAugments.Name].Value = new AugmentColumnValue(equip.Augment, equip.AugmentMax);
+                    if (mAnalyzer != null)
+                    {
+                        row.Cells[dgcScore.Name].Value = new ScoreColumnValue(mAnalyzer.GetScore(equip.InstanceId));
+                    }
 
-                GridEquipStats stats = ComputeDisplayStats(equip);
-                SetStatsForRow(row, equip, stats);
+                    GridEquipStats stats = ComputeDisplayStats(equip);
+                    SetStatsForRow(row, equip, stats);
+                }
             }
         }
 
@@ -365,6 +444,7 @@ namespace FFRKInspector.UI
         {
             ViewUpgradeModeComboIndex upgrade_type = (ViewUpgradeModeComboIndex)comboBoxUpgradeMode.SelectedIndex;
             RealmSynergy.SynergyValue synergy = RealmSynergy.Values.ElementAt(comboBoxSynergy.SelectedIndex);
+            bool has_synergy = equip.SeriesId == synergy.GameSeries;
             DataCache.Items.Key cache_key = new DataCache.Items.Key { ItemId = equip.EquipmentId };
             DataCache.Items.Data cache_value;
             bool in_cache = FFRKProxy.Instance.Cache.Items.TryGetValue(cache_key, out cache_value);
@@ -372,13 +452,13 @@ namespace FFRKInspector.UI
             GridEquipStats result = new GridEquipStats();
             if (upgrade_type == ViewUpgradeModeComboIndex.CurrentUpgradeCurrentLevel)
             {
-                result.Stats.Atk = (equip.SeriesId == synergy.GameSeries) ? equip.SeriesAtk : equip.Atk;
-                result.Stats.Mag = (equip.SeriesId == synergy.GameSeries) ? equip.SeriesMag : equip.Mag;
-                result.Stats.Acc = (equip.SeriesId == synergy.GameSeries) ? equip.SeriesAcc : equip.Acc;
-                result.Stats.Def = (equip.SeriesId == synergy.GameSeries) ? equip.SeriesDef : equip.Def;
-                result.Stats.Res = (equip.SeriesId == synergy.GameSeries) ? equip.SeriesRes : equip.Res;
-                result.Stats.Eva = (equip.SeriesId == synergy.GameSeries) ? equip.SeriesEva : equip.Eva;
-                result.Stats.Mnd = (equip.SeriesId == synergy.GameSeries) ? equip.SeriesMnd : equip.Mnd;
+                result.Stats.Atk = (has_synergy) ? equip.SeriesAtk : equip.Atk;
+                result.Stats.Mag = (has_synergy) ? equip.SeriesMag : equip.Mag;
+                result.Stats.Acc = (has_synergy) ? equip.SeriesAcc : equip.Acc;
+                result.Stats.Def = (has_synergy) ? equip.SeriesDef : equip.Def;
+                result.Stats.Res = (has_synergy) ? equip.SeriesRes : equip.Res;
+                result.Stats.Eva = (has_synergy) ? equip.SeriesEva : equip.Eva;
+                result.Stats.Mnd = (has_synergy) ? equip.SeriesMnd : equip.Mnd;
                 result.Level = equip.Level;
                 result.MaxLevel = equip.LevelMax;
                 if (equip.SeriesId == synergy.GameSeries)
@@ -399,10 +479,10 @@ namespace FFRKInspector.UI
                 else
                     result.MaxLevel = StatCalculator.MaxLevel(StatCalculator.Evolve(equip.BaseRarity, SchemaConstants.EvolutionLevel.PlusPlus));
                 result.Level = result.MaxLevel;
-                if (equip.SeriesId == synergy.GameSeries)
+                if (has_synergy)
                     result.Level = StatCalculator.EffectiveLevelWithSynergy(result.Level);
 
-                if (in_cache && cache_value.MaxStats != null && cache_value.BaseStats != null)
+                if (in_cache && cache_value.AreStatsValid)
                 {
                     // Try to get the equipment stats from the database
                     result.Stats.Atk = StatCalculator.ComputeStatForLevel(equip.BaseRarity, cache_value.BaseStats.Atk, cache_value.MaxStats.Atk, result.Level);
@@ -419,16 +499,24 @@ namespace FFRKInspector.UI
                     // rounding error due to the fact that the values for Atk and SeriesAtk etc are all rounded, so the division will be less precise
                     // than doing it over the entire range of Max stats and base stats, but it's the best we can do in this case.
                     byte series_effective_level = StatCalculator.EffectiveLevelWithSynergy(equip.Level);
-                    result.Stats.Atk = StatCalculator.ComputeStatForLevel2(equip.Atk, equip.Level, equip.SeriesAtk, series_effective_level, result.Level);
-                    result.Stats.Mag = StatCalculator.ComputeStatForLevel2(equip.Mag, equip.Level, equip.SeriesMag, series_effective_level, result.Level);
-                    result.Stats.Acc = StatCalculator.ComputeStatForLevel2(equip.Acc, equip.Level, equip.SeriesAcc, series_effective_level, result.Level);
-                    result.Stats.Def = StatCalculator.ComputeStatForLevel2(equip.Def, equip.Level, equip.SeriesDef, series_effective_level, result.Level);
-                    result.Stats.Res = StatCalculator.ComputeStatForLevel2(equip.Res, equip.Level, equip.SeriesRes, series_effective_level, result.Level);
-                    result.Stats.Eva = StatCalculator.ComputeStatForLevel2(equip.Eva, equip.Level, equip.SeriesEva, series_effective_level, result.Level);
-                    result.Stats.Mnd = StatCalculator.ComputeStatForLevel2(equip.Mnd, equip.Level, equip.SeriesMnd, series_effective_level, result.Level);
+                    result.Stats.Atk = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesAtk : equip.Atk) : StatCalculator.ComputeStatForLevel2(equip.Atk, equip.Level, equip.SeriesAtk, series_effective_level, result.Level);
+                    result.Stats.Mag = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesMag : equip.Mag) : StatCalculator.ComputeStatForLevel2(equip.Mag, equip.Level, equip.SeriesMag, series_effective_level, result.Level);
+                    result.Stats.Acc = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesAcc : equip.Acc) : StatCalculator.ComputeStatForLevel2(equip.Acc, equip.Level, equip.SeriesAcc, series_effective_level, result.Level);
+                    result.Stats.Def = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesDef : equip.Def) : StatCalculator.ComputeStatForLevel2(equip.Def, equip.Level, equip.SeriesDef, series_effective_level, result.Level);
+                    result.Stats.Res = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesRes : equip.Res) : StatCalculator.ComputeStatForLevel2(equip.Res, equip.Level, equip.SeriesRes, series_effective_level, result.Level);
+                    result.Stats.Eva = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesEva : equip.Eva) : StatCalculator.ComputeStatForLevel2(equip.Eva, equip.Level, equip.SeriesEva, series_effective_level, result.Level);
+                    result.Stats.Mnd = (result.MaxLevel == equip.Level) ? ((has_synergy) ? equip.SeriesMnd : equip.Mnd) : StatCalculator.ComputeStatForLevel2(equip.Mnd, equip.Level, equip.SeriesMnd, series_effective_level, result.Level);
                 }
             }
 
+            if (equip.AugmentStat != null && equip.Augment > 0)
+            {
+                double bonus = (has_synergy) ? equip.Augment * 1.5 : (double)equip.Augment;
+
+                System.Reflection.FieldInfo augmentField = typeof(EquipStats).GetField(equip.AugmentStat);
+                short val = (short)augmentField.GetValue(result.Stats);
+                augmentField.SetValue(result.Stats, (short)Math.Ceiling(val + bonus));
+            }
             return result;
         }
 
@@ -485,6 +573,11 @@ namespace FFRKInspector.UI
         private void comboBoxSynergy_SelectedIndexChanged(object sender, EventArgs e)
         {
             RecomputeAllItemStats();
+        }
+
+        private void comboBoxFilterType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RecalculateInventory();
         }
 
         private bool SetValueIfDirty<T>(object source, ref T dest)
@@ -558,6 +651,125 @@ namespace FFRKInspector.UI
         private void linkLabelAlgo_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://ffrki.wordpress.com/2015/05/30/about-the-inventory-analysis-algorithm/");
+        }
+
+        private void exportCSVInventoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "CSV files (*.csv)|*.csv";
+                dialog.FilterIndex = 0;
+                dialog.RestoreDirectory = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (Stream s = dialog.OpenFile())
+                    using (StreamWriter w = new StreamWriter(s))
+                    {
+                        string value = "";
+                        DataGridViewRow dr = new DataGridViewRow();
+                        //write header rows to csv
+                        for (int i = 0; i <= dataGridViewEquipment.Columns.Count - 1; i++)
+                        {
+                            if (i > 0)
+                            {
+                                w.Write(",");
+                            }
+                            w.Write('"' + dataGridViewEquipment.Columns[i].HeaderText + '"');
+                        }
+
+                        w.WriteLine();
+
+                        //write DataGridView rows to csv
+                        for (int j = 0; j <= dataGridViewEquipment.Rows.Count - 1; j++)
+                        {
+                            if (j > 0)
+                            {
+                                w.WriteLine();
+                            }
+
+                            dr = dataGridViewEquipment.Rows[j];
+
+                            for (int i = 0; i <= dataGridViewEquipment.Columns.Count - 1; i++)
+                            {
+                                if (i > 0)
+                                {
+                                    w.Write(",");
+                                }
+
+                                value = dr.Cells[i].Value.ToString();
+                                //replace comma's with spaces
+                                value = value.Replace(',', ' ');
+                                value = value.Replace('＋', '+');
+                                //replace embedded newlines with spaces
+                                //value = value.Replace(Environment.NewLine, " ");
+
+                                w.Write(value);
+                            }
+                        }
+                    }
+                }
+                MessageBox.Show(String.Format("Inventory successfully exported."));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("FFRK Inspector encountered an error while exporting the data.  " + ex.Message);
+            }
+        }
+
+        private void exportJSONInventoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "Text files (*.txt)|*.txt";
+                dialog.FilterIndex = 0;
+                dialog.RestoreDirectory = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (Stream s = dialog.OpenFile())
+                    using (StreamWriter w = new StreamWriter(s))
+                    {
+                        string name = "";
+                        string level = "";
+                        string format = "{{\"n\":\"{0}\",\"l\":{1}}}";
+                        DataGridViewRow dr = new DataGridViewRow();
+                        //open brace
+                        w.Write("[");
+
+                        for (int j = 0; j <= dataGridViewEquipment.Rows.Count - 1; j++)
+                        {
+                            if (j > 0)
+                            {
+                                w.WriteLine(',');
+                            }
+
+                            //clean up the item name
+                            name = dataGridViewEquipment.Rows[j].Cells["dgcItem"].Value.ToString()
+                                .Replace('"', '\"').Replace('＋', ' ').Replace('+', ' ').Trim();
+                            //take the first set of digits from the level value (leaving out the level cap segment /##)
+                            level = new string(dataGridViewEquipment.Rows[j].Cells["dgcLevel"].Value.ToString()
+                                .TakeWhile(val => char.IsNumber(val)).ToArray());
+
+                            w.Write(string.Format(format, name, level));
+                        }
+
+                        //close brace
+                        w.Write("]");
+
+                    }
+                }
+                MessageBox.Show(String.Format("Names and levels successfully exported to JSON."));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("FFRK Inspector encountered an error while exporting the data.  " + ex.Message);
+            }
+        }
+
+        private void dataGridViewEquipment_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
