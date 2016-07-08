@@ -621,6 +621,7 @@
     <Compile Include="GameData\SoulBreaks\OerbasBoon.cs" />
     <Compile Include="GameData\SoulBreaks\PaladinForce.cs" />
     <Compile Include="GameData\SoulBreaks\PhoenixPlunder.cs" />
+    <Compile Include="GameData\SoulBreaks\PlanetProtector.cs" />
     <Compile Include="GameData\SoulBreaks\PortraitOfLakshmi.cs" />
     <Compile Include="GameData\SoulBreaks\Prayer.cs" />
     <Compile Include="GameData\SoulBreaks\PrincessFavor.cs" />
@@ -672,6 +673,7 @@
     <Compile Include="GameData\SoulBreaks\SneakAttack.cs" />
     <Compile Include="GameData\SoulBreaks\Sommersault.cs" />
     <Compile Include="GameData\SoulBreaks\SonicBreak.cs" />
+    <Compile Include="GameData\SoulBreaks\SoothingLight.cs" />
     <Compile Include="GameData\SoulBreaks\SorceressAwakening.cs" />
     <Compile Include="GameData\SoulBreaks\SoulEater.cs" />
     <Compile Include="GameData\SoulBreaks\SovereignFist.cs" />
