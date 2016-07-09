@@ -226,8 +226,7 @@ namespace FFRKInspector.Proxy
 
         public void AutoTamperResponseAfter(Session oSession)
         {
-            if (!(oSession.oRequest.host.Equals("ffrk.denagames.com", StringComparison.CurrentCultureIgnoreCase) ||
-                oSession.oRequest.host.Equals("dff.sp.mbga.jp", StringComparison.CurrentCultureIgnoreCase)))
+            if (!oSession.oRequest.host.Equals("ffrk.denagames.com", StringComparison.CurrentCultureIgnoreCase))
                 return;
 
             string RequestPath = oSession.oRequest.headers.RequestPath;
